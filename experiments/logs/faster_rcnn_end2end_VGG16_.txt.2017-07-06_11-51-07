@@ -1,0 +1,7 @@
++ echo Logging output to experiments/logs/faster_rcnn_end2end_VGG16_.txt.2017-07-06_11-51-07
+Logging output to experiments/logs/faster_rcnn_end2end_VGG16_.txt.2017-07-06_11-51-07
++ ./tools/train_net.py --gpu all --solver models/pascal_voc/VGG16/FP_Net_end2end/solver.prototxt --weights output/FP_Net_end2end/voc_2007_trainval/fpn_iter_15000.caffemodel --imdb voc_2007_trainval --iters 70000 --cfg experiments/cfgs/FP_Net_end2end.yml
+usage: train_net.py [-h] [--gpu GPU_ID] [--solver SOLVER] [--iters MAX_ITERS]
+                    [--weights PRETRAINED_MODEL] [--cfg CFG_FILE]
+                    [--imdb IMDB_NAME] [--rand] [--set ...]
+train_net.py: error: argument --gpu: invalid int value: 'all'

@@ -1,0 +1,9107 @@
++ echo Logging output to experiments/logs/faster_rcnn_end2end_VGG16_.txt.2017-07-27_15-55-17
+Logging output to experiments/logs/faster_rcnn_end2end_VGG16_.txt.2017-07-27_15-55-17
++ ./tools/train_net.py --gpu 0 --solver models/pascal_voc/VGG16/FP_Net_end2end/solver.prototxt --weights output/FP_Net_end2end/voc_2007_trainval/fpn_iter_70000.caffemodel --imdb voc_2007_trainval --iters 70000 --cfg experiments/cfgs/FP_Net_end2end.yml
+Called with args:
+Namespace(cfg_file='experiments/cfgs/FP_Net_end2end.yml', gpu_id=0, imdb_name='voc_2007_trainval', max_iters=70000, pretrained_model='output/FP_Net_end2end/voc_2007_trainval/fpn_iter_70000.caffemodel', randomize=False, set_cfgs=None, solver='models/pascal_voc/VGG16/FP_Net_end2end/solver.prototxt')
+Using config:
+{'DATA_DIR': '/home/ubuntu/Work/brbchen/unskychen/faster_rcnn_min_ohem/data',
+ 'DEDUP_BOXES': -1.0,
+ 'EPS': 1e-14,
+ 'EXP_DIR': 'FP_Net_end2end',
+ 'GPU_ID': 0,
+ 'MATLAB': 'matlab',
+ 'MODELS_DIR': '/home/ubuntu/Work/brbchen/unskychen/faster_rcnn_min_ohem/models/pascal_voc',
+ 'PIXEL_MEANS': array([[[ 102.9801,  115.9465,  122.7717]]]),
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/home/ubuntu/Work/brbchen/unskychen/faster_rcnn_min_ohem',
+ 'TEST': {'BBOX_REG': True,
+          'HAS_RPN': True,
+          'MAX_SIZE': 520,
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'selective_search',
+          'RPN_MIN_SIZE': 8,
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 1000,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'SCALES': [375],
+          'SVM': False},
+ 'TRAIN': {'ASPECT_GROUPING': True,
+           'BATCH_SIZE': 128,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': True,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.7,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'FG_FRACTION': 0.25,
+           'FG_THRESH': 0.5,
+           'HAS_RPN': True,
+           'IMS_PER_BATCH': 1,
+           'MAX_SIZE': 520,
+           'OHEM_NMS_THRESH': 0.7,
+           'OHEM_USE_NMS': True,
+           'PROPOSAL_METHOD': 'gt',
+           'RPN_BATCHSIZE': 256,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_MIN_SIZE': 8,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 2000,
+           'RPN_PRE_NMS_TOP_N': 12000,
+           'SCALES': [375],
+           'SNAPSHOT_INFIX': '',
+           'SNAPSHOT_ITERS': 5000,
+           'USE_FLIPPED': True,
+           'USE_OHEM': True,
+           'USE_PREFETCH': False},
+ 'USE_GPU_NMS': True}
+0
+Loaded dataset `voc_2007_trainval` for training
+Set proposal method: gt
+Appending horizontally-flipped training examples...
+voc_2007_trainval gt roidb loaded from /home/ubuntu/Work/brbchen/unskychen/faster_rcnn_min_ohem/data/cache/voc_2007_trainval_gt_roidb.pkl
+done
+Preparing training data...
+done
+33102 roidb entries
+Output will be saved to `/home/ubuntu/Work/brbchen/unskychen/faster_rcnn_min_ohem/output/FP_Net_end2end/voc_2007_trainval`
+Filtered 0 roidb entries: 33102 -> 33102
+Computing bounding-box regression targets...
+bbox target means:
+[[ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]]
+[ 0.  0.  0.  0.]
+bbox target stdevs:
+[[ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]]
+[ 0.1  0.1  0.2  0.2]
+Normalizing targets
+done
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+I0727 15:55:40.809525 27688 solver.cpp:48] Initializing solver from parameters: 
+train_net: "models/pascal_voc/VGG16/FP_Net_end2end/train.prototxt"
+base_lr: 0.002
+display: 20
+lr_policy: "step"
+gamma: 0.1
+momentum: 0.9
+weight_decay: 0.0001
+stepsize: 50000
+snapshot: 0
+snapshot_prefix: "fpn"
+average_loss: 100
+iter_size: 2
+I0727 15:55:40.809612 27688 solver.cpp:81] Creating training net from train_net file: models/pascal_voc/VGG16/FP_Net_end2end/train.prototxt
+I0727 15:55:40.811120 27688 net.cpp:49] Initializing net from parameters: 
+name: "VGG_ILSVRC_16_layers"
+state {
+  phase: TRAIN
+}
+layer {
+  name: "input-data"
+  type: "Python"
+  top: "data"
+  top: "im_info"
+  top: "gt_boxes"
+  python_param {
+    module: "roi_data_layer.layer"
+    layer: "RoIDataLayer"
+    param_str: "\'num_classes\': 21"
+  }
+}
+layer {
+  name: "conv1_1"
+  type: "Convolution"
+  bottom: "data"
+  top: "conv1_1"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu1_1"
+  type: "ReLU"
+  bottom: "conv1_1"
+  top: "conv1_1"
+}
+layer {
+  name: "conv1_2"
+  type: "Convolution"
+  bottom: "conv1_1"
+  top: "conv1_2"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu1_2"
+  type: "ReLU"
+  bottom: "conv1_2"
+  top: "conv1_2"
+}
+layer {
+  name: "pool1"
+  type: "Pooling"
+  bottom: "conv1_2"
+  top: "pool1"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
+layer {
+  name: "conv2_1"
+  type: "Convolution"
+  bottom: "pool1"
+  top: "conv2_1"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu2_1"
+  type: "ReLU"
+  bottom: "conv2_1"
+  top: "conv2_1"
+}
+layer {
+  name: "conv2_2"
+  type: "Convolution"
+  bottom: "conv2_1"
+  top: "conv2_2"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu2_2"
+  type: "ReLU"
+  bottom: "conv2_2"
+  top: "conv2_2"
+}
+layer {
+  name: "pool2"
+  type: "Pooling"
+  bottom: "conv2_2"
+  top: "pool2"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
+layer {
+  name: "conv3_1"
+  type: "Convolution"
+  bottom: "pool2"
+  top: "conv3_1"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 256
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu3_1"
+  type: "ReLU"
+  bottom: "conv3_1"
+  top: "conv3_1"
+}
+layer {
+  name: "conv3_2"
+  type: "Convolution"
+  bottom: "conv3_1"
+  top: "conv3_2"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 256
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu3_2"
+  type: "ReLU"
+  bottom: "conv3_2"
+  top: "conv3_2"
+}
+layer {
+  name: "conv3_3"
+  type: "Convolution"
+  bottom: "conv3_2"
+  top: "conv3_3"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 256
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu3_3"
+  type: "ReLU"
+  bottom: "conv3_3"
+  top: "conv3_3"
+}
+layer {
+  name: "pool3"
+  type: "Pooling"
+  bottom: "conv3_3"
+  top: "pool3"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
+layer {
+  name: "conv4_1"
+  type: "Convolution"
+  bottom: "pool3"
+  top: "conv4_1"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu4_1"
+  type: "ReLU"
+  bottom: "conv4_1"
+  top: "conv4_1"
+}
+layer {
+  name: "conv4_2"
+  type: "Convolution"
+  bottom: "conv4_1"
+  top: "conv4_2"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu4_2"
+  type: "ReLU"
+  bottom: "conv4_2"
+  top: "conv4_2"
+}
+layer {
+  name: "conv4_3"
+  type: "Convolution"
+  bottom: "conv4_2"
+  top: "conv4_3"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu4_3"
+  type: "ReLU"
+  bottom: "conv4_3"
+  top: "conv4_3"
+}
+layer {
+  name: "pool4"
+  type: "Pooling"
+  bottom: "conv4_3"
+  top: "pool4"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
+layer {
+  name: "conv5_1"
+  type: "Convolution"
+  bottom: "pool4"
+  top: "conv5_1"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu5_1"
+  type: "ReLU"
+  bottom: "conv5_1"
+  top: "conv5_1"
+}
+layer {
+  name: "conv5_2"
+  type: "Convolution"
+  bottom: "conv5_1"
+  top: "conv5_2"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu5_2"
+  type: "ReLU"
+  bottom: "conv5_2"
+  top: "conv5_2"
+}
+layer {
+  name: "conv5_3"
+  type: "Convolution"
+  bottom: "conv5_2"
+  top: "conv5_3"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu5_3"
+  type: "ReLU"
+  bottom: "conv5_3"
+  top: "conv5_3"
+}
+layer {
+  name: "rpn_conv/3x3"
+  type: "Convolution"
+  bottom: "conv5_3"
+  top: "rpn/output"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "rpn_relu/3x3"
+  type: "ReLU"
+  bottom: "rpn/output"
+  top: "rpn/output"
+}
+layer {
+  name: "rpn_cls_score"
+  type: "Convolution"
+  bottom: "rpn/output"
+  top: "rpn_cls_score"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 36
+    pad: 0
+    kernel_size: 1
+    stride: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "rpn_bbox_pred"
+  type: "Convolution"
+  bottom: "rpn/output"
+  top: "rpn_bbox_pred"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 72
+    pad: 0
+    kernel_size: 1
+    stride: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "rpn_cls_score_reshape"
+  type: "Reshape"
+  bottom: "rpn_cls_score"
+  top: "rpn_cls_score_reshape"
+  reshape_param {
+    shape {
+      dim: 0
+      dim: 2
+      dim: -1
+      dim: 0
+    }
+  }
+}
+layer {
+  name: "rpn-data"
+  type: "Python"
+  bottom: "rpn_cls_score"
+  bottom: "gt_boxes"
+  bottom: "im_info"
+  bottom: "data"
+  top: "rpn_labels"
+  top: "rpn_bbox_targets"
+  top: "rpn_bbox_inside_weights"
+  top: "rpn_bbox_outside_weights"
+  python_param {
+    module: "rpn.anchor_target_layer"
+    layer: "AnchorTargetLayer"
+    param_str: "\'feat_stride\': 16"
+  }
+}
+layer {
+  name: "rpn_loss_cls"
+  type: "SoftmaxWithLoss"
+  bottom: "rpn_cls_score_reshape"
+  bottom: "rpn_labels"
+  top: "rpn_cls_loss"
+  loss_weight: 1
+  propagate_down: true
+  propagate_down: false
+  loss_param {
+    ignore_label: -1
+    normalize: true
+  }
+}
+layer {
+  name: "rpn_loss_bbox"
+  type: "SmoothL1Loss"
+  bottom: "rpn_bbox_pred"
+  bottom: "rpn_bbox_targets"
+  bottom: "rpn_bbox_inside_weights"
+  bottom: "rpn_bbox_outside_weights"
+  top: "rpn_loss_bbox"
+  loss_weight: 1
+  smooth_l1_loss_param {
+    sigma: 3
+  }
+}
+layer {
+  name: "rpn_cls_prob"
+  type: "Softmax"
+  bottom: "rpn_cls_score_reshape"
+  top: "rpn_cls_prob"
+}
+layer {
+  name: "rpn_cls_prob_reshape"
+  type: "Reshape"
+  bottom: "rpn_cls_prob"
+  top: "rpn_cls_prob_reshape"
+  reshape_param {
+    shape {
+      dim: 0
+      dim: 36
+      dim: -1
+      dim: 0
+    }
+  }
+}
+layer {
+  name: "proposal"
+  type: "Python"
+  bottom: "rpn_cls_prob_reshape"
+  bottom: "rpn_bbox_pred"
+  bottom: "im_info"
+  top: "rpn_rois"
+  python_param {
+    module: "rpn.proposal_layer"
+    layer: "ProposalLayer"
+    param_str: "\'feat_stride\': 16"
+  }
+}
+layer {
+  name: "roi-data"
+  type: "Python"
+  bottom: "rpn_rois"
+  bottom: "gt_boxes"
+  top: "rois"
+  top: "labels"
+  top: "bbox_targets"
+  top: "bbox_inside_weights"
+  top: "bbox_outside_weights"
+  python_param {
+    module: "rpn.proposal_target_layer"
+    layer: "ProposalTargetLayer"
+    param_str: "\'num_classes\': 21"
+  }
+}
+layer {
+  name: "roi_pool5_readonly"
+  type: "ROIPooling"
+  bottom: "conv5_3"
+  bottom: "rois"
+  top: "pool5_readonly"
+  propagate_down: false
+  propagate_down: false
+  roi_pooling_param {
+    pooled_h: 7
+    pooled_w: 7
+    spatial_scale: 0.0625
+  }
+}
+layer {
+  name: "fc6_readonly"
+  type: "InnerProduct"
+  bottom: "pool5_readonly"
+  top: "fc6_readonly"
+  param {
+    name: "fc6_w"
+  }
+  param {
+    name: "fc6_b"
+  }
+  propagate_down: false
+  inner_product_param {
+    num_output: 4096
+  }
+}
+layer {
+  name: "relu6_readonly"
+  type: "ReLU"
+  bottom: "fc6_readonly"
+  top: "fc6_readonly"
+  propagate_down: false
+}
+layer {
+  name: "drop6_readonly"
+  type: "Dropout"
+  bottom: "fc6_readonly"
+  top: "fc6_readonly"
+  propagate_down: false
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+layer {
+  name: "fc7_readonly"
+  type: "InnerProduct"
+  bottom: "fc6_readonly"
+  top: "fc7_readonly"
+  param {
+    name: "fc7_w"
+  }
+  param {
+    name: "fc7_b"
+  }
+  propagate_down: false
+  inner_product_param {
+    num_output: 4096
+  }
+}
+layer {
+  name: "relu7_readonly"
+  type: "ReLU"
+  bottom: "fc7_readonly"
+  top: "fc7_readonly"
+  propagate_down: false
+}
+layer {
+  name: "drop7_readonly"
+  type: "Dropout"
+  bottom: "fc7_readonly"
+  top: "fc7_readonly"
+  propagate_down: false
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+layer {
+  name: "cls_score_readonly"
+  type: "InnerProduct"
+  bottom: "fc7_readonly"
+  top: "cls_score_readonly"
+  param {
+    name: "cls_score_w"
+  }
+  param {
+    name: "cls_score_b"
+  }
+  propagate_down: false
+  inner_product_param {
+    num_output: 21
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "bbox_pred_readonly"
+  type: "InnerProduct"
+  bottom: "fc7_readonly"
+  top: "bbox_pred_readonly"
+  param {
+    name: "bbox_pred_w"
+  }
+  param {
+    name: "bbox_pred_b"
+  }
+  propagate_down: false
+  inner_product_param {
+    num_output: 84
+    weight_filler {
+      type: "gaussian"
+      std: 0.001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "cls_prob_readonly"
+  type: "Softmax"
+  bottom: "cls_score_readonly"
+  top: "cls_prob_readonly"
+  propagate_down: false
+}
+layer {
+  name: "hard_roi_mining"
+  type: "Python"
+  bottom: "cls_prob_readonly"
+  bottom: "bbox_pred_readonly"
+  bottom: "rois"
+  bottom: "labels"
+  bottom: "bbox_targets"
+  bottom: "bbox_inside_weights"
+  bottom: "bbox_outside_weights"
+  top: "rois_hard"
+  top: "labels_hard"
+  top: "bbox_targets_hard"
+  top: "bbox_inside_weights_hard"
+  top: "bbox_outside_weights_hard"
+  propagate_down: false
+  propagate_down: false
+  propagate_down: false
+  propagate_down: false
+  propagate_down: false
+  propagate_down: false
+  propagate_down: false
+  python_param {
+    module: "roi_data_layer.layer"
+    layer: "OHEMDataLayer"
+    param_str: "\'num_classes\': 21"
+  }
+}
+layer {
+  name: "roi_pool5"
+  type: "ROIPooling"
+  bottom: "conv5_3"
+  bottom: "rois_hard"
+  top: "pool5"
+  roi_pooling_param {
+    pooled_h: 7
+    pooled_w: 7
+    spatial_scale: 0.0625
+  }
+}
+layer {
+  name: "fc6"
+  type: "InnerProduct"
+  bottom: "pool5"
+  top: "fc6"
+  param {
+    name: "fc6_w"
+    lr_mult: 1
+  }
+  param {
+    name: "fc6_b"
+    lr_mult: 2
+  }
+  inner_product_param {
+    num_output: 4096
+  }
+}
+layer {
+  name: "relu6"
+  type: "ReLU"
+  bottom: "fc6"
+  top: "fc6"
+}
+layer {
+  name: "drop6"
+  type: "Dropout"
+  bottom: "fc6"
+  top: "fc6"
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+layer {
+  name: "fc7"
+  type: "InnerProduct"
+  bottom: "fc6"
+  top: "fc7"
+  param {
+    name: "fc7_w"
+    lr_mult: 1
+  }
+  param {
+    name: "fc7_b"
+    lr_mult: 2
+  }
+  inner_product_param {
+    num_output: 4096
+  }
+}
+layer {
+  name: "relu7"
+  type: "ReLU"
+  bottom: "fc7"
+  top: "fc7"
+}
+layer {
+  name: "drop7"
+  type: "Dropout"
+  bottom: "fc7"
+  top: "fc7"
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+layer {
+  name: "cls_score"
+  type: "InnerProduct"
+  bottom: "fc7"
+  top: "cls_score"
+  param {
+    name: "cls_score_w"
+    lr_mult: 1
+  }
+  param {
+    name: "cls_score_b"
+    lr_mult: 2
+  }
+  inner_product_param {
+    num_output: 21
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "bbox_pred"
+  type: "InnerProduct"
+  bottom: "fc7"
+  top: "bbox_pred"
+  param {
+    name: "bbox_pred_w"
+    lr_mult: 1
+  }
+  param {
+    name: "bbox_pred_b"
+    lr_mult: 2
+  }
+  inner_product_param {
+    num_output: 84
+    weight_filler {
+      type: "gaussian"
+      std: 0.001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "loss_cls"
+  type: "SoftmaxWithLoss"
+  bottom: "cls_score"
+  bottom: "labels_hard"
+  top: "loss_cls"
+  loss_weight: 1
+  propagate_down: true
+  propagate_down: false
+}
+layer {
+  name: "loss_bbox"
+  type: "SmoothL1Loss"
+  bottom: "bbox_pred"
+  bottom: "bbox_targets_hard"
+  bottom: "bbox_inside_weights_hard"
+  bottom: "bbox_outside_weights_hard"
+  top: "loss_bbox"
+  loss_weight: 1
+}
+I0727 15:55:40.811480 27688 layer_factory.hpp:77] Creating layer input-data
+I0727 15:55:40.820459 27688 net.cpp:106] Creating Layer input-data
+I0727 15:55:40.820489 27688 net.cpp:411] input-data -> data
+I0727 15:55:40.820508 27688 net.cpp:411] input-data -> im_info
+I0727 15:55:40.820554 27688 net.cpp:411] input-data -> gt_boxes
+RoiDataLayer: name_to_top: {'gt_boxes': 2, 'data': 0, 'im_info': 1}
+I0727 15:55:40.895236 27688 net.cpp:150] Setting up input-data
+I0727 15:55:40.895304 27688 net.cpp:157] Top shape: 1 3 375 520 (585000)
+I0727 15:55:40.895320 27688 net.cpp:157] Top shape: 1 3 (3)
+I0727 15:55:40.895324 27688 net.cpp:157] Top shape: 1 4 (4)
+I0727 15:55:40.895328 27688 net.cpp:165] Memory required for data: 2340028
+I0727 15:55:40.895335 27688 layer_factory.hpp:77] Creating layer data_input-data_0_split
+I0727 15:55:40.895377 27688 net.cpp:106] Creating Layer data_input-data_0_split
+I0727 15:55:40.895390 27688 net.cpp:454] data_input-data_0_split <- data
+I0727 15:55:40.895402 27688 net.cpp:411] data_input-data_0_split -> data_input-data_0_split_0
+I0727 15:55:40.895427 27688 net.cpp:411] data_input-data_0_split -> data_input-data_0_split_1
+I0727 15:55:40.895498 27688 net.cpp:150] Setting up data_input-data_0_split
+I0727 15:55:40.895514 27688 net.cpp:157] Top shape: 1 3 375 520 (585000)
+I0727 15:55:40.895520 27688 net.cpp:157] Top shape: 1 3 375 520 (585000)
+I0727 15:55:40.895524 27688 net.cpp:165] Memory required for data: 7020028
+I0727 15:55:40.895526 27688 layer_factory.hpp:77] Creating layer im_info_input-data_1_split
+I0727 15:55:40.895548 27688 net.cpp:106] Creating Layer im_info_input-data_1_split
+I0727 15:55:40.895565 27688 net.cpp:454] im_info_input-data_1_split <- im_info
+I0727 15:55:40.895581 27688 net.cpp:411] im_info_input-data_1_split -> im_info_input-data_1_split_0
+I0727 15:55:40.895617 27688 net.cpp:411] im_info_input-data_1_split -> im_info_input-data_1_split_1
+I0727 15:55:40.895668 27688 net.cpp:150] Setting up im_info_input-data_1_split
+I0727 15:55:40.895683 27688 net.cpp:157] Top shape: 1 3 (3)
+I0727 15:55:40.895687 27688 net.cpp:157] Top shape: 1 3 (3)
+I0727 15:55:40.895689 27688 net.cpp:165] Memory required for data: 7020052
+I0727 15:55:40.895694 27688 layer_factory.hpp:77] Creating layer gt_boxes_input-data_2_split
+I0727 15:55:40.895699 27688 net.cpp:106] Creating Layer gt_boxes_input-data_2_split
+I0727 15:55:40.895740 27688 net.cpp:454] gt_boxes_input-data_2_split <- gt_boxes
+I0727 15:55:40.895756 27688 net.cpp:411] gt_boxes_input-data_2_split -> gt_boxes_input-data_2_split_0
+I0727 15:55:40.895762 27688 net.cpp:411] gt_boxes_input-data_2_split -> gt_boxes_input-data_2_split_1
+I0727 15:55:40.895814 27688 net.cpp:150] Setting up gt_boxes_input-data_2_split
+I0727 15:55:40.895829 27688 net.cpp:157] Top shape: 1 4 (4)
+I0727 15:55:40.895833 27688 net.cpp:157] Top shape: 1 4 (4)
+I0727 15:55:40.895836 27688 net.cpp:165] Memory required for data: 7020084
+I0727 15:55:40.895840 27688 layer_factory.hpp:77] Creating layer conv1_1
+I0727 15:55:40.895877 27688 net.cpp:106] Creating Layer conv1_1
+I0727 15:55:40.895889 27688 net.cpp:454] conv1_1 <- data_input-data_0_split_0
+I0727 15:55:40.895895 27688 net.cpp:411] conv1_1 -> conv1_1
+I0727 15:55:41.261339 27688 net.cpp:150] Setting up conv1_1
+I0727 15:55:41.261464 27688 net.cpp:157] Top shape: 1 64 375 520 (12480000)
+I0727 15:55:41.261482 27688 net.cpp:165] Memory required for data: 56940084
+I0727 15:55:41.261513 27688 layer_factory.hpp:77] Creating layer relu1_1
+I0727 15:55:41.261546 27688 net.cpp:106] Creating Layer relu1_1
+I0727 15:55:41.261577 27688 net.cpp:454] relu1_1 <- conv1_1
+I0727 15:55:41.261602 27688 net.cpp:397] relu1_1 -> conv1_1 (in-place)
+I0727 15:55:41.262516 27688 net.cpp:150] Setting up relu1_1
+I0727 15:55:41.262557 27688 net.cpp:157] Top shape: 1 64 375 520 (12480000)
+I0727 15:55:41.262576 27688 net.cpp:165] Memory required for data: 106860084
+I0727 15:55:41.262598 27688 layer_factory.hpp:77] Creating layer conv1_2
+I0727 15:55:41.262621 27688 net.cpp:106] Creating Layer conv1_2
+I0727 15:55:41.262640 27688 net.cpp:454] conv1_2 <- conv1_1
+I0727 15:55:41.262662 27688 net.cpp:411] conv1_2 -> conv1_2
+I0727 15:55:41.266968 27688 net.cpp:150] Setting up conv1_2
+I0727 15:55:41.267014 27688 net.cpp:157] Top shape: 1 64 375 520 (12480000)
+I0727 15:55:41.267038 27688 net.cpp:165] Memory required for data: 156780084
+I0727 15:55:41.267066 27688 layer_factory.hpp:77] Creating layer relu1_2
+I0727 15:55:41.267087 27688 net.cpp:106] Creating Layer relu1_2
+I0727 15:55:41.267105 27688 net.cpp:454] relu1_2 <- conv1_2
+I0727 15:55:41.267124 27688 net.cpp:397] relu1_2 -> conv1_2 (in-place)
+I0727 15:55:41.267309 27688 net.cpp:150] Setting up relu1_2
+I0727 15:55:41.267339 27688 net.cpp:157] Top shape: 1 64 375 520 (12480000)
+I0727 15:55:41.267359 27688 net.cpp:165] Memory required for data: 206700084
+I0727 15:55:41.267371 27688 layer_factory.hpp:77] Creating layer pool1
+I0727 15:55:41.267405 27688 net.cpp:106] Creating Layer pool1
+I0727 15:55:41.267423 27688 net.cpp:454] pool1 <- conv1_2
+I0727 15:55:41.267442 27688 net.cpp:411] pool1 -> pool1
+I0727 15:55:41.267514 27688 net.cpp:150] Setting up pool1
+I0727 15:55:41.267539 27688 net.cpp:157] Top shape: 1 64 188 260 (3128320)
+I0727 15:55:41.267555 27688 net.cpp:165] Memory required for data: 219213364
+I0727 15:55:41.267570 27688 layer_factory.hpp:77] Creating layer conv2_1
+I0727 15:55:41.267592 27688 net.cpp:106] Creating Layer conv2_1
+I0727 15:55:41.267611 27688 net.cpp:454] conv2_1 <- pool1
+I0727 15:55:41.267627 27688 net.cpp:411] conv2_1 -> conv2_1
+I0727 15:55:41.272074 27688 net.cpp:150] Setting up conv2_1
+I0727 15:55:41.272119 27688 net.cpp:157] Top shape: 1 128 188 260 (6256640)
+I0727 15:55:41.272147 27688 net.cpp:165] Memory required for data: 244239924
+I0727 15:55:41.272174 27688 layer_factory.hpp:77] Creating layer relu2_1
+I0727 15:55:41.272197 27688 net.cpp:106] Creating Layer relu2_1
+I0727 15:55:41.272218 27688 net.cpp:454] relu2_1 <- conv2_1
+I0727 15:55:41.272236 27688 net.cpp:397] relu2_1 -> conv2_1 (in-place)
+I0727 15:55:41.273540 27688 net.cpp:150] Setting up relu2_1
+I0727 15:55:41.273576 27688 net.cpp:157] Top shape: 1 128 188 260 (6256640)
+I0727 15:55:41.273596 27688 net.cpp:165] Memory required for data: 269266484
+I0727 15:55:41.273612 27688 layer_factory.hpp:77] Creating layer conv2_2
+I0727 15:55:41.273639 27688 net.cpp:106] Creating Layer conv2_2
+I0727 15:55:41.273658 27688 net.cpp:454] conv2_2 <- conv2_1
+I0727 15:55:41.273705 27688 net.cpp:411] conv2_2 -> conv2_2
+I0727 15:55:41.278079 27688 net.cpp:150] Setting up conv2_2
+I0727 15:55:41.278126 27688 net.cpp:157] Top shape: 1 128 188 260 (6256640)
+I0727 15:55:41.278149 27688 net.cpp:165] Memory required for data: 294293044
+I0727 15:55:41.278173 27688 layer_factory.hpp:77] Creating layer relu2_2
+I0727 15:55:41.278197 27688 net.cpp:106] Creating Layer relu2_2
+I0727 15:55:41.278218 27688 net.cpp:454] relu2_2 <- conv2_2
+I0727 15:55:41.278252 27688 net.cpp:397] relu2_2 -> conv2_2 (in-place)
+I0727 15:55:41.279175 27688 net.cpp:150] Setting up relu2_2
+I0727 15:55:41.279213 27688 net.cpp:157] Top shape: 1 128 188 260 (6256640)
+I0727 15:55:41.279233 27688 net.cpp:165] Memory required for data: 319319604
+I0727 15:55:41.279250 27688 layer_factory.hpp:77] Creating layer pool2
+I0727 15:55:41.279275 27688 net.cpp:106] Creating Layer pool2
+I0727 15:55:41.279294 27688 net.cpp:454] pool2 <- conv2_2
+I0727 15:55:41.279312 27688 net.cpp:411] pool2 -> pool2
+I0727 15:55:41.279386 27688 net.cpp:150] Setting up pool2
+I0727 15:55:41.279412 27688 net.cpp:157] Top shape: 1 128 94 130 (1564160)
+I0727 15:55:41.279428 27688 net.cpp:165] Memory required for data: 325576244
+I0727 15:55:41.279441 27688 layer_factory.hpp:77] Creating layer conv3_1
+I0727 15:55:41.279464 27688 net.cpp:106] Creating Layer conv3_1
+I0727 15:55:41.279482 27688 net.cpp:454] conv3_1 <- pool2
+I0727 15:55:41.279502 27688 net.cpp:411] conv3_1 -> conv3_1
+I0727 15:55:41.285307 27688 net.cpp:150] Setting up conv3_1
+I0727 15:55:41.285354 27688 net.cpp:157] Top shape: 1 256 94 130 (3128320)
+I0727 15:55:41.285378 27688 net.cpp:165] Memory required for data: 338089524
+I0727 15:55:41.285406 27688 layer_factory.hpp:77] Creating layer relu3_1
+I0727 15:55:41.285429 27688 net.cpp:106] Creating Layer relu3_1
+I0727 15:55:41.285446 27688 net.cpp:454] relu3_1 <- conv3_1
+I0727 15:55:41.285470 27688 net.cpp:397] relu3_1 -> conv3_1 (in-place)
+I0727 15:55:41.285683 27688 net.cpp:150] Setting up relu3_1
+I0727 15:55:41.285714 27688 net.cpp:157] Top shape: 1 256 94 130 (3128320)
+I0727 15:55:41.285732 27688 net.cpp:165] Memory required for data: 350602804
+I0727 15:55:41.285745 27688 layer_factory.hpp:77] Creating layer conv3_2
+I0727 15:55:41.285771 27688 net.cpp:106] Creating Layer conv3_2
+I0727 15:55:41.285804 27688 net.cpp:454] conv3_2 <- conv3_1
+I0727 15:55:41.285826 27688 net.cpp:411] conv3_2 -> conv3_2
+I0727 15:55:41.292361 27688 net.cpp:150] Setting up conv3_2
+I0727 15:55:41.292407 27688 net.cpp:157] Top shape: 1 256 94 130 (3128320)
+I0727 15:55:41.292433 27688 net.cpp:165] Memory required for data: 363116084
+I0727 15:55:41.292457 27688 layer_factory.hpp:77] Creating layer relu3_2
+I0727 15:55:41.292480 27688 net.cpp:106] Creating Layer relu3_2
+I0727 15:55:41.292497 27688 net.cpp:454] relu3_2 <- conv3_2
+I0727 15:55:41.292518 27688 net.cpp:397] relu3_2 -> conv3_2 (in-place)
+I0727 15:55:41.293187 27688 net.cpp:150] Setting up relu3_2
+I0727 15:55:41.293222 27688 net.cpp:157] Top shape: 1 256 94 130 (3128320)
+I0727 15:55:41.293242 27688 net.cpp:165] Memory required for data: 375629364
+I0727 15:55:41.293256 27688 layer_factory.hpp:77] Creating layer conv3_3
+I0727 15:55:41.293284 27688 net.cpp:106] Creating Layer conv3_3
+I0727 15:55:41.293304 27688 net.cpp:454] conv3_3 <- conv3_2
+I0727 15:55:41.293323 27688 net.cpp:411] conv3_3 -> conv3_3
+I0727 15:55:41.299028 27688 net.cpp:150] Setting up conv3_3
+I0727 15:55:41.299073 27688 net.cpp:157] Top shape: 1 256 94 130 (3128320)
+I0727 15:55:41.299098 27688 net.cpp:165] Memory required for data: 388142644
+I0727 15:55:41.299124 27688 layer_factory.hpp:77] Creating layer relu3_3
+I0727 15:55:41.299147 27688 net.cpp:106] Creating Layer relu3_3
+I0727 15:55:41.299165 27688 net.cpp:454] relu3_3 <- conv3_3
+I0727 15:55:41.299185 27688 net.cpp:397] relu3_3 -> conv3_3 (in-place)
+I0727 15:55:41.300117 27688 net.cpp:150] Setting up relu3_3
+I0727 15:55:41.300158 27688 net.cpp:157] Top shape: 1 256 94 130 (3128320)
+I0727 15:55:41.300178 27688 net.cpp:165] Memory required for data: 400655924
+I0727 15:55:41.300202 27688 layer_factory.hpp:77] Creating layer pool3
+I0727 15:55:41.300225 27688 net.cpp:106] Creating Layer pool3
+I0727 15:55:41.300246 27688 net.cpp:454] pool3 <- conv3_3
+I0727 15:55:41.300263 27688 net.cpp:411] pool3 -> pool3
+I0727 15:55:41.300343 27688 net.cpp:150] Setting up pool3
+I0727 15:55:41.300369 27688 net.cpp:157] Top shape: 1 256 47 65 (782080)
+I0727 15:55:41.300382 27688 net.cpp:165] Memory required for data: 403784244
+I0727 15:55:41.300398 27688 layer_factory.hpp:77] Creating layer conv4_1
+I0727 15:55:41.300422 27688 net.cpp:106] Creating Layer conv4_1
+I0727 15:55:41.300441 27688 net.cpp:454] conv4_1 <- pool3
+I0727 15:55:41.300462 27688 net.cpp:411] conv4_1 -> conv4_1
+I0727 15:55:41.307299 27688 net.cpp:150] Setting up conv4_1
+I0727 15:55:41.307355 27688 net.cpp:157] Top shape: 1 512 47 65 (1564160)
+I0727 15:55:41.307379 27688 net.cpp:165] Memory required for data: 410040884
+I0727 15:55:41.307396 27688 layer_factory.hpp:77] Creating layer relu4_1
+I0727 15:55:41.307413 27688 net.cpp:106] Creating Layer relu4_1
+I0727 15:55:41.307436 27688 net.cpp:454] relu4_1 <- conv4_1
+I0727 15:55:41.307454 27688 net.cpp:397] relu4_1 -> conv4_1 (in-place)
+I0727 15:55:41.308387 27688 net.cpp:150] Setting up relu4_1
+I0727 15:55:41.308423 27688 net.cpp:157] Top shape: 1 512 47 65 (1564160)
+I0727 15:55:41.308442 27688 net.cpp:165] Memory required for data: 416297524
+I0727 15:55:41.308455 27688 layer_factory.hpp:77] Creating layer conv4_2
+I0727 15:55:41.308480 27688 net.cpp:106] Creating Layer conv4_2
+I0727 15:55:41.308498 27688 net.cpp:454] conv4_2 <- conv4_1
+I0727 15:55:41.308517 27688 net.cpp:411] conv4_2 -> conv4_2
+I0727 15:55:41.317554 27688 net.cpp:150] Setting up conv4_2
+I0727 15:55:41.317601 27688 net.cpp:157] Top shape: 1 512 47 65 (1564160)
+I0727 15:55:41.317620 27688 net.cpp:165] Memory required for data: 422554164
+I0727 15:55:41.317646 27688 layer_factory.hpp:77] Creating layer relu4_2
+I0727 15:55:41.317669 27688 net.cpp:106] Creating Layer relu4_2
+I0727 15:55:41.317687 27688 net.cpp:454] relu4_2 <- conv4_2
+I0727 15:55:41.317705 27688 net.cpp:397] relu4_2 -> conv4_2 (in-place)
+I0727 15:55:41.318661 27688 net.cpp:150] Setting up relu4_2
+I0727 15:55:41.318693 27688 net.cpp:157] Top shape: 1 512 47 65 (1564160)
+I0727 15:55:41.318716 27688 net.cpp:165] Memory required for data: 428810804
+I0727 15:55:41.318729 27688 layer_factory.hpp:77] Creating layer conv4_3
+I0727 15:55:41.318755 27688 net.cpp:106] Creating Layer conv4_3
+I0727 15:55:41.318774 27688 net.cpp:454] conv4_3 <- conv4_2
+I0727 15:55:41.318791 27688 net.cpp:411] conv4_3 -> conv4_3
+I0727 15:55:41.328403 27688 net.cpp:150] Setting up conv4_3
+I0727 15:55:41.328450 27688 net.cpp:157] Top shape: 1 512 47 65 (1564160)
+I0727 15:55:41.328475 27688 net.cpp:165] Memory required for data: 435067444
+I0727 15:55:41.328500 27688 layer_factory.hpp:77] Creating layer relu4_3
+I0727 15:55:41.328526 27688 net.cpp:106] Creating Layer relu4_3
+I0727 15:55:41.328543 27688 net.cpp:454] relu4_3 <- conv4_3
+I0727 15:55:41.328564 27688 net.cpp:397] relu4_3 -> conv4_3 (in-place)
+I0727 15:55:41.329504 27688 net.cpp:150] Setting up relu4_3
+I0727 15:55:41.329545 27688 net.cpp:157] Top shape: 1 512 47 65 (1564160)
+I0727 15:55:41.329571 27688 net.cpp:165] Memory required for data: 441324084
+I0727 15:55:41.329592 27688 layer_factory.hpp:77] Creating layer pool4
+I0727 15:55:41.329619 27688 net.cpp:106] Creating Layer pool4
+I0727 15:55:41.329638 27688 net.cpp:454] pool4 <- conv4_3
+I0727 15:55:41.329658 27688 net.cpp:411] pool4 -> pool4
+I0727 15:55:41.329732 27688 net.cpp:150] Setting up pool4
+I0727 15:55:41.329757 27688 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:55:41.329774 27688 net.cpp:165] Memory required for data: 442946100
+I0727 15:55:41.329792 27688 layer_factory.hpp:77] Creating layer conv5_1
+I0727 15:55:41.329816 27688 net.cpp:106] Creating Layer conv5_1
+I0727 15:55:41.329835 27688 net.cpp:454] conv5_1 <- pool4
+I0727 15:55:41.329855 27688 net.cpp:411] conv5_1 -> conv5_1
+I0727 15:55:41.338686 27688 net.cpp:150] Setting up conv5_1
+I0727 15:55:41.338734 27688 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:55:41.338779 27688 net.cpp:165] Memory required for data: 444568116
+I0727 15:55:41.338804 27688 layer_factory.hpp:77] Creating layer relu5_1
+I0727 15:55:41.338829 27688 net.cpp:106] Creating Layer relu5_1
+I0727 15:55:41.338853 27688 net.cpp:454] relu5_1 <- conv5_1
+I0727 15:55:41.338871 27688 net.cpp:397] relu5_1 -> conv5_1 (in-place)
+I0727 15:55:41.339090 27688 net.cpp:150] Setting up relu5_1
+I0727 15:55:41.339120 27688 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:55:41.339140 27688 net.cpp:165] Memory required for data: 446190132
+I0727 15:55:41.339154 27688 layer_factory.hpp:77] Creating layer conv5_2
+I0727 15:55:41.339180 27688 net.cpp:106] Creating Layer conv5_2
+I0727 15:55:41.339198 27688 net.cpp:454] conv5_2 <- conv5_1
+I0727 15:55:41.339215 27688 net.cpp:411] conv5_2 -> conv5_2
+I0727 15:55:41.347316 27688 net.cpp:150] Setting up conv5_2
+I0727 15:55:41.347362 27688 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:55:41.347378 27688 net.cpp:165] Memory required for data: 447812148
+I0727 15:55:41.347394 27688 layer_factory.hpp:77] Creating layer relu5_2
+I0727 15:55:41.347420 27688 net.cpp:106] Creating Layer relu5_2
+I0727 15:55:41.347441 27688 net.cpp:454] relu5_2 <- conv5_2
+I0727 15:55:41.347460 27688 net.cpp:397] relu5_2 -> conv5_2 (in-place)
+I0727 15:55:41.347667 27688 net.cpp:150] Setting up relu5_2
+I0727 15:55:41.347697 27688 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:55:41.347710 27688 net.cpp:165] Memory required for data: 449434164
+I0727 15:55:41.347723 27688 layer_factory.hpp:77] Creating layer conv5_3
+I0727 15:55:41.347756 27688 net.cpp:106] Creating Layer conv5_3
+I0727 15:55:41.347776 27688 net.cpp:454] conv5_3 <- conv5_2
+I0727 15:55:41.347793 27688 net.cpp:411] conv5_3 -> conv5_3
+I0727 15:55:41.356020 27688 net.cpp:150] Setting up conv5_3
+I0727 15:55:41.356068 27688 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:55:41.356083 27688 net.cpp:165] Memory required for data: 451056180
+I0727 15:55:41.356113 27688 layer_factory.hpp:77] Creating layer relu5_3
+I0727 15:55:41.356139 27688 net.cpp:106] Creating Layer relu5_3
+I0727 15:55:41.356158 27688 net.cpp:454] relu5_3 <- conv5_3
+I0727 15:55:41.356178 27688 net.cpp:397] relu5_3 -> conv5_3 (in-place)
+I0727 15:55:41.357120 27688 net.cpp:150] Setting up relu5_3
+I0727 15:55:41.357165 27688 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:55:41.357190 27688 net.cpp:165] Memory required for data: 452678196
+I0727 15:55:41.357211 27688 layer_factory.hpp:77] Creating layer conv5_3_relu5_3_0_split
+I0727 15:55:41.357239 27688 net.cpp:106] Creating Layer conv5_3_relu5_3_0_split
+I0727 15:55:41.357257 27688 net.cpp:454] conv5_3_relu5_3_0_split <- conv5_3
+I0727 15:55:41.357276 27688 net.cpp:411] conv5_3_relu5_3_0_split -> conv5_3_relu5_3_0_split_0
+I0727 15:55:41.357297 27688 net.cpp:411] conv5_3_relu5_3_0_split -> conv5_3_relu5_3_0_split_1
+I0727 15:55:41.357319 27688 net.cpp:411] conv5_3_relu5_3_0_split -> conv5_3_relu5_3_0_split_2
+I0727 15:55:41.357405 27688 net.cpp:150] Setting up conv5_3_relu5_3_0_split
+I0727 15:55:41.357434 27688 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:55:41.357455 27688 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:55:41.357470 27688 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:55:41.357486 27688 net.cpp:165] Memory required for data: 457544244
+I0727 15:55:41.357499 27688 layer_factory.hpp:77] Creating layer rpn_conv/3x3
+I0727 15:55:41.357525 27688 net.cpp:106] Creating Layer rpn_conv/3x3
+I0727 15:55:41.357544 27688 net.cpp:454] rpn_conv/3x3 <- conv5_3_relu5_3_0_split_0
+I0727 15:55:41.357564 27688 net.cpp:411] rpn_conv/3x3 -> rpn/output
+I0727 15:55:41.419867 27688 net.cpp:150] Setting up rpn_conv/3x3
+I0727 15:55:41.419947 27688 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:55:41.419965 27688 net.cpp:165] Memory required for data: 459166260
+I0727 15:55:41.419984 27688 layer_factory.hpp:77] Creating layer rpn_relu/3x3
+I0727 15:55:41.420014 27688 net.cpp:106] Creating Layer rpn_relu/3x3
+I0727 15:55:41.420042 27688 net.cpp:454] rpn_relu/3x3 <- rpn/output
+I0727 15:55:41.420078 27688 net.cpp:397] rpn_relu/3x3 -> rpn/output (in-place)
+I0727 15:55:41.420805 27688 net.cpp:150] Setting up rpn_relu/3x3
+I0727 15:55:41.420838 27688 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:55:41.420861 27688 net.cpp:165] Memory required for data: 460788276
+I0727 15:55:41.420876 27688 layer_factory.hpp:77] Creating layer rpn/output_rpn_relu/3x3_0_split
+I0727 15:55:41.420893 27688 net.cpp:106] Creating Layer rpn/output_rpn_relu/3x3_0_split
+I0727 15:55:41.420914 27688 net.cpp:454] rpn/output_rpn_relu/3x3_0_split <- rpn/output
+I0727 15:55:41.420930 27688 net.cpp:411] rpn/output_rpn_relu/3x3_0_split -> rpn/output_rpn_relu/3x3_0_split_0
+I0727 15:55:41.420948 27688 net.cpp:411] rpn/output_rpn_relu/3x3_0_split -> rpn/output_rpn_relu/3x3_0_split_1
+I0727 15:55:41.421025 27688 net.cpp:150] Setting up rpn/output_rpn_relu/3x3_0_split
+I0727 15:55:41.421064 27688 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:55:41.421083 27688 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:55:41.421097 27688 net.cpp:165] Memory required for data: 464032308
+I0727 15:55:41.421119 27688 layer_factory.hpp:77] Creating layer rpn_cls_score
+I0727 15:55:41.421149 27688 net.cpp:106] Creating Layer rpn_cls_score
+I0727 15:55:41.421175 27688 net.cpp:454] rpn_cls_score <- rpn/output_rpn_relu/3x3_0_split_0
+I0727 15:55:41.421195 27688 net.cpp:411] rpn_cls_score -> rpn_cls_score
+I0727 15:55:41.425937 27688 net.cpp:150] Setting up rpn_cls_score
+I0727 15:55:41.426002 27688 net.cpp:157] Top shape: 1 36 24 33 (28512)
+I0727 15:55:41.426023 27688 net.cpp:165] Memory required for data: 464146356
+I0727 15:55:41.426043 27688 layer_factory.hpp:77] Creating layer rpn_cls_score_rpn_cls_score_0_split
+I0727 15:55:41.426064 27688 net.cpp:106] Creating Layer rpn_cls_score_rpn_cls_score_0_split
+I0727 15:55:41.426085 27688 net.cpp:454] rpn_cls_score_rpn_cls_score_0_split <- rpn_cls_score
+I0727 15:55:41.426103 27688 net.cpp:411] rpn_cls_score_rpn_cls_score_0_split -> rpn_cls_score_rpn_cls_score_0_split_0
+I0727 15:55:41.426126 27688 net.cpp:411] rpn_cls_score_rpn_cls_score_0_split -> rpn_cls_score_rpn_cls_score_0_split_1
+I0727 15:55:41.426203 27688 net.cpp:150] Setting up rpn_cls_score_rpn_cls_score_0_split
+I0727 15:55:41.426229 27688 net.cpp:157] Top shape: 1 36 24 33 (28512)
+I0727 15:55:41.426250 27688 net.cpp:157] Top shape: 1 36 24 33 (28512)
+I0727 15:55:41.426265 27688 net.cpp:165] Memory required for data: 464374452
+I0727 15:55:41.426281 27688 layer_factory.hpp:77] Creating layer rpn_bbox_pred
+I0727 15:55:41.426307 27688 net.cpp:106] Creating Layer rpn_bbox_pred
+I0727 15:55:41.426326 27688 net.cpp:454] rpn_bbox_pred <- rpn/output_rpn_relu/3x3_0_split_1
+I0727 15:55:41.426348 27688 net.cpp:411] rpn_bbox_pred -> rpn_bbox_pred
+I0727 15:55:41.429792 27688 net.cpp:150] Setting up rpn_bbox_pred
+I0727 15:55:41.429837 27688 net.cpp:157] Top shape: 1 72 24 33 (57024)
+I0727 15:55:41.429863 27688 net.cpp:165] Memory required for data: 464602548
+I0727 15:55:41.429888 27688 layer_factory.hpp:77] Creating layer rpn_bbox_pred_rpn_bbox_pred_0_split
+I0727 15:55:41.429913 27688 net.cpp:106] Creating Layer rpn_bbox_pred_rpn_bbox_pred_0_split
+I0727 15:55:41.429932 27688 net.cpp:454] rpn_bbox_pred_rpn_bbox_pred_0_split <- rpn_bbox_pred
+I0727 15:55:41.429957 27688 net.cpp:411] rpn_bbox_pred_rpn_bbox_pred_0_split -> rpn_bbox_pred_rpn_bbox_pred_0_split_0
+I0727 15:55:41.429981 27688 net.cpp:411] rpn_bbox_pred_rpn_bbox_pred_0_split -> rpn_bbox_pred_rpn_bbox_pred_0_split_1
+I0727 15:55:41.430054 27688 net.cpp:150] Setting up rpn_bbox_pred_rpn_bbox_pred_0_split
+I0727 15:55:41.430080 27688 net.cpp:157] Top shape: 1 72 24 33 (57024)
+I0727 15:55:41.430099 27688 net.cpp:157] Top shape: 1 72 24 33 (57024)
+I0727 15:55:41.430114 27688 net.cpp:165] Memory required for data: 465058740
+I0727 15:55:41.430132 27688 layer_factory.hpp:77] Creating layer rpn_cls_score_reshape
+I0727 15:55:41.430158 27688 net.cpp:106] Creating Layer rpn_cls_score_reshape
+I0727 15:55:41.430176 27688 net.cpp:454] rpn_cls_score_reshape <- rpn_cls_score_rpn_cls_score_0_split_0
+I0727 15:55:41.430213 27688 net.cpp:411] rpn_cls_score_reshape -> rpn_cls_score_reshape
+I0727 15:55:41.430276 27688 net.cpp:150] Setting up rpn_cls_score_reshape
+I0727 15:55:41.430305 27688 net.cpp:157] Top shape: 1 2 432 33 (28512)
+I0727 15:55:41.430322 27688 net.cpp:165] Memory required for data: 465172788
+I0727 15:55:41.430341 27688 layer_factory.hpp:77] Creating layer rpn_cls_score_reshape_rpn_cls_score_reshape_0_split
+I0727 15:55:41.430361 27688 net.cpp:106] Creating Layer rpn_cls_score_reshape_rpn_cls_score_reshape_0_split
+I0727 15:55:41.430378 27688 net.cpp:454] rpn_cls_score_reshape_rpn_cls_score_reshape_0_split <- rpn_cls_score_reshape
+I0727 15:55:41.430398 27688 net.cpp:411] rpn_cls_score_reshape_rpn_cls_score_reshape_0_split -> rpn_cls_score_reshape_rpn_cls_score_reshape_0_split_0
+I0727 15:55:41.430419 27688 net.cpp:411] rpn_cls_score_reshape_rpn_cls_score_reshape_0_split -> rpn_cls_score_reshape_rpn_cls_score_reshape_0_split_1
+I0727 15:55:41.430487 27688 net.cpp:150] Setting up rpn_cls_score_reshape_rpn_cls_score_reshape_0_split
+I0727 15:55:41.430511 27688 net.cpp:157] Top shape: 1 2 432 33 (28512)
+I0727 15:55:41.430529 27688 net.cpp:157] Top shape: 1 2 432 33 (28512)
+I0727 15:55:41.430546 27688 net.cpp:165] Memory required for data: 465400884
+I0727 15:55:41.430562 27688 layer_factory.hpp:77] Creating layer rpn-data
+I0727 15:55:41.431622 27688 net.cpp:106] Creating Layer rpn-data
+I0727 15:55:41.431666 27688 net.cpp:454] rpn-data <- rpn_cls_score_rpn_cls_score_0_split_1
+I0727 15:55:41.431689 27688 net.cpp:454] rpn-data <- gt_boxes_input-data_2_split_0
+I0727 15:55:41.431711 27688 net.cpp:454] rpn-data <- im_info_input-data_1_split_0
+I0727 15:55:41.431733 27688 net.cpp:454] rpn-data <- data_input-data_0_split_1
+I0727 15:55:41.431758 27688 net.cpp:411] rpn-data -> rpn_labels
+I0727 15:55:41.431783 27688 net.cpp:411] rpn-data -> rpn_bbox_targets
+I0727 15:55:41.431805 27688 net.cpp:411] rpn-data -> rpn_bbox_inside_weights
+I0727 15:55:41.431828 27688 net.cpp:411] rpn-data -> rpn_bbox_outside_weights
+I0727 15:55:41.446110 27688 net.cpp:150] Setting up rpn-data
+I0727 15:55:41.446197 27688 net.cpp:157] Top shape: 1 1 432 33 (14256)
+I0727 15:55:41.446214 27688 net.cpp:157] Top shape: 1 72 24 33 (57024)
+I0727 15:55:41.446239 27688 net.cpp:157] Top shape: 1 72 24 33 (57024)
+I0727 15:55:41.446252 27688 net.cpp:157] Top shape: 1 72 24 33 (57024)
+I0727 15:55:41.446267 27688 net.cpp:165] Memory required for data: 466142196
+I0727 15:55:41.446286 27688 layer_factory.hpp:77] Creating layer rpn_loss_cls
+I0727 15:55:41.446316 27688 net.cpp:106] Creating Layer rpn_loss_cls
+I0727 15:55:41.446339 27688 net.cpp:454] rpn_loss_cls <- rpn_cls_score_reshape_rpn_cls_score_reshape_0_split_0
+I0727 15:55:41.446363 27688 net.cpp:454] rpn_loss_cls <- rpn_labels
+I0727 15:55:41.446388 27688 net.cpp:411] rpn_loss_cls -> rpn_cls_loss
+I0727 15:55:41.446425 27688 layer_factory.hpp:77] Creating layer rpn_loss_cls
+I0727 15:55:41.446857 27688 net.cpp:150] Setting up rpn_loss_cls
+I0727 15:55:41.446892 27688 net.cpp:157] Top shape: (1)
+I0727 15:55:41.446913 27688 net.cpp:160]     with loss weight 1
+I0727 15:55:41.446945 27688 net.cpp:165] Memory required for data: 466142200
+I0727 15:55:41.446959 27688 layer_factory.hpp:77] Creating layer rpn_loss_bbox
+I0727 15:55:41.446981 27688 net.cpp:106] Creating Layer rpn_loss_bbox
+I0727 15:55:41.447000 27688 net.cpp:454] rpn_loss_bbox <- rpn_bbox_pred_rpn_bbox_pred_0_split_0
+I0727 15:55:41.447019 27688 net.cpp:454] rpn_loss_bbox <- rpn_bbox_targets
+I0727 15:55:41.447041 27688 net.cpp:454] rpn_loss_bbox <- rpn_bbox_inside_weights
+I0727 15:55:41.447057 27688 net.cpp:454] rpn_loss_bbox <- rpn_bbox_outside_weights
+I0727 15:55:41.447077 27688 net.cpp:411] rpn_loss_bbox -> rpn_loss_bbox
+I0727 15:55:41.448277 27688 net.cpp:150] Setting up rpn_loss_bbox
+I0727 15:55:41.448315 27688 net.cpp:157] Top shape: (1)
+I0727 15:55:41.448344 27688 net.cpp:160]     with loss weight 1
+I0727 15:55:41.448367 27688 net.cpp:165] Memory required for data: 466142204
+I0727 15:55:41.448381 27688 layer_factory.hpp:77] Creating layer rpn_cls_prob
+I0727 15:55:41.448408 27688 net.cpp:106] Creating Layer rpn_cls_prob
+I0727 15:55:41.448448 27688 net.cpp:454] rpn_cls_prob <- rpn_cls_score_reshape_rpn_cls_score_reshape_0_split_1
+I0727 15:55:41.448470 27688 net.cpp:411] rpn_cls_prob -> rpn_cls_prob
+I0727 15:55:41.449507 27688 net.cpp:150] Setting up rpn_cls_prob
+I0727 15:55:41.449549 27688 net.cpp:157] Top shape: 1 2 432 33 (28512)
+I0727 15:55:41.449574 27688 net.cpp:165] Memory required for data: 466256252
+I0727 15:55:41.449589 27688 layer_factory.hpp:77] Creating layer rpn_cls_prob_reshape
+I0727 15:55:41.449615 27688 net.cpp:106] Creating Layer rpn_cls_prob_reshape
+I0727 15:55:41.449635 27688 net.cpp:454] rpn_cls_prob_reshape <- rpn_cls_prob
+I0727 15:55:41.449654 27688 net.cpp:411] rpn_cls_prob_reshape -> rpn_cls_prob_reshape
+I0727 15:55:41.449717 27688 net.cpp:150] Setting up rpn_cls_prob_reshape
+I0727 15:55:41.449743 27688 net.cpp:157] Top shape: 1 36 24 33 (28512)
+I0727 15:55:41.449765 27688 net.cpp:165] Memory required for data: 466370300
+I0727 15:55:41.449777 27688 layer_factory.hpp:77] Creating layer proposal
+I0727 15:55:41.450014 27688 net.cpp:106] Creating Layer proposal
+I0727 15:55:41.450048 27688 net.cpp:454] proposal <- rpn_cls_prob_reshape
+I0727 15:55:41.450069 27688 net.cpp:454] proposal <- rpn_bbox_pred_rpn_bbox_pred_0_split_1
+I0727 15:55:41.450088 27688 net.cpp:454] proposal <- im_info_input-data_1_split_1
+I0727 15:55:41.450107 27688 net.cpp:411] proposal -> rpn_rois
+I0727 15:55:41.450729 27688 net.cpp:150] Setting up proposal
+I0727 15:55:41.450774 27688 net.cpp:157] Top shape: 1 5 (5)
+I0727 15:55:41.450795 27688 net.cpp:165] Memory required for data: 466370320
+I0727 15:55:41.450809 27688 layer_factory.hpp:77] Creating layer roi-data
+I0727 15:55:41.451010 27688 net.cpp:106] Creating Layer roi-data
+I0727 15:55:41.451045 27688 net.cpp:454] roi-data <- rpn_rois
+I0727 15:55:41.451066 27688 net.cpp:454] roi-data <- gt_boxes_input-data_2_split_1
+I0727 15:55:41.451084 27688 net.cpp:411] roi-data -> rois
+I0727 15:55:41.451107 27688 net.cpp:411] roi-data -> labels
+I0727 15:55:41.451129 27688 net.cpp:411] roi-data -> bbox_targets
+I0727 15:55:41.451151 27688 net.cpp:411] roi-data -> bbox_inside_weights
+I0727 15:55:41.451172 27688 net.cpp:411] roi-data -> bbox_outside_weights
+I0727 15:55:41.451570 27688 net.cpp:150] Setting up roi-data
+I0727 15:55:41.451608 27688 net.cpp:157] Top shape: 1 5 (5)
+I0727 15:55:41.451628 27688 net.cpp:157] Top shape: 1 1 (1)
+I0727 15:55:41.451644 27688 net.cpp:157] Top shape: 1 84 (84)
+I0727 15:55:41.451663 27688 net.cpp:157] Top shape: 1 84 (84)
+I0727 15:55:41.451674 27688 net.cpp:157] Top shape: 1 84 (84)
+I0727 15:55:41.451689 27688 net.cpp:165] Memory required for data: 466371352
+I0727 15:55:41.451702 27688 layer_factory.hpp:77] Creating layer rois_roi-data_0_split
+I0727 15:55:41.451725 27688 net.cpp:106] Creating Layer rois_roi-data_0_split
+I0727 15:55:41.451743 27688 net.cpp:454] rois_roi-data_0_split <- rois
+I0727 15:55:41.451766 27688 net.cpp:411] rois_roi-data_0_split -> rois_roi-data_0_split_0
+I0727 15:55:41.451787 27688 net.cpp:411] rois_roi-data_0_split -> rois_roi-data_0_split_1
+I0727 15:55:41.451855 27688 net.cpp:150] Setting up rois_roi-data_0_split
+I0727 15:55:41.451879 27688 net.cpp:157] Top shape: 1 5 (5)
+I0727 15:55:41.451898 27688 net.cpp:157] Top shape: 1 5 (5)
+I0727 15:55:41.451910 27688 net.cpp:165] Memory required for data: 466371392
+I0727 15:55:41.451928 27688 layer_factory.hpp:77] Creating layer roi_pool5_readonly
+I0727 15:55:41.451951 27688 net.cpp:106] Creating Layer roi_pool5_readonly
+I0727 15:55:41.451969 27688 net.cpp:454] roi_pool5_readonly <- conv5_3_relu5_3_0_split_1
+I0727 15:55:41.451987 27688 net.cpp:454] roi_pool5_readonly <- rois_roi-data_0_split_0
+I0727 15:55:41.452005 27688 net.cpp:411] roi_pool5_readonly -> pool5_readonly
+I0727 15:55:41.452028 27688 roi_pooling_layer.cpp:30] Spatial scale: 0.0625
+I0727 15:55:41.452102 27688 net.cpp:150] Setting up roi_pool5_readonly
+I0727 15:55:41.452127 27688 net.cpp:157] Top shape: 1 512 7 7 (25088)
+I0727 15:55:41.452142 27688 net.cpp:165] Memory required for data: 466471744
+I0727 15:55:41.452180 27688 layer_factory.hpp:77] Creating layer fc6_readonly
+I0727 15:55:41.452206 27688 net.cpp:106] Creating Layer fc6_readonly
+I0727 15:55:41.452226 27688 net.cpp:454] fc6_readonly <- pool5_readonly
+I0727 15:55:41.452242 27688 net.cpp:411] fc6_readonly -> fc6_readonly
+I0727 15:55:41.772904 27688 net.cpp:150] Setting up fc6_readonly
+I0727 15:55:41.773032 27688 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:55:41.773071 27688 net.cpp:165] Memory required for data: 466488128
+I0727 15:55:41.773118 27688 layer_factory.hpp:77] Creating layer relu6_readonly
+I0727 15:55:41.773152 27688 net.cpp:106] Creating Layer relu6_readonly
+I0727 15:55:41.773169 27688 net.cpp:454] relu6_readonly <- fc6_readonly
+I0727 15:55:41.773190 27688 net.cpp:397] relu6_readonly -> fc6_readonly (in-place)
+I0727 15:55:41.773582 27688 net.cpp:150] Setting up relu6_readonly
+I0727 15:55:41.773615 27688 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:55:41.773628 27688 net.cpp:165] Memory required for data: 466504512
+I0727 15:55:41.773658 27688 layer_factory.hpp:77] Creating layer drop6_readonly
+I0727 15:55:41.773689 27688 net.cpp:106] Creating Layer drop6_readonly
+I0727 15:55:41.773710 27688 net.cpp:454] drop6_readonly <- fc6_readonly
+I0727 15:55:41.773725 27688 net.cpp:397] drop6_readonly -> fc6_readonly (in-place)
+I0727 15:55:41.773797 27688 net.cpp:150] Setting up drop6_readonly
+I0727 15:55:41.773823 27688 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:55:41.773834 27688 net.cpp:165] Memory required for data: 466520896
+I0727 15:55:41.773854 27688 layer_factory.hpp:77] Creating layer fc7_readonly
+I0727 15:55:41.773880 27688 net.cpp:106] Creating Layer fc7_readonly
+I0727 15:55:41.773900 27688 net.cpp:454] fc7_readonly <- fc6_readonly
+I0727 15:55:41.773922 27688 net.cpp:411] fc7_readonly -> fc7_readonly
+I0727 15:55:41.825537 27688 net.cpp:150] Setting up fc7_readonly
+I0727 15:55:41.825652 27688 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:55:41.825669 27688 net.cpp:165] Memory required for data: 466537280
+I0727 15:55:41.825690 27688 layer_factory.hpp:77] Creating layer relu7_readonly
+I0727 15:55:41.825726 27688 net.cpp:106] Creating Layer relu7_readonly
+I0727 15:55:41.825747 27688 net.cpp:454] relu7_readonly <- fc7_readonly
+I0727 15:55:41.825764 27688 net.cpp:397] relu7_readonly -> fc7_readonly (in-place)
+I0727 15:55:41.826912 27688 net.cpp:150] Setting up relu7_readonly
+I0727 15:55:41.826951 27688 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:55:41.826972 27688 net.cpp:165] Memory required for data: 466553664
+I0727 15:55:41.826985 27688 layer_factory.hpp:77] Creating layer drop7_readonly
+I0727 15:55:41.827003 27688 net.cpp:106] Creating Layer drop7_readonly
+I0727 15:55:41.827028 27688 net.cpp:454] drop7_readonly <- fc7_readonly
+I0727 15:55:41.827051 27688 net.cpp:397] drop7_readonly -> fc7_readonly (in-place)
+I0727 15:55:41.827114 27688 net.cpp:150] Setting up drop7_readonly
+I0727 15:55:41.827139 27688 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:55:41.827154 27688 net.cpp:165] Memory required for data: 466570048
+I0727 15:55:41.827170 27688 layer_factory.hpp:77] Creating layer fc7_readonly_drop7_readonly_0_split
+I0727 15:55:41.827186 27688 net.cpp:106] Creating Layer fc7_readonly_drop7_readonly_0_split
+I0727 15:55:41.827203 27688 net.cpp:454] fc7_readonly_drop7_readonly_0_split <- fc7_readonly
+I0727 15:55:41.827219 27688 net.cpp:411] fc7_readonly_drop7_readonly_0_split -> fc7_readonly_drop7_readonly_0_split_0
+I0727 15:55:41.827239 27688 net.cpp:411] fc7_readonly_drop7_readonly_0_split -> fc7_readonly_drop7_readonly_0_split_1
+I0727 15:55:41.827320 27688 net.cpp:150] Setting up fc7_readonly_drop7_readonly_0_split
+I0727 15:55:41.827345 27688 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:55:41.827363 27688 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:55:41.827375 27688 net.cpp:165] Memory required for data: 466602816
+I0727 15:55:41.827394 27688 layer_factory.hpp:77] Creating layer cls_score_readonly
+I0727 15:55:41.827417 27688 net.cpp:106] Creating Layer cls_score_readonly
+I0727 15:55:41.827436 27688 net.cpp:454] cls_score_readonly <- fc7_readonly_drop7_readonly_0_split_0
+I0727 15:55:41.827484 27688 net.cpp:411] cls_score_readonly -> cls_score_readonly
+I0727 15:55:41.830413 27688 net.cpp:150] Setting up cls_score_readonly
+I0727 15:55:41.830454 27688 net.cpp:157] Top shape: 1 21 (21)
+I0727 15:55:41.830473 27688 net.cpp:165] Memory required for data: 466602900
+I0727 15:55:41.830489 27688 layer_factory.hpp:77] Creating layer bbox_pred_readonly
+I0727 15:55:41.830513 27688 net.cpp:106] Creating Layer bbox_pred_readonly
+I0727 15:55:41.830533 27688 net.cpp:454] bbox_pred_readonly <- fc7_readonly_drop7_readonly_0_split_1
+I0727 15:55:41.830555 27688 net.cpp:411] bbox_pred_readonly -> bbox_pred_readonly
+I0727 15:55:41.839642 27688 net.cpp:150] Setting up bbox_pred_readonly
+I0727 15:55:41.839684 27688 net.cpp:157] Top shape: 1 84 (84)
+I0727 15:55:41.839699 27688 net.cpp:165] Memory required for data: 466603236
+I0727 15:55:41.839725 27688 layer_factory.hpp:77] Creating layer cls_prob_readonly
+I0727 15:55:41.839752 27688 net.cpp:106] Creating Layer cls_prob_readonly
+I0727 15:55:41.839773 27688 net.cpp:454] cls_prob_readonly <- cls_score_readonly
+I0727 15:55:41.839797 27688 net.cpp:411] cls_prob_readonly -> cls_prob_readonly
+I0727 15:55:41.840106 27688 net.cpp:150] Setting up cls_prob_readonly
+I0727 15:55:41.840139 27688 net.cpp:157] Top shape: 1 21 (21)
+I0727 15:55:41.840158 27688 net.cpp:165] Memory required for data: 466603320
+I0727 15:55:41.840171 27688 layer_factory.hpp:77] Creating layer hard_roi_mining
+I0727 15:55:41.840312 27688 net.cpp:106] Creating Layer hard_roi_mining
+I0727 15:55:41.840350 27688 net.cpp:454] hard_roi_mining <- cls_prob_readonly
+I0727 15:55:41.840373 27688 net.cpp:454] hard_roi_mining <- bbox_pred_readonly
+I0727 15:55:41.840390 27688 net.cpp:454] hard_roi_mining <- rois_roi-data_0_split_1
+I0727 15:55:41.840409 27688 net.cpp:454] hard_roi_mining <- labels
+I0727 15:55:41.840422 27688 net.cpp:454] hard_roi_mining <- bbox_targets
+I0727 15:55:41.840440 27688 net.cpp:454] hard_roi_mining <- bbox_inside_weights
+I0727 15:55:41.840457 27688 net.cpp:454] hard_roi_mining <- bbox_outside_weights
+I0727 15:55:41.840477 27688 net.cpp:411] hard_roi_mining -> rois_hard
+I0727 15:55:41.840503 27688 net.cpp:411] hard_roi_mining -> labels_hard
+I0727 15:55:41.840526 27688 net.cpp:411] hard_roi_mining -> bbox_targets_hard
+I0727 15:55:41.840549 27688 net.cpp:411] hard_roi_mining -> bbox_inside_weights_hard
+I0727 15:55:41.840566 27688 net.cpp:411] hard_roi_mining -> bbox_outside_weights_hard
+OHEMDataLayer: name_to_top: {'bbox_outside_weights_hard': 4, 'bbox_inside_weights_hard': 3, 'labels_hard': 1, 'rois_hard': 0, 'bbox_targets_hard': 2}
+I0727 15:55:41.842242 27688 net.cpp:150] Setting up hard_roi_mining
+I0727 15:55:41.842270 27688 net.cpp:157] Top shape: 1 5 (5)
+I0727 15:55:41.842289 27688 net.cpp:157] Top shape: 1 (1)
+I0727 15:55:41.842303 27688 net.cpp:157] Top shape: 1 84 (84)
+I0727 15:55:41.842319 27688 net.cpp:157] Top shape: 1 84 (84)
+I0727 15:55:41.842331 27688 net.cpp:157] Top shape: 1 84 (84)
+I0727 15:55:41.842346 27688 net.cpp:165] Memory required for data: 466604352
+I0727 15:55:41.842360 27688 layer_factory.hpp:77] Creating layer roi_pool5
+I0727 15:55:41.842396 27688 net.cpp:106] Creating Layer roi_pool5
+I0727 15:55:41.842417 27688 net.cpp:454] roi_pool5 <- conv5_3_relu5_3_0_split_2
+I0727 15:55:41.842435 27688 net.cpp:454] roi_pool5 <- rois_hard
+I0727 15:55:41.842455 27688 net.cpp:411] roi_pool5 -> pool5
+I0727 15:55:41.842478 27688 roi_pooling_layer.cpp:30] Spatial scale: 0.0625
+I0727 15:55:41.842568 27688 net.cpp:150] Setting up roi_pool5
+I0727 15:55:41.842593 27688 net.cpp:157] Top shape: 1 512 7 7 (25088)
+I0727 15:55:41.842610 27688 net.cpp:165] Memory required for data: 466704704
+I0727 15:55:41.842625 27688 layer_factory.hpp:77] Creating layer fc6
+I0727 15:55:41.842648 27688 net.cpp:106] Creating Layer fc6
+I0727 15:55:41.842667 27688 net.cpp:454] fc6 <- pool5
+I0727 15:55:41.842687 27688 net.cpp:411] fc6 -> fc6
+I0727 15:55:42.152490 27688 net.cpp:150] Setting up fc6
+I0727 15:55:42.152552 27688 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:55:42.152557 27688 net.cpp:165] Memory required for data: 466721088
+I0727 15:55:42.152565 27688 net.cpp:514] Sharing parameters 'fc6_w' owned by layer 'fc6_readonly', param index 0
+I0727 15:55:42.152570 27688 net.cpp:514] Sharing parameters 'fc6_b' owned by layer 'fc6_readonly', param index 1
+I0727 15:55:42.152575 27688 layer_factory.hpp:77] Creating layer relu6
+I0727 15:55:42.152585 27688 net.cpp:106] Creating Layer relu6
+I0727 15:55:42.152591 27688 net.cpp:454] relu6 <- fc6
+I0727 15:55:42.152598 27688 net.cpp:397] relu6 -> fc6 (in-place)
+I0727 15:55:42.153734 27688 net.cpp:150] Setting up relu6
+I0727 15:55:42.153784 27688 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:55:42.153800 27688 net.cpp:165] Memory required for data: 466737472
+I0727 15:55:42.153813 27688 layer_factory.hpp:77] Creating layer drop6
+I0727 15:55:42.153834 27688 net.cpp:106] Creating Layer drop6
+I0727 15:55:42.153857 27688 net.cpp:454] drop6 <- fc6
+I0727 15:55:42.153875 27688 net.cpp:397] drop6 -> fc6 (in-place)
+I0727 15:55:42.153937 27688 net.cpp:150] Setting up drop6
+I0727 15:55:42.153962 27688 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:55:42.153975 27688 net.cpp:165] Memory required for data: 466753856
+I0727 15:55:42.153987 27688 layer_factory.hpp:77] Creating layer fc7
+I0727 15:55:42.154021 27688 net.cpp:106] Creating Layer fc7
+I0727 15:55:42.154044 27688 net.cpp:454] fc7 <- fc6
+I0727 15:55:42.154063 27688 net.cpp:411] fc7 -> fc7
+I0727 15:55:42.202800 27688 net.cpp:150] Setting up fc7
+I0727 15:55:42.202931 27688 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:55:42.202953 27688 net.cpp:165] Memory required for data: 466770240
+I0727 15:55:42.202975 27688 net.cpp:514] Sharing parameters 'fc7_w' owned by layer 'fc7_readonly', param index 0
+I0727 15:55:42.202991 27688 net.cpp:514] Sharing parameters 'fc7_b' owned by layer 'fc7_readonly', param index 1
+I0727 15:55:42.203022 27688 layer_factory.hpp:77] Creating layer relu7
+I0727 15:55:42.203045 27688 net.cpp:106] Creating Layer relu7
+I0727 15:55:42.203068 27688 net.cpp:454] relu7 <- fc7
+I0727 15:55:42.203084 27688 net.cpp:397] relu7 -> fc7 (in-place)
+I0727 15:55:42.203387 27688 net.cpp:150] Setting up relu7
+I0727 15:55:42.203420 27688 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:55:42.203433 27688 net.cpp:165] Memory required for data: 466786624
+I0727 15:55:42.203460 27688 layer_factory.hpp:77] Creating layer drop7
+I0727 15:55:42.203477 27688 net.cpp:106] Creating Layer drop7
+I0727 15:55:42.203497 27688 net.cpp:454] drop7 <- fc7
+I0727 15:55:42.203512 27688 net.cpp:397] drop7 -> fc7 (in-place)
+I0727 15:55:42.203586 27688 net.cpp:150] Setting up drop7
+I0727 15:55:42.203611 27688 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:55:42.203624 27688 net.cpp:165] Memory required for data: 466803008
+I0727 15:55:42.203640 27688 layer_factory.hpp:77] Creating layer fc7_drop7_0_split
+I0727 15:55:42.203660 27688 net.cpp:106] Creating Layer fc7_drop7_0_split
+I0727 15:55:42.203680 27688 net.cpp:454] fc7_drop7_0_split <- fc7
+I0727 15:55:42.203699 27688 net.cpp:411] fc7_drop7_0_split -> fc7_drop7_0_split_0
+I0727 15:55:42.203721 27688 net.cpp:411] fc7_drop7_0_split -> fc7_drop7_0_split_1
+I0727 15:55:42.203794 27688 net.cpp:150] Setting up fc7_drop7_0_split
+I0727 15:55:42.203819 27688 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:55:42.203833 27688 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:55:42.203850 27688 net.cpp:165] Memory required for data: 466835776
+I0727 15:55:42.203866 27688 layer_factory.hpp:77] Creating layer cls_score
+I0727 15:55:42.203891 27688 net.cpp:106] Creating Layer cls_score
+I0727 15:55:42.203908 27688 net.cpp:454] cls_score <- fc7_drop7_0_split_0
+I0727 15:55:42.203930 27688 net.cpp:411] cls_score -> cls_score
+I0727 15:55:42.206145 27688 net.cpp:150] Setting up cls_score
+I0727 15:55:42.206176 27688 net.cpp:157] Top shape: 1 21 (21)
+I0727 15:55:42.206194 27688 net.cpp:165] Memory required for data: 466835860
+I0727 15:55:42.206212 27688 net.cpp:514] Sharing parameters 'cls_score_w' owned by layer 'cls_score_readonly', param index 0
+I0727 15:55:42.206230 27688 net.cpp:514] Sharing parameters 'cls_score_b' owned by layer 'cls_score_readonly', param index 1
+I0727 15:55:42.206274 27688 layer_factory.hpp:77] Creating layer bbox_pred
+I0727 15:55:42.206300 27688 net.cpp:106] Creating Layer bbox_pred
+I0727 15:55:42.206323 27688 net.cpp:454] bbox_pred <- fc7_drop7_0_split_1
+I0727 15:55:42.206342 27688 net.cpp:411] bbox_pred -> bbox_pred
+I0727 15:55:42.215358 27688 net.cpp:150] Setting up bbox_pred
+I0727 15:55:42.215397 27688 net.cpp:157] Top shape: 1 84 (84)
+I0727 15:55:42.215425 27688 net.cpp:165] Memory required for data: 466836196
+I0727 15:55:42.215447 27688 net.cpp:514] Sharing parameters 'bbox_pred_w' owned by layer 'bbox_pred_readonly', param index 0
+I0727 15:55:42.215471 27688 net.cpp:514] Sharing parameters 'bbox_pred_b' owned by layer 'bbox_pred_readonly', param index 1
+I0727 15:55:42.215493 27688 layer_factory.hpp:77] Creating layer loss_cls
+I0727 15:55:42.215520 27688 net.cpp:106] Creating Layer loss_cls
+I0727 15:55:42.215541 27688 net.cpp:454] loss_cls <- cls_score
+I0727 15:55:42.215560 27688 net.cpp:454] loss_cls <- labels_hard
+I0727 15:55:42.215589 27688 net.cpp:411] loss_cls -> loss_cls
+I0727 15:55:42.215610 27688 layer_factory.hpp:77] Creating layer loss_cls
+I0727 15:55:42.216681 27688 net.cpp:150] Setting up loss_cls
+I0727 15:55:42.216720 27688 net.cpp:157] Top shape: (1)
+I0727 15:55:42.216744 27688 net.cpp:160]     with loss weight 1
+I0727 15:55:42.216773 27688 net.cpp:165] Memory required for data: 466836200
+I0727 15:55:42.216790 27688 layer_factory.hpp:77] Creating layer loss_bbox
+I0727 15:55:42.216811 27688 net.cpp:106] Creating Layer loss_bbox
+I0727 15:55:42.216830 27688 net.cpp:454] loss_bbox <- bbox_pred
+I0727 15:55:42.216845 27688 net.cpp:454] loss_bbox <- bbox_targets_hard
+I0727 15:55:42.216866 27688 net.cpp:454] loss_bbox <- bbox_inside_weights_hard
+I0727 15:55:42.216881 27688 net.cpp:454] loss_bbox <- bbox_outside_weights_hard
+I0727 15:55:42.216903 27688 net.cpp:411] loss_bbox -> loss_bbox
+I0727 15:55:42.217016 27688 net.cpp:150] Setting up loss_bbox
+I0727 15:55:42.217053 27688 net.cpp:157] Top shape: (1)
+I0727 15:55:42.217074 27688 net.cpp:160]     with loss weight 1
+I0727 15:55:42.217090 27688 net.cpp:165] Memory required for data: 466836204
+I0727 15:55:42.217106 27688 net.cpp:226] loss_bbox needs backward computation.
+I0727 15:55:42.217124 27688 net.cpp:226] loss_cls needs backward computation.
+I0727 15:55:42.217141 27688 net.cpp:226] bbox_pred needs backward computation.
+I0727 15:55:42.217157 27688 net.cpp:226] cls_score needs backward computation.
+I0727 15:55:42.217175 27688 net.cpp:226] fc7_drop7_0_split needs backward computation.
+I0727 15:55:42.217190 27688 net.cpp:226] drop7 needs backward computation.
+I0727 15:55:42.217206 27688 net.cpp:226] relu7 needs backward computation.
+I0727 15:55:42.217221 27688 net.cpp:226] fc7 needs backward computation.
+I0727 15:55:42.217236 27688 net.cpp:226] drop6 needs backward computation.
+I0727 15:55:42.217248 27688 net.cpp:226] relu6 needs backward computation.
+I0727 15:55:42.217264 27688 net.cpp:226] fc6 needs backward computation.
+I0727 15:55:42.217278 27688 net.cpp:226] roi_pool5 needs backward computation.
+I0727 15:55:42.217293 27688 net.cpp:226] hard_roi_mining needs backward computation.
+I0727 15:55:42.217313 27688 net.cpp:228] cls_prob_readonly does not need backward computation.
+I0727 15:55:42.217331 27688 net.cpp:228] bbox_pred_readonly does not need backward computation.
+I0727 15:55:42.217348 27688 net.cpp:228] cls_score_readonly does not need backward computation.
+I0727 15:55:42.217365 27688 net.cpp:228] fc7_readonly_drop7_readonly_0_split does not need backward computation.
+I0727 15:55:42.217382 27688 net.cpp:228] drop7_readonly does not need backward computation.
+I0727 15:55:42.217399 27688 net.cpp:228] relu7_readonly does not need backward computation.
+I0727 15:55:42.217417 27688 net.cpp:228] fc7_readonly does not need backward computation.
+I0727 15:55:42.217433 27688 net.cpp:228] drop6_readonly does not need backward computation.
+I0727 15:55:42.217447 27688 net.cpp:228] relu6_readonly does not need backward computation.
+I0727 15:55:42.217463 27688 net.cpp:228] fc6_readonly does not need backward computation.
+I0727 15:55:42.217502 27688 net.cpp:228] roi_pool5_readonly does not need backward computation.
+I0727 15:55:42.217525 27688 net.cpp:228] rois_roi-data_0_split does not need backward computation.
+I0727 15:55:42.217540 27688 net.cpp:228] roi-data does not need backward computation.
+I0727 15:55:42.217557 27688 net.cpp:228] proposal does not need backward computation.
+I0727 15:55:42.217573 27688 net.cpp:228] rpn_cls_prob_reshape does not need backward computation.
+I0727 15:55:42.217591 27688 net.cpp:228] rpn_cls_prob does not need backward computation.
+I0727 15:55:42.217607 27688 net.cpp:226] rpn_loss_bbox needs backward computation.
+I0727 15:55:42.217628 27688 net.cpp:226] rpn_loss_cls needs backward computation.
+I0727 15:55:42.217646 27688 net.cpp:226] rpn-data needs backward computation.
+I0727 15:55:42.217665 27688 net.cpp:226] rpn_cls_score_reshape_rpn_cls_score_reshape_0_split needs backward computation.
+I0727 15:55:42.217681 27688 net.cpp:226] rpn_cls_score_reshape needs backward computation.
+I0727 15:55:42.217699 27688 net.cpp:226] rpn_bbox_pred_rpn_bbox_pred_0_split needs backward computation.
+I0727 15:55:42.217712 27688 net.cpp:226] rpn_bbox_pred needs backward computation.
+I0727 15:55:42.217730 27688 net.cpp:226] rpn_cls_score_rpn_cls_score_0_split needs backward computation.
+I0727 15:55:42.217744 27688 net.cpp:226] rpn_cls_score needs backward computation.
+I0727 15:55:42.217761 27688 net.cpp:226] rpn/output_rpn_relu/3x3_0_split needs backward computation.
+I0727 15:55:42.217774 27688 net.cpp:226] rpn_relu/3x3 needs backward computation.
+I0727 15:55:42.217792 27688 net.cpp:226] rpn_conv/3x3 needs backward computation.
+I0727 15:55:42.217808 27688 net.cpp:226] conv5_3_relu5_3_0_split needs backward computation.
+I0727 15:55:42.217825 27688 net.cpp:226] relu5_3 needs backward computation.
+I0727 15:55:42.217841 27688 net.cpp:226] conv5_3 needs backward computation.
+I0727 15:55:42.217857 27688 net.cpp:226] relu5_2 needs backward computation.
+I0727 15:55:42.217875 27688 net.cpp:226] conv5_2 needs backward computation.
+I0727 15:55:42.217895 27688 net.cpp:226] relu5_1 needs backward computation.
+I0727 15:55:42.217909 27688 net.cpp:226] conv5_1 needs backward computation.
+I0727 15:55:42.217926 27688 net.cpp:226] pool4 needs backward computation.
+I0727 15:55:42.217944 27688 net.cpp:226] relu4_3 needs backward computation.
+I0727 15:55:42.217960 27688 net.cpp:226] conv4_3 needs backward computation.
+I0727 15:55:42.217978 27688 net.cpp:226] relu4_2 needs backward computation.
+I0727 15:55:42.217993 27688 net.cpp:226] conv4_2 needs backward computation.
+I0727 15:55:42.218011 27688 net.cpp:226] relu4_1 needs backward computation.
+I0727 15:55:42.218029 27688 net.cpp:226] conv4_1 needs backward computation.
+I0727 15:55:42.218045 27688 net.cpp:226] pool3 needs backward computation.
+I0727 15:55:42.218061 27688 net.cpp:226] relu3_3 needs backward computation.
+I0727 15:55:42.218080 27688 net.cpp:226] conv3_3 needs backward computation.
+I0727 15:55:42.218098 27688 net.cpp:226] relu3_2 needs backward computation.
+I0727 15:55:42.218112 27688 net.cpp:226] conv3_2 needs backward computation.
+I0727 15:55:42.218128 27688 net.cpp:226] relu3_1 needs backward computation.
+I0727 15:55:42.218147 27688 net.cpp:226] conv3_1 needs backward computation.
+I0727 15:55:42.218164 27688 net.cpp:228] pool2 does not need backward computation.
+I0727 15:55:42.218181 27688 net.cpp:228] relu2_2 does not need backward computation.
+I0727 15:55:42.218199 27688 net.cpp:228] conv2_2 does not need backward computation.
+I0727 15:55:42.218215 27688 net.cpp:228] relu2_1 does not need backward computation.
+I0727 15:55:42.218232 27688 net.cpp:228] conv2_1 does not need backward computation.
+I0727 15:55:42.218248 27688 net.cpp:228] pool1 does not need backward computation.
+I0727 15:55:42.218266 27688 net.cpp:228] relu1_2 does not need backward computation.
+I0727 15:55:42.218281 27688 net.cpp:228] conv1_2 does not need backward computation.
+I0727 15:55:42.218299 27688 net.cpp:228] relu1_1 does not need backward computation.
+I0727 15:55:42.218323 27688 net.cpp:228] conv1_1 does not need backward computation.
+I0727 15:55:42.218343 27688 net.cpp:228] gt_boxes_input-data_2_split does not need backward computation.
+I0727 15:55:42.218358 27688 net.cpp:228] im_info_input-data_1_split does not need backward computation.
+I0727 15:55:42.218377 27688 net.cpp:228] data_input-data_0_split does not need backward computation.
+I0727 15:55:42.218392 27688 net.cpp:228] input-data does not need backward computation.
+I0727 15:55:42.218408 27688 net.cpp:270] This network produces output loss_bbox
+I0727 15:55:42.218425 27688 net.cpp:270] This network produces output loss_cls
+I0727 15:55:42.218442 27688 net.cpp:270] This network produces output rpn_cls_loss
+I0727 15:55:42.218459 27688 net.cpp:270] This network produces output rpn_loss_bbox
+I0727 15:55:42.359036 27688 net.cpp:283] Network initialization done.
+I0727 15:55:42.359397 27688 solver.cpp:60] Solver scaffolding done.
+Loading pretrained model weights from output/FP_Net_end2end/voc_2007_trainval/fpn_iter_70000.caffemodel
+[libprotobuf INFO google/protobuf/io/coded_stream.cc:610] Reading dangerously large protocol message.  If the message turns out to be larger than 2147483647 bytes, parsing will be halted for security reasons.  To increase the limit (or to disable these warnings), see CodedInputStream::SetTotalBytesLimit() in google/protobuf/io/coded_stream.h.
+[libprotobuf WARNING google/protobuf/io/coded_stream.cc:81] The total number of bytes read was 548429793
+Solving...
+allrois: 128
+hard: 1
+hard: 1
+hard: 1
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+I0727 15:55:43.487408 27688 solver.cpp:229] Iteration 0, loss = 0.617748
+I0727 15:55:43.487462 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.430239 (* 1 = 0.430239 loss)
+I0727 15:55:43.487471 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.0298144 (* 1 = 0.0298144 loss)
+I0727 15:55:43.487476 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.000740948 (* 1 = 0.000740948 loss)
+I0727 15:55:43.487481 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.0150258 (* 1 = 0.0150258 loss)
+I0727 15:55:43.487496 27688 sgd_solver.cpp:106] Iteration 0, lr = 0.002
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+I0727 15:55:53.551914 27688 solver.cpp:229] Iteration 20, loss = 0.469324
+I0727 15:55:53.551980 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.485976 (* 1 = 0.485976 loss)
+I0727 15:55:53.552016 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.0703741 (* 1 = 0.0703741 loss)
+I0727 15:55:53.552057 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.00380272 (* 1 = 0.00380272 loss)
+I0727 15:55:53.552074 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.0526101 (* 1 = 0.0526101 loss)
+I0727 15:55:53.552103 27688 sgd_solver.cpp:106] Iteration 20, lr = 0.002
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+I0727 15:56:04.943924 27688 solver.cpp:229] Iteration 40, loss = 0.518998
+I0727 15:56:04.944057 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.320892 (* 1 = 0.320892 loss)
+I0727 15:56:04.944068 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.0552815 (* 1 = 0.0552815 loss)
+I0727 15:56:04.944136 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.0102408 (* 1 = 0.0102408 loss)
+I0727 15:56:04.944160 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.0448494 (* 1 = 0.0448494 loss)
+I0727 15:56:04.944197 27688 sgd_solver.cpp:106] Iteration 40, lr = 0.002
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+I0727 15:56:19.850329 27688 solver.cpp:229] Iteration 60, loss = 0.620145
+I0727 15:56:19.850392 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.466873 (* 1 = 0.466873 loss)
+I0727 15:56:19.850400 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.331206 (* 1 = 0.331206 loss)
+I0727 15:56:19.850409 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.136727 (* 1 = 0.136727 loss)
+I0727 15:56:19.850414 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.0266602 (* 1 = 0.0266602 loss)
+I0727 15:56:19.850421 27688 sgd_solver.cpp:106] Iteration 60, lr = 0.002
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+I0727 15:56:34.598413 27688 solver.cpp:229] Iteration 80, loss = 0.353231
+I0727 15:56:34.598537 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.191888 (* 1 = 0.191888 loss)
+I0727 15:56:34.598578 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.0402639 (* 1 = 0.0402639 loss)
+I0727 15:56:34.598600 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.0267697 (* 1 = 0.0267697 loss)
+I0727 15:56:34.598628 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.00898549 (* 1 = 0.00898549 loss)
+I0727 15:56:34.598659 27688 sgd_solver.cpp:106] Iteration 80, lr = 0.002
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+I0727 15:56:49.268034 27688 solver.cpp:229] Iteration 100, loss = 0.327534
+I0727 15:56:49.268103 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.117052 (* 1 = 0.117052 loss)
+I0727 15:56:49.268112 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.0146927 (* 1 = 0.0146927 loss)
+I0727 15:56:49.268118 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.00096405 (* 1 = 0.00096405 loss)
+I0727 15:56:49.268123 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.00157185 (* 1 = 0.00157185 loss)
+I0727 15:56:49.268131 27688 sgd_solver.cpp:106] Iteration 100, lr = 0.002
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+I0727 15:57:04.073592 27688 solver.cpp:229] Iteration 120, loss = 0.214183
+I0727 15:57:04.073660 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.186737 (* 1 = 0.186737 loss)
+I0727 15:57:04.073669 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.0399653 (* 1 = 0.0399653 loss)
+I0727 15:57:04.073674 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.0217673 (* 1 = 0.0217673 loss)
+I0727 15:57:04.073679 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.037607 (* 1 = 0.037607 loss)
+I0727 15:57:04.073686 27688 sgd_solver.cpp:106] Iteration 120, lr = 0.002
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+I0727 15:57:18.808495 27688 solver.cpp:229] Iteration 140, loss = 0.485034
+I0727 15:57:18.808555 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.129448 (* 1 = 0.129448 loss)
+I0727 15:57:18.808564 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.178963 (* 1 = 0.178963 loss)
+I0727 15:57:18.808570 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.0988431 (* 1 = 0.0988431 loss)
+I0727 15:57:18.808575 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.112848 (* 1 = 0.112848 loss)
+I0727 15:57:18.808583 27688 sgd_solver.cpp:106] Iteration 140, lr = 0.002
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+I0727 15:57:33.585602 27688 solver.cpp:229] Iteration 160, loss = 0.368842
+I0727 15:57:33.585676 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.0396003 (* 1 = 0.0396003 loss)
+I0727 15:57:33.585685 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.0335386 (* 1 = 0.0335386 loss)
+I0727 15:57:33.585690 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.0055644 (* 1 = 0.0055644 loss)
+I0727 15:57:33.585695 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.00682873 (* 1 = 0.00682873 loss)
+I0727 15:57:33.585702 27688 sgd_solver.cpp:106] Iteration 160, lr = 0.002
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+I0727 15:57:48.482125 27688 solver.cpp:229] Iteration 180, loss = 0.416551
+I0727 15:57:48.482187 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.0634675 (* 1 = 0.0634675 loss)
+I0727 15:57:48.482194 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.0521574 (* 1 = 0.0521574 loss)
+I0727 15:57:48.482200 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.00475637 (* 1 = 0.00475637 loss)
+I0727 15:57:48.482206 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.0225571 (* 1 = 0.0225571 loss)
+I0727 15:57:48.482213 27688 sgd_solver.cpp:106] Iteration 180, lr = 0.002
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+speed: 0.698s / iter
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 127
+hard: 127
+I0727 15:58:03.245018 27688 solver.cpp:229] Iteration 200, loss = 0.313621
+I0727 15:58:03.245086 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.259343 (* 1 = 0.259343 loss)
+I0727 15:58:03.245095 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.179842 (* 1 = 0.179842 loss)
+I0727 15:58:03.245100 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.0320888 (* 1 = 0.0320888 loss)
+I0727 15:58:03.245105 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.0136253 (* 1 = 0.0136253 loss)
+I0727 15:58:03.245112 27688 sgd_solver.cpp:106] Iteration 200, lr = 0.002
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 124
+hard: 124
+I0727 15:58:18.021491 27688 solver.cpp:229] Iteration 220, loss = 0.410432
+I0727 15:58:18.021564 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.420797 (* 1 = 0.420797 loss)
+I0727 15:58:18.021571 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.169213 (* 1 = 0.169213 loss)
+I0727 15:58:18.021577 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.0656722 (* 1 = 0.0656722 loss)
+I0727 15:58:18.021584 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.0301426 (* 1 = 0.0301426 loss)
+I0727 15:58:18.021591 27688 sgd_solver.cpp:106] Iteration 220, lr = 0.002
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+I0727 15:58:32.956768 27688 solver.cpp:229] Iteration 240, loss = 0.237782
+I0727 15:58:32.956830 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.207734 (* 1 = 0.207734 loss)
+I0727 15:58:32.956846 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.0693003 (* 1 = 0.0693003 loss)
+I0727 15:58:32.956861 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.00843807 (* 1 = 0.00843807 loss)
+I0727 15:58:32.956872 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.011373 (* 1 = 0.011373 loss)
+I0727 15:58:32.956885 27688 sgd_solver.cpp:106] Iteration 240, lr = 0.002
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+I0727 15:58:47.717839 27688 solver.cpp:229] Iteration 260, loss = 0.427124
+I0727 15:58:47.717911 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.146572 (* 1 = 0.146572 loss)
+I0727 15:58:47.717927 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.0989031 (* 1 = 0.0989031 loss)
+I0727 15:58:47.717941 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.00325783 (* 1 = 0.00325783 loss)
+I0727 15:58:47.717952 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.00542807 (* 1 = 0.00542807 loss)
+I0727 15:58:47.717963 27688 sgd_solver.cpp:106] Iteration 260, lr = 0.002
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+I0727 15:59:02.543956 27688 solver.cpp:229] Iteration 280, loss = 0.660177
+I0727 15:59:02.544014 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.204531 (* 1 = 0.204531 loss)
+I0727 15:59:02.544023 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.100694 (* 1 = 0.100694 loss)
+I0727 15:59:02.544028 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.00466556 (* 1 = 0.00466556 loss)
+I0727 15:59:02.544034 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.00590559 (* 1 = 0.00590559 loss)
+I0727 15:59:02.544040 27688 sgd_solver.cpp:106] Iteration 280, lr = 0.002
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+I0727 15:59:17.174187 27688 solver.cpp:229] Iteration 300, loss = 0.252404
+I0727 15:59:17.174242 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.194533 (* 1 = 0.194533 loss)
+I0727 15:59:17.174249 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.0431703 (* 1 = 0.0431703 loss)
+I0727 15:59:17.174255 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.00570933 (* 1 = 0.00570933 loss)
+I0727 15:59:17.174262 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.0968053 (* 1 = 0.0968053 loss)
+I0727 15:59:17.174268 27688 sgd_solver.cpp:106] Iteration 300, lr = 0.002
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 123
+hard: 123
+allrois: 128
+hard: 123
+hard: 123
+hard: 123
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+I0727 15:59:31.700563 27688 solver.cpp:229] Iteration 320, loss = 0.428972
+I0727 15:59:31.700610 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.116464 (* 1 = 0.116464 loss)
+I0727 15:59:31.700618 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.0581723 (* 1 = 0.0581723 loss)
+I0727 15:59:31.700623 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.000218861 (* 1 = 0.000218861 loss)
+I0727 15:59:31.700628 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.0196479 (* 1 = 0.0196479 loss)
+I0727 15:59:31.700635 27688 sgd_solver.cpp:106] Iteration 320, lr = 0.002
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 123
+hard: 123
+allrois: 128
+hard: 123
+hard: 123
+hard: 123
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+I0727 15:59:46.284175 27688 solver.cpp:229] Iteration 340, loss = 0.306562
+I0727 15:59:46.284237 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.160499 (* 1 = 0.160499 loss)
+I0727 15:59:46.284246 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.199911 (* 1 = 0.199911 loss)
+I0727 15:59:46.284252 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.00424305 (* 1 = 0.00424305 loss)
+I0727 15:59:46.284258 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.0331776 (* 1 = 0.0331776 loss)
+I0727 15:59:46.284282 27688 sgd_solver.cpp:106] Iteration 340, lr = 0.002
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 123
+hard: 123
+allrois: 128
+hard: 123
+hard: 123
+hard: 123
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+I0727 16:00:00.958900 27688 solver.cpp:229] Iteration 360, loss = 0.631009
+I0727 16:00:00.958967 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.385899 (* 1 = 0.385899 loss)
+I0727 16:00:00.958978 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.43795 (* 1 = 0.43795 loss)
+I0727 16:00:00.958984 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.0203332 (* 1 = 0.0203332 loss)
+I0727 16:00:00.958991 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.0211551 (* 1 = 0.0211551 loss)
+I0727 16:00:00.958998 27688 sgd_solver.cpp:106] Iteration 360, lr = 0.002
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+I0727 16:00:15.886342 27688 solver.cpp:229] Iteration 380, loss = 0.122172
+I0727 16:00:15.886409 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.0680913 (* 1 = 0.0680913 loss)
+I0727 16:00:15.886417 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.0204016 (* 1 = 0.0204016 loss)
+I0727 16:00:15.886422 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.000111966 (* 1 = 0.000111966 loss)
+I0727 16:00:15.886428 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.0674435 (* 1 = 0.0674435 loss)
+I0727 16:00:15.886435 27688 sgd_solver.cpp:106] Iteration 380, lr = 0.002
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 123
+hard: 123
+allrois: 128
+hard: 123
+hard: 123
+hard: 123
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 128
+hard: 128
+speed: 0.718s / iter
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+I0727 16:00:30.763734 27688 solver.cpp:229] Iteration 400, loss = 0.268633
+I0727 16:00:30.763801 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.257325 (* 1 = 0.257325 loss)
+I0727 16:00:30.763809 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.149048 (* 1 = 0.149048 loss)
+I0727 16:00:30.763815 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.0081897 (* 1 = 0.0081897 loss)
+I0727 16:00:30.763820 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.00779499 (* 1 = 0.00779499 loss)
+I0727 16:00:30.763828 27688 sgd_solver.cpp:106] Iteration 400, lr = 0.002
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+I0727 16:00:45.416911 27688 solver.cpp:229] Iteration 420, loss = 0.458303
+I0727 16:00:45.416972 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.1953 (* 1 = 0.1953 loss)
+I0727 16:00:45.416980 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.159665 (* 1 = 0.159665 loss)
+I0727 16:00:45.416986 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.00315191 (* 1 = 0.00315191 loss)
+I0727 16:00:45.416992 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.00476136 (* 1 = 0.00476136 loss)
+I0727 16:00:45.416999 27688 sgd_solver.cpp:106] Iteration 420, lr = 0.002
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+I0727 16:01:00.303479 27688 solver.cpp:229] Iteration 440, loss = 0.308292
+I0727 16:01:00.303541 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.0776559 (* 1 = 0.0776559 loss)
+I0727 16:01:00.303550 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.0120049 (* 1 = 0.0120049 loss)
+I0727 16:01:00.303556 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.00167241 (* 1 = 0.00167241 loss)
+I0727 16:01:00.303561 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.0223543 (* 1 = 0.0223543 loss)
+I0727 16:01:00.303568 27688 sgd_solver.cpp:106] Iteration 440, lr = 0.002
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+I0727 16:01:14.904456 27688 solver.cpp:229] Iteration 460, loss = 0.159741
+I0727 16:01:14.904518 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.0735559 (* 1 = 0.0735559 loss)
+I0727 16:01:14.904527 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.0902901 (* 1 = 0.0902901 loss)
+I0727 16:01:14.904534 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.0177106 (* 1 = 0.0177106 loss)
+I0727 16:01:14.904539 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.00794156 (* 1 = 0.00794156 loss)
+I0727 16:01:14.904547 27688 sgd_solver.cpp:106] Iteration 460, lr = 0.002
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 123
+hard: 123
+allrois: 128
+hard: 123
+hard: 123
+hard: 123
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+I0727 16:01:29.469995 27688 solver.cpp:229] Iteration 480, loss = 0.138476
+I0727 16:01:29.470053 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.0948018 (* 1 = 0.0948018 loss)
+I0727 16:01:29.470062 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.0309014 (* 1 = 0.0309014 loss)
+I0727 16:01:29.470067 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.00157056 (* 1 = 0.00157056 loss)
+I0727 16:01:29.470073 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.0739961 (* 1 = 0.0739961 loss)
+I0727 16:01:29.470080 27688 sgd_solver.cpp:106] Iteration 480, lr = 0.002
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 125
+hard: 125
+I0727 16:01:44.314072 27688 solver.cpp:229] Iteration 500, loss = 0.416996
+I0727 16:01:44.314136 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.209835 (* 1 = 0.209835 loss)
+I0727 16:01:44.314143 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.0718628 (* 1 = 0.0718628 loss)
+I0727 16:01:44.314149 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.011287 (* 1 = 0.011287 loss)
+I0727 16:01:44.314155 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.0118117 (* 1 = 0.0118117 loss)
+I0727 16:01:44.314162 27688 sgd_solver.cpp:106] Iteration 500, lr = 0.002
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+I0727 16:01:59.227329 27688 solver.cpp:229] Iteration 520, loss = 0.28742
+I0727 16:01:59.227385 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.14536 (* 1 = 0.14536 loss)
+I0727 16:01:59.227393 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.0444338 (* 1 = 0.0444338 loss)
+I0727 16:01:59.227399 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.036098 (* 1 = 0.036098 loss)
+I0727 16:01:59.227406 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.00968346 (* 1 = 0.00968346 loss)
+I0727 16:01:59.227412 27688 sgd_solver.cpp:106] Iteration 520, lr = 0.002
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 125
+hard: 125
+I0727 16:02:14.108952 27688 solver.cpp:229] Iteration 540, loss = 0.402278
+I0727 16:02:14.109009 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.203798 (* 1 = 0.203798 loss)
+I0727 16:02:14.109016 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.0331217 (* 1 = 0.0331217 loss)
+I0727 16:02:14.109022 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.00960593 (* 1 = 0.00960593 loss)
+I0727 16:02:14.109028 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.00240945 (* 1 = 0.00240945 loss)
+I0727 16:02:14.109060 27688 sgd_solver.cpp:106] Iteration 540, lr = 0.002
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 126
+hard: 126
+I0727 16:02:29.013794 27688 solver.cpp:229] Iteration 560, loss = 0.471873
+I0727 16:02:29.013851 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.203952 (* 1 = 0.203952 loss)
+I0727 16:02:29.013860 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.111524 (* 1 = 0.111524 loss)
+I0727 16:02:29.013866 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.00641733 (* 1 = 0.00641733 loss)
+I0727 16:02:29.013871 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.0201737 (* 1 = 0.0201737 loss)
+I0727 16:02:29.013880 27688 sgd_solver.cpp:106] Iteration 560, lr = 0.002
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+I0727 16:02:43.877442 27688 solver.cpp:229] Iteration 580, loss = 0.38565
+I0727 16:02:43.877503 27688 solver.cpp:245]     Train net output #0: loss_bbox = 0.136491 (* 1 = 0.136491 loss)
+I0727 16:02:43.877511 27688 solver.cpp:245]     Train net output #1: loss_cls = 0.0369791 (* 1 = 0.0369791 loss)
+I0727 16:02:43.877517 27688 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.0748776 (* 1 = 0.0748776 loss)
+I0727 16:02:43.877522 27688 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.00228631 (* 1 = 0.00228631 loss)
+I0727 16:02:43.877530 27688 sgd_solver.cpp:106] Iteration 580, lr = 0.002
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 124
+hard: 124
+allrois: 128
+hard: 124
+hard: 124
+hard: 124
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+hard: 128
+hard: 128
+hard: 128
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 125
+hard: 125
+allrois: 128
+hard: 125
+hard: 125
+hard: 125
+hard: 126
+hard: 126
+allrois: 128
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+speed: 0.725s / iter
+Traceback (most recent call last):
+  File "./tools/train_net.py", line 113, in <module>
+    max_iters=args.max_iters)
+  File "/home/ubuntu/Work/brbchen/unskychen/faster_rcnn_min_ohem/tools/../lib/fast_rcnn/train.py", line 160, in train_net
+    model_paths = sw.train_model(max_iters)
+  File "/home/ubuntu/Work/brbchen/unskychen/faster_rcnn_min_ohem/tools/../lib/fast_rcnn/train.py", line 101, in train_model
+    self.solver.step(1)
+  File "/home/ubuntu/Work/brbchen/unskychen/faster_rcnn_min_ohem/tools/../lib/rpn/anchor_target_layer.py", line 255, in reshape
+    def reshape(self, bottom, top):
+KeyboardInterrupt

@@ -1,0 +1,12 @@
++ echo Logging output to experiments/logs/faster_rcnn_end2end_VGG16_.txt.2017-07-26_12-45-47
+Logging output to experiments/logs/faster_rcnn_end2end_VGG16_.txt.2017-07-26_12-45-47
++ ./tools/train_net.py --gpu 1 --solver models/pascal_voc/VGG16/FP_Net_end2end/solver.prototxt --weights output/FP_Net_end2end/voc_2007_trainval/fpn_iter_15000.caffemodel --imdb voc_2007_trainval --iters 70000 --cfg experiments/cfgs/FP_Net_end2end.yml
+Traceback (most recent call last):
+  File "./tools/train_net.py", line 13, in <module>
+    from fast_rcnn.train import get_training_roidb, train_net
+  File "/home/ubuntu/Work/brbchen/unskychen/faster_rcnn_min/tools/../lib/fast_rcnn/train.py", line 12, in <module>
+    import roi_data_layer.roidb as rdl_roidb
+  File "/home/ubuntu/Work/brbchen/unskychen/faster_rcnn_min/tools/../lib/roi_data_layer/roidb.py", line 13, in <module>
+    from utils.cython_bbox import bbox_overlaps
+  File "__init__.pxd", line 155, in init utils.cython_bbox (utils/bbox.c:4970)
+ValueError: numpy.dtype has the wrong size, try recompiling. Expected 88, got 96

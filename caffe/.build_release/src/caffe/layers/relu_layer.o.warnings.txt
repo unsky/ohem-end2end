@@ -1,0 +1,21 @@
+In file included from ./include/caffe/util/device_alternate.hpp:40:0,
+                 from ./include/caffe/common.hpp:19,
+                 from ./include/caffe/blob.hpp:8,
+                 from ./include/caffe/layers/relu_layer.hpp:6,
+                 from src/caffe/layers/relu_layer.cpp:4:
+./include/caffe/util/cudnn.hpp: In function ‘void caffe::cudnn::createPoolingDesc(cudnnPoolingStruct**, caffe::PoolingParameter_PoolMethod, cudnnPoolingMode_t*, int, int, int, int, int, int)’:
+./include/caffe/util/cudnn.hpp:127:41: error: too few arguments to function ‘cudnnStatus_t cudnnSetPooling2dDescriptor(cudnnPoolingDescriptor_t, cudnnPoolingMode_t, cudnnNanPropagation_t, int, int, int, int, int, int)’
+         pad_h, pad_w, stride_h, stride_w));
+                                         ^
+./include/caffe/util/cudnn.hpp:15:28: note: in definition of macro ‘CUDNN_CHECK’
+     cudnnStatus_t status = condition; \
+                            ^
+In file included from ./include/caffe/util/cudnn.hpp:5:0,
+                 from ./include/caffe/util/device_alternate.hpp:40,
+                 from ./include/caffe/common.hpp:19,
+                 from ./include/caffe/blob.hpp:8,
+                 from ./include/caffe/layers/relu_layer.hpp:6,
+                 from src/caffe/layers/relu_layer.cpp:4:
+/usr/local/cuda/include/cudnn.h:803:27: note: declared here
+ cudnnStatus_t CUDNNWINAPI cudnnSetPooling2dDescriptor(
+                           ^

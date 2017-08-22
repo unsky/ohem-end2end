@@ -1,0 +1,2946 @@
++ echo Logging output to experiments/logs/faster_rcnn_end2end_VGG16_.txt.2017-07-27_15-50-50
+Logging output to experiments/logs/faster_rcnn_end2end_VGG16_.txt.2017-07-27_15-50-50
++ ./tools/train_net.py --gpu 0 --solver models/pascal_voc/VGG16/FP_Net_end2end/solver.prototxt --weights output/FP_Net_end2end/voc_2007_trainval/fpn_iter_70000.caffemodel --imdb voc_2007_trainval --iters 70000 --cfg experiments/cfgs/FP_Net_end2end.yml
+Called with args:
+Namespace(cfg_file='experiments/cfgs/FP_Net_end2end.yml', gpu_id=0, imdb_name='voc_2007_trainval', max_iters=70000, pretrained_model='output/FP_Net_end2end/voc_2007_trainval/fpn_iter_70000.caffemodel', randomize=False, set_cfgs=None, solver='models/pascal_voc/VGG16/FP_Net_end2end/solver.prototxt')
+Using config:
+{'DATA_DIR': '/home/ubuntu/Work/brbchen/unskychen/faster_rcnn_min_ohem/data',
+ 'DEDUP_BOXES': -1.0,
+ 'EPS': 1e-14,
+ 'EXP_DIR': 'FP_Net_end2end',
+ 'GPU_ID': 0,
+ 'MATLAB': 'matlab',
+ 'MODELS_DIR': '/home/ubuntu/Work/brbchen/unskychen/faster_rcnn_min_ohem/models/pascal_voc',
+ 'PIXEL_MEANS': array([[[ 102.9801,  115.9465,  122.7717]]]),
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/home/ubuntu/Work/brbchen/unskychen/faster_rcnn_min_ohem',
+ 'TEST': {'BBOX_REG': True,
+          'HAS_RPN': True,
+          'MAX_SIZE': 520,
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'selective_search',
+          'RPN_MIN_SIZE': 8,
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 1000,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'SCALES': [375],
+          'SVM': False},
+ 'TRAIN': {'ASPECT_GROUPING': True,
+           'BATCH_SIZE': 128,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': True,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.7,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'FG_FRACTION': 0.25,
+           'FG_THRESH': 0.5,
+           'HAS_RPN': True,
+           'IMS_PER_BATCH': 1,
+           'MAX_SIZE': 520,
+           'OHEM_NMS_THRESH': 0.7,
+           'OHEM_USE_NMS': True,
+           'PROPOSAL_METHOD': 'gt',
+           'RPN_BATCHSIZE': 256,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_MIN_SIZE': 8,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 2000,
+           'RPN_PRE_NMS_TOP_N': 12000,
+           'SCALES': [375],
+           'SNAPSHOT_INFIX': '',
+           'SNAPSHOT_ITERS': 5000,
+           'USE_FLIPPED': True,
+           'USE_OHEM': True,
+           'USE_PREFETCH': False},
+ 'USE_GPU_NMS': True}
+0
+Loaded dataset `voc_2007_trainval` for training
+Set proposal method: gt
+Appending horizontally-flipped training examples...
+voc_2007_trainval gt roidb loaded from /home/ubuntu/Work/brbchen/unskychen/faster_rcnn_min_ohem/data/cache/voc_2007_trainval_gt_roidb.pkl
+done
+Preparing training data...
+done
+33102 roidb entries
+Output will be saved to `/home/ubuntu/Work/brbchen/unskychen/faster_rcnn_min_ohem/output/FP_Net_end2end/voc_2007_trainval`
+Filtered 0 roidb entries: 33102 -> 33102
+Computing bounding-box regression targets...
+bbox target means:
+[[ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]
+ [ 0.  0.  0.  0.]]
+[ 0.  0.  0.  0.]
+bbox target stdevs:
+[[ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]
+ [ 0.1  0.1  0.2  0.2]]
+[ 0.1  0.1  0.2  0.2]
+Normalizing targets
+done
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+I0727 15:51:14.080163 27549 solver.cpp:48] Initializing solver from parameters: 
+train_net: "models/pascal_voc/VGG16/FP_Net_end2end/train.prototxt"
+base_lr: 0.002
+display: 20
+lr_policy: "step"
+gamma: 0.1
+momentum: 0.9
+weight_decay: 0.0001
+stepsize: 50000
+snapshot: 0
+snapshot_prefix: "fpn"
+average_loss: 100
+iter_size: 2
+I0727 15:51:14.080224 27549 solver.cpp:81] Creating training net from train_net file: models/pascal_voc/VGG16/FP_Net_end2end/train.prototxt
+I0727 15:51:14.081679 27549 net.cpp:49] Initializing net from parameters: 
+name: "VGG_ILSVRC_16_layers"
+state {
+  phase: TRAIN
+}
+layer {
+  name: "input-data"
+  type: "Python"
+  top: "data"
+  top: "im_info"
+  top: "gt_boxes"
+  python_param {
+    module: "roi_data_layer.layer"
+    layer: "RoIDataLayer"
+    param_str: "\'num_classes\': 21"
+  }
+}
+layer {
+  name: "conv1_1"
+  type: "Convolution"
+  bottom: "data"
+  top: "conv1_1"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu1_1"
+  type: "ReLU"
+  bottom: "conv1_1"
+  top: "conv1_1"
+}
+layer {
+  name: "conv1_2"
+  type: "Convolution"
+  bottom: "conv1_1"
+  top: "conv1_2"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu1_2"
+  type: "ReLU"
+  bottom: "conv1_2"
+  top: "conv1_2"
+}
+layer {
+  name: "pool1"
+  type: "Pooling"
+  bottom: "conv1_2"
+  top: "pool1"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
+layer {
+  name: "conv2_1"
+  type: "Convolution"
+  bottom: "pool1"
+  top: "conv2_1"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu2_1"
+  type: "ReLU"
+  bottom: "conv2_1"
+  top: "conv2_1"
+}
+layer {
+  name: "conv2_2"
+  type: "Convolution"
+  bottom: "conv2_1"
+  top: "conv2_2"
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu2_2"
+  type: "ReLU"
+  bottom: "conv2_2"
+  top: "conv2_2"
+}
+layer {
+  name: "pool2"
+  type: "Pooling"
+  bottom: "conv2_2"
+  top: "pool2"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
+layer {
+  name: "conv3_1"
+  type: "Convolution"
+  bottom: "pool2"
+  top: "conv3_1"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 256
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu3_1"
+  type: "ReLU"
+  bottom: "conv3_1"
+  top: "conv3_1"
+}
+layer {
+  name: "conv3_2"
+  type: "Convolution"
+  bottom: "conv3_1"
+  top: "conv3_2"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 256
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu3_2"
+  type: "ReLU"
+  bottom: "conv3_2"
+  top: "conv3_2"
+}
+layer {
+  name: "conv3_3"
+  type: "Convolution"
+  bottom: "conv3_2"
+  top: "conv3_3"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 256
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu3_3"
+  type: "ReLU"
+  bottom: "conv3_3"
+  top: "conv3_3"
+}
+layer {
+  name: "pool3"
+  type: "Pooling"
+  bottom: "conv3_3"
+  top: "pool3"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
+layer {
+  name: "conv4_1"
+  type: "Convolution"
+  bottom: "pool3"
+  top: "conv4_1"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu4_1"
+  type: "ReLU"
+  bottom: "conv4_1"
+  top: "conv4_1"
+}
+layer {
+  name: "conv4_2"
+  type: "Convolution"
+  bottom: "conv4_1"
+  top: "conv4_2"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu4_2"
+  type: "ReLU"
+  bottom: "conv4_2"
+  top: "conv4_2"
+}
+layer {
+  name: "conv4_3"
+  type: "Convolution"
+  bottom: "conv4_2"
+  top: "conv4_3"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu4_3"
+  type: "ReLU"
+  bottom: "conv4_3"
+  top: "conv4_3"
+}
+layer {
+  name: "pool4"
+  type: "Pooling"
+  bottom: "conv4_3"
+  top: "pool4"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
+layer {
+  name: "conv5_1"
+  type: "Convolution"
+  bottom: "pool4"
+  top: "conv5_1"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu5_1"
+  type: "ReLU"
+  bottom: "conv5_1"
+  top: "conv5_1"
+}
+layer {
+  name: "conv5_2"
+  type: "Convolution"
+  bottom: "conv5_1"
+  top: "conv5_2"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu5_2"
+  type: "ReLU"
+  bottom: "conv5_2"
+  top: "conv5_2"
+}
+layer {
+  name: "conv5_3"
+  type: "Convolution"
+  bottom: "conv5_2"
+  top: "conv5_3"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+  }
+}
+layer {
+  name: "relu5_3"
+  type: "ReLU"
+  bottom: "conv5_3"
+  top: "conv5_3"
+}
+layer {
+  name: "rpn_conv/3x3"
+  type: "Convolution"
+  bottom: "conv5_3"
+  top: "rpn/output"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+    stride: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "rpn_relu/3x3"
+  type: "ReLU"
+  bottom: "rpn/output"
+  top: "rpn/output"
+}
+layer {
+  name: "rpn_cls_score"
+  type: "Convolution"
+  bottom: "rpn/output"
+  top: "rpn_cls_score"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 36
+    pad: 0
+    kernel_size: 1
+    stride: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "rpn_bbox_pred"
+  type: "Convolution"
+  bottom: "rpn/output"
+  top: "rpn_bbox_pred"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 2
+  }
+  convolution_param {
+    num_output: 72
+    pad: 0
+    kernel_size: 1
+    stride: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "rpn_cls_score_reshape"
+  type: "Reshape"
+  bottom: "rpn_cls_score"
+  top: "rpn_cls_score_reshape"
+  reshape_param {
+    shape {
+      dim: 0
+      dim: 2
+      dim: -1
+      dim: 0
+    }
+  }
+}
+layer {
+  name: "rpn-data"
+  type: "Python"
+  bottom: "rpn_cls_score"
+  bottom: "gt_boxes"
+  bottom: "im_info"
+  bottom: "data"
+  top: "rpn_labels"
+  top: "rpn_bbox_targets"
+  top: "rpn_bbox_inside_weights"
+  top: "rpn_bbox_outside_weights"
+  python_param {
+    module: "rpn.anchor_target_layer"
+    layer: "AnchorTargetLayer"
+    param_str: "\'feat_stride\': 16"
+  }
+}
+layer {
+  name: "rpn_loss_cls"
+  type: "SoftmaxWithLoss"
+  bottom: "rpn_cls_score_reshape"
+  bottom: "rpn_labels"
+  top: "rpn_cls_loss"
+  loss_weight: 1
+  propagate_down: true
+  propagate_down: false
+  loss_param {
+    ignore_label: -1
+    normalize: true
+  }
+}
+layer {
+  name: "rpn_loss_bbox"
+  type: "SmoothL1Loss"
+  bottom: "rpn_bbox_pred"
+  bottom: "rpn_bbox_targets"
+  bottom: "rpn_bbox_inside_weights"
+  bottom: "rpn_bbox_outside_weights"
+  top: "rpn_loss_bbox"
+  loss_weight: 1
+  smooth_l1_loss_param {
+    sigma: 3
+  }
+}
+layer {
+  name: "rpn_cls_prob"
+  type: "Softmax"
+  bottom: "rpn_cls_score_reshape"
+  top: "rpn_cls_prob"
+}
+layer {
+  name: "rpn_cls_prob_reshape"
+  type: "Reshape"
+  bottom: "rpn_cls_prob"
+  top: "rpn_cls_prob_reshape"
+  reshape_param {
+    shape {
+      dim: 0
+      dim: 36
+      dim: -1
+      dim: 0
+    }
+  }
+}
+layer {
+  name: "proposal"
+  type: "Python"
+  bottom: "rpn_cls_prob_reshape"
+  bottom: "rpn_bbox_pred"
+  bottom: "im_info"
+  top: "rpn_rois"
+  python_param {
+    module: "rpn.proposal_layer"
+    layer: "ProposalLayer"
+    param_str: "\'feat_stride\': 16"
+  }
+}
+layer {
+  name: "roi-data"
+  type: "Python"
+  bottom: "rpn_rois"
+  bottom: "gt_boxes"
+  top: "rois"
+  top: "labels"
+  top: "bbox_targets"
+  top: "bbox_inside_weights"
+  top: "bbox_outside_weights"
+  python_param {
+    module: "rpn.proposal_target_layer"
+    layer: "ProposalTargetLayer"
+    param_str: "\'num_classes\': 21"
+  }
+}
+layer {
+  name: "roi_pool5_readonly"
+  type: "ROIPooling"
+  bottom: "conv5_3"
+  bottom: "rois"
+  top: "pool5_readonly"
+  propagate_down: false
+  propagate_down: false
+  roi_pooling_param {
+    pooled_h: 7
+    pooled_w: 7
+    spatial_scale: 0.0625
+  }
+}
+layer {
+  name: "fc6_readonly"
+  type: "InnerProduct"
+  bottom: "pool5_readonly"
+  top: "fc6_readonly"
+  param {
+    name: "fc6_w"
+  }
+  param {
+    name: "fc6_b"
+  }
+  propagate_down: false
+  inner_product_param {
+    num_output: 4096
+  }
+}
+layer {
+  name: "relu6_readonly"
+  type: "ReLU"
+  bottom: "fc6_readonly"
+  top: "fc6_readonly"
+  propagate_down: false
+}
+layer {
+  name: "drop6_readonly"
+  type: "Dropout"
+  bottom: "fc6_readonly"
+  top: "fc6_readonly"
+  propagate_down: false
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+layer {
+  name: "fc7_readonly"
+  type: "InnerProduct"
+  bottom: "fc6_readonly"
+  top: "fc7_readonly"
+  param {
+    name: "fc7_w"
+  }
+  param {
+    name: "fc7_b"
+  }
+  propagate_down: false
+  inner_product_param {
+    num_output: 4096
+  }
+}
+layer {
+  name: "relu7_readonly"
+  type: "ReLU"
+  bottom: "fc7_readonly"
+  top: "fc7_readonly"
+  propagate_down: false
+}
+layer {
+  name: "drop7_readonly"
+  type: "Dropout"
+  bottom: "fc7_readonly"
+  top: "fc7_readonly"
+  propagate_down: false
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+layer {
+  name: "cls_score_readonly"
+  type: "InnerProduct"
+  bottom: "fc7_readonly"
+  top: "cls_score_readonly"
+  param {
+    name: "cls_score_w"
+  }
+  param {
+    name: "cls_score_b"
+  }
+  propagate_down: false
+  inner_product_param {
+    num_output: 21
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "bbox_pred_readonly"
+  type: "InnerProduct"
+  bottom: "fc7_readonly"
+  top: "bbox_pred_readonly"
+  param {
+    name: "bbox_pred_w"
+  }
+  param {
+    name: "bbox_pred_b"
+  }
+  propagate_down: false
+  inner_product_param {
+    num_output: 84
+    weight_filler {
+      type: "gaussian"
+      std: 0.001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "cls_prob_readonly"
+  type: "Softmax"
+  bottom: "cls_score_readonly"
+  top: "cls_prob_readonly"
+  propagate_down: false
+}
+layer {
+  name: "hard_roi_mining"
+  type: "Python"
+  bottom: "cls_prob_readonly"
+  bottom: "bbox_pred_readonly"
+  bottom: "rois"
+  bottom: "labels"
+  bottom: "bbox_targets"
+  bottom: "bbox_inside_weights"
+  bottom: "bbox_outside_weights"
+  top: "rois_hard"
+  top: "labels_hard"
+  top: "bbox_targets_hard"
+  top: "bbox_inside_weights_hard"
+  top: "bbox_outside_weights_hard"
+  propagate_down: false
+  propagate_down: false
+  propagate_down: false
+  propagate_down: false
+  propagate_down: false
+  propagate_down: false
+  propagate_down: false
+  python_param {
+    module: "roi_data_layer.layer"
+    layer: "OHEMDataLayer"
+    param_str: "\'num_classes\': 21"
+  }
+}
+layer {
+  name: "roi_pool5"
+  type: "ROIPooling"
+  bottom: "conv5_3"
+  bottom: "rois_hard"
+  top: "pool5"
+  roi_pooling_param {
+    pooled_h: 7
+    pooled_w: 7
+    spatial_scale: 0.0625
+  }
+}
+layer {
+  name: "fc6"
+  type: "InnerProduct"
+  bottom: "pool5"
+  top: "fc6"
+  param {
+    name: "fc6_w"
+    lr_mult: 1
+  }
+  param {
+    name: "fc6_b"
+    lr_mult: 2
+  }
+  inner_product_param {
+    num_output: 4096
+  }
+}
+layer {
+  name: "relu6"
+  type: "ReLU"
+  bottom: "fc6"
+  top: "fc6"
+}
+layer {
+  name: "drop6"
+  type: "Dropout"
+  bottom: "fc6"
+  top: "fc6"
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+layer {
+  name: "fc7"
+  type: "InnerProduct"
+  bottom: "fc6"
+  top: "fc7"
+  param {
+    name: "fc7_w"
+    lr_mult: 1
+  }
+  param {
+    name: "fc7_b"
+    lr_mult: 2
+  }
+  inner_product_param {
+    num_output: 4096
+  }
+}
+layer {
+  name: "relu7"
+  type: "ReLU"
+  bottom: "fc7"
+  top: "fc7"
+}
+layer {
+  name: "drop7"
+  type: "Dropout"
+  bottom: "fc7"
+  top: "fc7"
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+layer {
+  name: "cls_score"
+  type: "InnerProduct"
+  bottom: "fc7"
+  top: "cls_score"
+  param {
+    name: "cls_score_w"
+    lr_mult: 1
+  }
+  param {
+    name: "cls_score_b"
+    lr_mult: 2
+  }
+  inner_product_param {
+    num_output: 21
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "bbox_pred"
+  type: "InnerProduct"
+  bottom: "fc7"
+  top: "bbox_pred"
+  param {
+    name: "bbox_pred_w"
+    lr_mult: 1
+  }
+  param {
+    name: "bbox_pred_b"
+    lr_mult: 2
+  }
+  inner_product_param {
+    num_output: 84
+    weight_filler {
+      type: "gaussian"
+      std: 0.001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "loss_cls"
+  type: "SoftmaxWithLoss"
+  bottom: "cls_score"
+  bottom: "labels_hard"
+  top: "loss_cls"
+  loss_weight: 1
+  propagate_down: true
+  propagate_down: false
+}
+layer {
+  name: "loss_bbox"
+  type: "SmoothL1Loss"
+  bottom: "bbox_pred"
+  bottom: "bbox_targets_hard"
+  bottom: "bbox_inside_weights_hard"
+  bottom: "bbox_outside_weights_hard"
+  top: "loss_bbox"
+  loss_weight: 1
+}
+I0727 15:51:14.082029 27549 layer_factory.hpp:77] Creating layer input-data
+I0727 15:51:14.087810 27549 net.cpp:106] Creating Layer input-data
+I0727 15:51:14.087826 27549 net.cpp:411] input-data -> data
+I0727 15:51:14.087843 27549 net.cpp:411] input-data -> im_info
+I0727 15:51:14.087849 27549 net.cpp:411] input-data -> gt_boxes
+RoiDataLayer: name_to_top: {'gt_boxes': 2, 'data': 0, 'im_info': 1}
+I0727 15:51:14.134310 27549 net.cpp:150] Setting up input-data
+I0727 15:51:14.134342 27549 net.cpp:157] Top shape: 1 3 375 520 (585000)
+I0727 15:51:14.134347 27549 net.cpp:157] Top shape: 1 3 (3)
+I0727 15:51:14.134351 27549 net.cpp:157] Top shape: 1 4 (4)
+I0727 15:51:14.134354 27549 net.cpp:165] Memory required for data: 2340028
+I0727 15:51:14.134361 27549 layer_factory.hpp:77] Creating layer data_input-data_0_split
+I0727 15:51:14.134373 27549 net.cpp:106] Creating Layer data_input-data_0_split
+I0727 15:51:14.134380 27549 net.cpp:454] data_input-data_0_split <- data
+I0727 15:51:14.134390 27549 net.cpp:411] data_input-data_0_split -> data_input-data_0_split_0
+I0727 15:51:14.134397 27549 net.cpp:411] data_input-data_0_split -> data_input-data_0_split_1
+I0727 15:51:14.134454 27549 net.cpp:150] Setting up data_input-data_0_split
+I0727 15:51:14.134465 27549 net.cpp:157] Top shape: 1 3 375 520 (585000)
+I0727 15:51:14.134469 27549 net.cpp:157] Top shape: 1 3 375 520 (585000)
+I0727 15:51:14.134472 27549 net.cpp:165] Memory required for data: 7020028
+I0727 15:51:14.134475 27549 layer_factory.hpp:77] Creating layer im_info_input-data_1_split
+I0727 15:51:14.134480 27549 net.cpp:106] Creating Layer im_info_input-data_1_split
+I0727 15:51:14.134483 27549 net.cpp:454] im_info_input-data_1_split <- im_info
+I0727 15:51:14.134490 27549 net.cpp:411] im_info_input-data_1_split -> im_info_input-data_1_split_0
+I0727 15:51:14.134495 27549 net.cpp:411] im_info_input-data_1_split -> im_info_input-data_1_split_1
+I0727 15:51:14.134522 27549 net.cpp:150] Setting up im_info_input-data_1_split
+I0727 15:51:14.134531 27549 net.cpp:157] Top shape: 1 3 (3)
+I0727 15:51:14.134536 27549 net.cpp:157] Top shape: 1 3 (3)
+I0727 15:51:14.134538 27549 net.cpp:165] Memory required for data: 7020052
+I0727 15:51:14.134541 27549 layer_factory.hpp:77] Creating layer gt_boxes_input-data_2_split
+I0727 15:51:14.134547 27549 net.cpp:106] Creating Layer gt_boxes_input-data_2_split
+I0727 15:51:14.134551 27549 net.cpp:454] gt_boxes_input-data_2_split <- gt_boxes
+I0727 15:51:14.134557 27549 net.cpp:411] gt_boxes_input-data_2_split -> gt_boxes_input-data_2_split_0
+I0727 15:51:14.134560 27549 net.cpp:411] gt_boxes_input-data_2_split -> gt_boxes_input-data_2_split_1
+I0727 15:51:14.134588 27549 net.cpp:150] Setting up gt_boxes_input-data_2_split
+I0727 15:51:14.134598 27549 net.cpp:157] Top shape: 1 4 (4)
+I0727 15:51:14.134606 27549 net.cpp:157] Top shape: 1 4 (4)
+I0727 15:51:14.134608 27549 net.cpp:165] Memory required for data: 7020084
+I0727 15:51:14.134611 27549 layer_factory.hpp:77] Creating layer conv1_1
+I0727 15:51:14.134625 27549 net.cpp:106] Creating Layer conv1_1
+I0727 15:51:14.134640 27549 net.cpp:454] conv1_1 <- data_input-data_0_split_0
+I0727 15:51:14.134649 27549 net.cpp:411] conv1_1 -> conv1_1
+I0727 15:51:14.484374 27549 net.cpp:150] Setting up conv1_1
+I0727 15:51:14.484419 27549 net.cpp:157] Top shape: 1 64 375 520 (12480000)
+I0727 15:51:14.484423 27549 net.cpp:165] Memory required for data: 56940084
+I0727 15:51:14.484447 27549 layer_factory.hpp:77] Creating layer relu1_1
+I0727 15:51:14.484462 27549 net.cpp:106] Creating Layer relu1_1
+I0727 15:51:14.484474 27549 net.cpp:454] relu1_1 <- conv1_1
+I0727 15:51:14.484482 27549 net.cpp:397] relu1_1 -> conv1_1 (in-place)
+I0727 15:51:14.485381 27549 net.cpp:150] Setting up relu1_1
+I0727 15:51:14.485402 27549 net.cpp:157] Top shape: 1 64 375 520 (12480000)
+I0727 15:51:14.485406 27549 net.cpp:165] Memory required for data: 106860084
+I0727 15:51:14.485409 27549 layer_factory.hpp:77] Creating layer conv1_2
+I0727 15:51:14.485421 27549 net.cpp:106] Creating Layer conv1_2
+I0727 15:51:14.485430 27549 net.cpp:454] conv1_2 <- conv1_1
+I0727 15:51:14.485435 27549 net.cpp:411] conv1_2 -> conv1_2
+I0727 15:51:14.490121 27549 net.cpp:150] Setting up conv1_2
+I0727 15:51:14.490145 27549 net.cpp:157] Top shape: 1 64 375 520 (12480000)
+I0727 15:51:14.490149 27549 net.cpp:165] Memory required for data: 156780084
+I0727 15:51:14.490159 27549 layer_factory.hpp:77] Creating layer relu1_2
+I0727 15:51:14.490165 27549 net.cpp:106] Creating Layer relu1_2
+I0727 15:51:14.490170 27549 net.cpp:454] relu1_2 <- conv1_2
+I0727 15:51:14.490175 27549 net.cpp:397] relu1_2 -> conv1_2 (in-place)
+I0727 15:51:14.490337 27549 net.cpp:150] Setting up relu1_2
+I0727 15:51:14.490353 27549 net.cpp:157] Top shape: 1 64 375 520 (12480000)
+I0727 15:51:14.490356 27549 net.cpp:165] Memory required for data: 206700084
+I0727 15:51:14.490360 27549 layer_factory.hpp:77] Creating layer pool1
+I0727 15:51:14.490372 27549 net.cpp:106] Creating Layer pool1
+I0727 15:51:14.490376 27549 net.cpp:454] pool1 <- conv1_2
+I0727 15:51:14.490381 27549 net.cpp:411] pool1 -> pool1
+I0727 15:51:14.490432 27549 net.cpp:150] Setting up pool1
+I0727 15:51:14.490443 27549 net.cpp:157] Top shape: 1 64 188 260 (3128320)
+I0727 15:51:14.490447 27549 net.cpp:165] Memory required for data: 219213364
+I0727 15:51:14.490449 27549 layer_factory.hpp:77] Creating layer conv2_1
+I0727 15:51:14.490456 27549 net.cpp:106] Creating Layer conv2_1
+I0727 15:51:14.490459 27549 net.cpp:454] conv2_1 <- pool1
+I0727 15:51:14.490464 27549 net.cpp:411] conv2_1 -> conv2_1
+I0727 15:51:14.494175 27549 net.cpp:150] Setting up conv2_1
+I0727 15:51:14.494199 27549 net.cpp:157] Top shape: 1 128 188 260 (6256640)
+I0727 15:51:14.494204 27549 net.cpp:165] Memory required for data: 244239924
+I0727 15:51:14.494212 27549 layer_factory.hpp:77] Creating layer relu2_1
+I0727 15:51:14.494218 27549 net.cpp:106] Creating Layer relu2_1
+I0727 15:51:14.494227 27549 net.cpp:454] relu2_1 <- conv2_1
+I0727 15:51:14.494233 27549 net.cpp:397] relu2_1 -> conv2_1 (in-place)
+I0727 15:51:14.494560 27549 net.cpp:150] Setting up relu2_1
+I0727 15:51:14.494575 27549 net.cpp:157] Top shape: 1 128 188 260 (6256640)
+I0727 15:51:14.494578 27549 net.cpp:165] Memory required for data: 269266484
+I0727 15:51:14.494581 27549 layer_factory.hpp:77] Creating layer conv2_2
+I0727 15:51:14.494590 27549 net.cpp:106] Creating Layer conv2_2
+I0727 15:51:14.494592 27549 net.cpp:454] conv2_2 <- conv2_1
+I0727 15:51:14.494597 27549 net.cpp:411] conv2_2 -> conv2_2
+I0727 15:51:14.499441 27549 net.cpp:150] Setting up conv2_2
+I0727 15:51:14.499462 27549 net.cpp:157] Top shape: 1 128 188 260 (6256640)
+I0727 15:51:14.499466 27549 net.cpp:165] Memory required for data: 294293044
+I0727 15:51:14.499474 27549 layer_factory.hpp:77] Creating layer relu2_2
+I0727 15:51:14.499480 27549 net.cpp:106] Creating Layer relu2_2
+I0727 15:51:14.499483 27549 net.cpp:454] relu2_2 <- conv2_2
+I0727 15:51:14.499488 27549 net.cpp:397] relu2_2 -> conv2_2 (in-place)
+I0727 15:51:14.500370 27549 net.cpp:150] Setting up relu2_2
+I0727 15:51:14.500391 27549 net.cpp:157] Top shape: 1 128 188 260 (6256640)
+I0727 15:51:14.500393 27549 net.cpp:165] Memory required for data: 319319604
+I0727 15:51:14.500397 27549 layer_factory.hpp:77] Creating layer pool2
+I0727 15:51:14.500406 27549 net.cpp:106] Creating Layer pool2
+I0727 15:51:14.500409 27549 net.cpp:454] pool2 <- conv2_2
+I0727 15:51:14.500414 27549 net.cpp:411] pool2 -> pool2
+I0727 15:51:14.500458 27549 net.cpp:150] Setting up pool2
+I0727 15:51:14.500470 27549 net.cpp:157] Top shape: 1 128 94 130 (1564160)
+I0727 15:51:14.500473 27549 net.cpp:165] Memory required for data: 325576244
+I0727 15:51:14.500476 27549 layer_factory.hpp:77] Creating layer conv3_1
+I0727 15:51:14.500485 27549 net.cpp:106] Creating Layer conv3_1
+I0727 15:51:14.500488 27549 net.cpp:454] conv3_1 <- pool2
+I0727 15:51:14.500495 27549 net.cpp:411] conv3_1 -> conv3_1
+I0727 15:51:14.505609 27549 net.cpp:150] Setting up conv3_1
+I0727 15:51:14.505635 27549 net.cpp:157] Top shape: 1 256 94 130 (3128320)
+I0727 15:51:14.505640 27549 net.cpp:165] Memory required for data: 338089524
+I0727 15:51:14.505650 27549 layer_factory.hpp:77] Creating layer relu3_1
+I0727 15:51:14.505662 27549 net.cpp:106] Creating Layer relu3_1
+I0727 15:51:14.505671 27549 net.cpp:454] relu3_1 <- conv3_1
+I0727 15:51:14.505676 27549 net.cpp:397] relu3_1 -> conv3_1 (in-place)
+I0727 15:51:14.505862 27549 net.cpp:150] Setting up relu3_1
+I0727 15:51:14.505877 27549 net.cpp:157] Top shape: 1 256 94 130 (3128320)
+I0727 15:51:14.505880 27549 net.cpp:165] Memory required for data: 350602804
+I0727 15:51:14.505884 27549 layer_factory.hpp:77] Creating layer conv3_2
+I0727 15:51:14.505894 27549 net.cpp:106] Creating Layer conv3_2
+I0727 15:51:14.505898 27549 net.cpp:454] conv3_2 <- conv3_1
+I0727 15:51:14.505905 27549 net.cpp:411] conv3_2 -> conv3_2
+I0727 15:51:14.511538 27549 net.cpp:150] Setting up conv3_2
+I0727 15:51:14.511562 27549 net.cpp:157] Top shape: 1 256 94 130 (3128320)
+I0727 15:51:14.511566 27549 net.cpp:165] Memory required for data: 363116084
+I0727 15:51:14.511574 27549 layer_factory.hpp:77] Creating layer relu3_2
+I0727 15:51:14.511579 27549 net.cpp:106] Creating Layer relu3_2
+I0727 15:51:14.511582 27549 net.cpp:454] relu3_2 <- conv3_2
+I0727 15:51:14.511590 27549 net.cpp:397] relu3_2 -> conv3_2 (in-place)
+I0727 15:51:14.511903 27549 net.cpp:150] Setting up relu3_2
+I0727 15:51:14.511917 27549 net.cpp:157] Top shape: 1 256 94 130 (3128320)
+I0727 15:51:14.511920 27549 net.cpp:165] Memory required for data: 375629364
+I0727 15:51:14.511924 27549 layer_factory.hpp:77] Creating layer conv3_3
+I0727 15:51:14.511934 27549 net.cpp:106] Creating Layer conv3_3
+I0727 15:51:14.511936 27549 net.cpp:454] conv3_3 <- conv3_2
+I0727 15:51:14.511943 27549 net.cpp:411] conv3_3 -> conv3_3
+I0727 15:51:14.517784 27549 net.cpp:150] Setting up conv3_3
+I0727 15:51:14.517808 27549 net.cpp:157] Top shape: 1 256 94 130 (3128320)
+I0727 15:51:14.517812 27549 net.cpp:165] Memory required for data: 388142644
+I0727 15:51:14.517819 27549 layer_factory.hpp:77] Creating layer relu3_3
+I0727 15:51:14.517827 27549 net.cpp:106] Creating Layer relu3_3
+I0727 15:51:14.517829 27549 net.cpp:454] relu3_3 <- conv3_3
+I0727 15:51:14.517834 27549 net.cpp:397] relu3_3 -> conv3_3 (in-place)
+I0727 15:51:14.518718 27549 net.cpp:150] Setting up relu3_3
+I0727 15:51:14.518738 27549 net.cpp:157] Top shape: 1 256 94 130 (3128320)
+I0727 15:51:14.518741 27549 net.cpp:165] Memory required for data: 400655924
+I0727 15:51:14.518744 27549 layer_factory.hpp:77] Creating layer pool3
+I0727 15:51:14.518752 27549 net.cpp:106] Creating Layer pool3
+I0727 15:51:14.518756 27549 net.cpp:454] pool3 <- conv3_3
+I0727 15:51:14.518782 27549 net.cpp:411] pool3 -> pool3
+I0727 15:51:14.518834 27549 net.cpp:150] Setting up pool3
+I0727 15:51:14.518846 27549 net.cpp:157] Top shape: 1 256 47 65 (782080)
+I0727 15:51:14.518849 27549 net.cpp:165] Memory required for data: 403784244
+I0727 15:51:14.518852 27549 layer_factory.hpp:77] Creating layer conv4_1
+I0727 15:51:14.518860 27549 net.cpp:106] Creating Layer conv4_1
+I0727 15:51:14.518863 27549 net.cpp:454] conv4_1 <- pool3
+I0727 15:51:14.518870 27549 net.cpp:411] conv4_1 -> conv4_1
+I0727 15:51:14.526407 27549 net.cpp:150] Setting up conv4_1
+I0727 15:51:14.526430 27549 net.cpp:157] Top shape: 1 512 47 65 (1564160)
+I0727 15:51:14.526434 27549 net.cpp:165] Memory required for data: 410040884
+I0727 15:51:14.526440 27549 layer_factory.hpp:77] Creating layer relu4_1
+I0727 15:51:14.526448 27549 net.cpp:106] Creating Layer relu4_1
+I0727 15:51:14.526450 27549 net.cpp:454] relu4_1 <- conv4_1
+I0727 15:51:14.526458 27549 net.cpp:397] relu4_1 -> conv4_1 (in-place)
+I0727 15:51:14.527479 27549 net.cpp:150] Setting up relu4_1
+I0727 15:51:14.527500 27549 net.cpp:157] Top shape: 1 512 47 65 (1564160)
+I0727 15:51:14.527503 27549 net.cpp:165] Memory required for data: 416297524
+I0727 15:51:14.527508 27549 layer_factory.hpp:77] Creating layer conv4_2
+I0727 15:51:14.527518 27549 net.cpp:106] Creating Layer conv4_2
+I0727 15:51:14.527520 27549 net.cpp:454] conv4_2 <- conv4_1
+I0727 15:51:14.527526 27549 net.cpp:411] conv4_2 -> conv4_2
+I0727 15:51:14.537644 27549 net.cpp:150] Setting up conv4_2
+I0727 15:51:14.537668 27549 net.cpp:157] Top shape: 1 512 47 65 (1564160)
+I0727 15:51:14.537672 27549 net.cpp:165] Memory required for data: 422554164
+I0727 15:51:14.537684 27549 layer_factory.hpp:77] Creating layer relu4_2
+I0727 15:51:14.537693 27549 net.cpp:106] Creating Layer relu4_2
+I0727 15:51:14.537703 27549 net.cpp:454] relu4_2 <- conv4_2
+I0727 15:51:14.537708 27549 net.cpp:397] relu4_2 -> conv4_2 (in-place)
+I0727 15:51:14.538681 27549 net.cpp:150] Setting up relu4_2
+I0727 15:51:14.538696 27549 net.cpp:157] Top shape: 1 512 47 65 (1564160)
+I0727 15:51:14.538699 27549 net.cpp:165] Memory required for data: 428810804
+I0727 15:51:14.538702 27549 layer_factory.hpp:77] Creating layer conv4_3
+I0727 15:51:14.538712 27549 net.cpp:106] Creating Layer conv4_3
+I0727 15:51:14.538715 27549 net.cpp:454] conv4_3 <- conv4_2
+I0727 15:51:14.538720 27549 net.cpp:411] conv4_3 -> conv4_3
+I0727 15:51:14.547468 27549 net.cpp:150] Setting up conv4_3
+I0727 15:51:14.547492 27549 net.cpp:157] Top shape: 1 512 47 65 (1564160)
+I0727 15:51:14.547497 27549 net.cpp:165] Memory required for data: 435067444
+I0727 15:51:14.547502 27549 layer_factory.hpp:77] Creating layer relu4_3
+I0727 15:51:14.547509 27549 net.cpp:106] Creating Layer relu4_3
+I0727 15:51:14.547513 27549 net.cpp:454] relu4_3 <- conv4_3
+I0727 15:51:14.547520 27549 net.cpp:397] relu4_3 -> conv4_3 (in-place)
+I0727 15:51:14.548421 27549 net.cpp:150] Setting up relu4_3
+I0727 15:51:14.548440 27549 net.cpp:157] Top shape: 1 512 47 65 (1564160)
+I0727 15:51:14.548444 27549 net.cpp:165] Memory required for data: 441324084
+I0727 15:51:14.548449 27549 layer_factory.hpp:77] Creating layer pool4
+I0727 15:51:14.548456 27549 net.cpp:106] Creating Layer pool4
+I0727 15:51:14.548460 27549 net.cpp:454] pool4 <- conv4_3
+I0727 15:51:14.548465 27549 net.cpp:411] pool4 -> pool4
+I0727 15:51:14.548516 27549 net.cpp:150] Setting up pool4
+I0727 15:51:14.548527 27549 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:51:14.548529 27549 net.cpp:165] Memory required for data: 442946100
+I0727 15:51:14.548532 27549 layer_factory.hpp:77] Creating layer conv5_1
+I0727 15:51:14.548542 27549 net.cpp:106] Creating Layer conv5_1
+I0727 15:51:14.548545 27549 net.cpp:454] conv5_1 <- pool4
+I0727 15:51:14.548552 27549 net.cpp:411] conv5_1 -> conv5_1
+I0727 15:51:14.557719 27549 net.cpp:150] Setting up conv5_1
+I0727 15:51:14.557744 27549 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:51:14.557749 27549 net.cpp:165] Memory required for data: 444568116
+I0727 15:51:14.557756 27549 layer_factory.hpp:77] Creating layer relu5_1
+I0727 15:51:14.557762 27549 net.cpp:106] Creating Layer relu5_1
+I0727 15:51:14.557766 27549 net.cpp:454] relu5_1 <- conv5_1
+I0727 15:51:14.557780 27549 net.cpp:397] relu5_1 -> conv5_1 (in-place)
+I0727 15:51:14.558033 27549 net.cpp:150] Setting up relu5_1
+I0727 15:51:14.558049 27549 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:51:14.558053 27549 net.cpp:165] Memory required for data: 446190132
+I0727 15:51:14.558058 27549 layer_factory.hpp:77] Creating layer conv5_2
+I0727 15:51:14.558066 27549 net.cpp:106] Creating Layer conv5_2
+I0727 15:51:14.558070 27549 net.cpp:454] conv5_2 <- conv5_1
+I0727 15:51:14.558076 27549 net.cpp:411] conv5_2 -> conv5_2
+I0727 15:51:14.568506 27549 net.cpp:150] Setting up conv5_2
+I0727 15:51:14.568528 27549 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:51:14.568532 27549 net.cpp:165] Memory required for data: 447812148
+I0727 15:51:14.568539 27549 layer_factory.hpp:77] Creating layer relu5_2
+I0727 15:51:14.568547 27549 net.cpp:106] Creating Layer relu5_2
+I0727 15:51:14.568552 27549 net.cpp:454] relu5_2 <- conv5_2
+I0727 15:51:14.568557 27549 net.cpp:397] relu5_2 -> conv5_2 (in-place)
+I0727 15:51:14.569783 27549 net.cpp:150] Setting up relu5_2
+I0727 15:51:14.569800 27549 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:51:14.569806 27549 net.cpp:165] Memory required for data: 449434164
+I0727 15:51:14.569809 27549 layer_factory.hpp:77] Creating layer conv5_3
+I0727 15:51:14.569825 27549 net.cpp:106] Creating Layer conv5_3
+I0727 15:51:14.569830 27549 net.cpp:454] conv5_3 <- conv5_2
+I0727 15:51:14.569836 27549 net.cpp:411] conv5_3 -> conv5_3
+I0727 15:51:14.577425 27549 net.cpp:150] Setting up conv5_3
+I0727 15:51:14.577448 27549 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:51:14.577452 27549 net.cpp:165] Memory required for data: 451056180
+I0727 15:51:14.577460 27549 layer_factory.hpp:77] Creating layer relu5_3
+I0727 15:51:14.577468 27549 net.cpp:106] Creating Layer relu5_3
+I0727 15:51:14.577472 27549 net.cpp:454] relu5_3 <- conv5_3
+I0727 15:51:14.577477 27549 net.cpp:397] relu5_3 -> conv5_3 (in-place)
+I0727 15:51:14.578361 27549 net.cpp:150] Setting up relu5_3
+I0727 15:51:14.578380 27549 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:51:14.578384 27549 net.cpp:165] Memory required for data: 452678196
+I0727 15:51:14.578388 27549 layer_factory.hpp:77] Creating layer conv5_3_relu5_3_0_split
+I0727 15:51:14.578395 27549 net.cpp:106] Creating Layer conv5_3_relu5_3_0_split
+I0727 15:51:14.578398 27549 net.cpp:454] conv5_3_relu5_3_0_split <- conv5_3
+I0727 15:51:14.578405 27549 net.cpp:411] conv5_3_relu5_3_0_split -> conv5_3_relu5_3_0_split_0
+I0727 15:51:14.578411 27549 net.cpp:411] conv5_3_relu5_3_0_split -> conv5_3_relu5_3_0_split_1
+I0727 15:51:14.578431 27549 net.cpp:411] conv5_3_relu5_3_0_split -> conv5_3_relu5_3_0_split_2
+I0727 15:51:14.578495 27549 net.cpp:150] Setting up conv5_3_relu5_3_0_split
+I0727 15:51:14.578506 27549 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:51:14.578510 27549 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:51:14.578514 27549 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:51:14.578516 27549 net.cpp:165] Memory required for data: 457544244
+I0727 15:51:14.578519 27549 layer_factory.hpp:77] Creating layer rpn_conv/3x3
+I0727 15:51:14.578531 27549 net.cpp:106] Creating Layer rpn_conv/3x3
+I0727 15:51:14.578533 27549 net.cpp:454] rpn_conv/3x3 <- conv5_3_relu5_3_0_split_0
+I0727 15:51:14.578541 27549 net.cpp:411] rpn_conv/3x3 -> rpn/output
+I0727 15:51:14.640650 27549 net.cpp:150] Setting up rpn_conv/3x3
+I0727 15:51:14.640692 27549 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:51:14.640699 27549 net.cpp:165] Memory required for data: 459166260
+I0727 15:51:14.640709 27549 layer_factory.hpp:77] Creating layer rpn_relu/3x3
+I0727 15:51:14.640719 27549 net.cpp:106] Creating Layer rpn_relu/3x3
+I0727 15:51:14.640725 27549 net.cpp:454] rpn_relu/3x3 <- rpn/output
+I0727 15:51:14.640732 27549 net.cpp:397] rpn_relu/3x3 -> rpn/output (in-place)
+I0727 15:51:14.640915 27549 net.cpp:150] Setting up rpn_relu/3x3
+I0727 15:51:14.640933 27549 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:51:14.640936 27549 net.cpp:165] Memory required for data: 460788276
+I0727 15:51:14.640939 27549 layer_factory.hpp:77] Creating layer rpn/output_rpn_relu/3x3_0_split
+I0727 15:51:14.640945 27549 net.cpp:106] Creating Layer rpn/output_rpn_relu/3x3_0_split
+I0727 15:51:14.640949 27549 net.cpp:454] rpn/output_rpn_relu/3x3_0_split <- rpn/output
+I0727 15:51:14.640954 27549 net.cpp:411] rpn/output_rpn_relu/3x3_0_split -> rpn/output_rpn_relu/3x3_0_split_0
+I0727 15:51:14.640959 27549 net.cpp:411] rpn/output_rpn_relu/3x3_0_split -> rpn/output_rpn_relu/3x3_0_split_1
+I0727 15:51:14.641005 27549 net.cpp:150] Setting up rpn/output_rpn_relu/3x3_0_split
+I0727 15:51:14.641016 27549 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:51:14.641019 27549 net.cpp:157] Top shape: 1 512 24 33 (405504)
+I0727 15:51:14.641022 27549 net.cpp:165] Memory required for data: 464032308
+I0727 15:51:14.641026 27549 layer_factory.hpp:77] Creating layer rpn_cls_score
+I0727 15:51:14.641054 27549 net.cpp:106] Creating Layer rpn_cls_score
+I0727 15:51:14.641072 27549 net.cpp:454] rpn_cls_score <- rpn/output_rpn_relu/3x3_0_split_0
+I0727 15:51:14.641080 27549 net.cpp:411] rpn_cls_score -> rpn_cls_score
+I0727 15:51:14.649718 27549 net.cpp:150] Setting up rpn_cls_score
+I0727 15:51:14.649739 27549 net.cpp:157] Top shape: 1 36 24 33 (28512)
+I0727 15:51:14.649744 27549 net.cpp:165] Memory required for data: 464146356
+I0727 15:51:14.649750 27549 layer_factory.hpp:77] Creating layer rpn_cls_score_rpn_cls_score_0_split
+I0727 15:51:14.649758 27549 net.cpp:106] Creating Layer rpn_cls_score_rpn_cls_score_0_split
+I0727 15:51:14.649762 27549 net.cpp:454] rpn_cls_score_rpn_cls_score_0_split <- rpn_cls_score
+I0727 15:51:14.649768 27549 net.cpp:411] rpn_cls_score_rpn_cls_score_0_split -> rpn_cls_score_rpn_cls_score_0_split_0
+I0727 15:51:14.649775 27549 net.cpp:411] rpn_cls_score_rpn_cls_score_0_split -> rpn_cls_score_rpn_cls_score_0_split_1
+I0727 15:51:14.649823 27549 net.cpp:150] Setting up rpn_cls_score_rpn_cls_score_0_split
+I0727 15:51:14.649834 27549 net.cpp:157] Top shape: 1 36 24 33 (28512)
+I0727 15:51:14.649838 27549 net.cpp:157] Top shape: 1 36 24 33 (28512)
+I0727 15:51:14.649842 27549 net.cpp:165] Memory required for data: 464374452
+I0727 15:51:14.649844 27549 layer_factory.hpp:77] Creating layer rpn_bbox_pred
+I0727 15:51:14.649854 27549 net.cpp:106] Creating Layer rpn_bbox_pred
+I0727 15:51:14.649858 27549 net.cpp:454] rpn_bbox_pred <- rpn/output_rpn_relu/3x3_0_split_1
+I0727 15:51:14.649865 27549 net.cpp:411] rpn_bbox_pred -> rpn_bbox_pred
+I0727 15:51:14.652973 27549 net.cpp:150] Setting up rpn_bbox_pred
+I0727 15:51:14.652993 27549 net.cpp:157] Top shape: 1 72 24 33 (57024)
+I0727 15:51:14.652997 27549 net.cpp:165] Memory required for data: 464602548
+I0727 15:51:14.653004 27549 layer_factory.hpp:77] Creating layer rpn_bbox_pred_rpn_bbox_pred_0_split
+I0727 15:51:14.653012 27549 net.cpp:106] Creating Layer rpn_bbox_pred_rpn_bbox_pred_0_split
+I0727 15:51:14.653017 27549 net.cpp:454] rpn_bbox_pred_rpn_bbox_pred_0_split <- rpn_bbox_pred
+I0727 15:51:14.653022 27549 net.cpp:411] rpn_bbox_pred_rpn_bbox_pred_0_split -> rpn_bbox_pred_rpn_bbox_pred_0_split_0
+I0727 15:51:14.653028 27549 net.cpp:411] rpn_bbox_pred_rpn_bbox_pred_0_split -> rpn_bbox_pred_rpn_bbox_pred_0_split_1
+I0727 15:51:14.653086 27549 net.cpp:150] Setting up rpn_bbox_pred_rpn_bbox_pred_0_split
+I0727 15:51:14.653098 27549 net.cpp:157] Top shape: 1 72 24 33 (57024)
+I0727 15:51:14.653102 27549 net.cpp:157] Top shape: 1 72 24 33 (57024)
+I0727 15:51:14.653105 27549 net.cpp:165] Memory required for data: 465058740
+I0727 15:51:14.653108 27549 layer_factory.hpp:77] Creating layer rpn_cls_score_reshape
+I0727 15:51:14.653118 27549 net.cpp:106] Creating Layer rpn_cls_score_reshape
+I0727 15:51:14.653122 27549 net.cpp:454] rpn_cls_score_reshape <- rpn_cls_score_rpn_cls_score_0_split_0
+I0727 15:51:14.653129 27549 net.cpp:411] rpn_cls_score_reshape -> rpn_cls_score_reshape
+I0727 15:51:14.653162 27549 net.cpp:150] Setting up rpn_cls_score_reshape
+I0727 15:51:14.653172 27549 net.cpp:157] Top shape: 1 2 432 33 (28512)
+I0727 15:51:14.653174 27549 net.cpp:165] Memory required for data: 465172788
+I0727 15:51:14.653177 27549 layer_factory.hpp:77] Creating layer rpn_cls_score_reshape_rpn_cls_score_reshape_0_split
+I0727 15:51:14.653185 27549 net.cpp:106] Creating Layer rpn_cls_score_reshape_rpn_cls_score_reshape_0_split
+I0727 15:51:14.653188 27549 net.cpp:454] rpn_cls_score_reshape_rpn_cls_score_reshape_0_split <- rpn_cls_score_reshape
+I0727 15:51:14.653192 27549 net.cpp:411] rpn_cls_score_reshape_rpn_cls_score_reshape_0_split -> rpn_cls_score_reshape_rpn_cls_score_reshape_0_split_0
+I0727 15:51:14.653198 27549 net.cpp:411] rpn_cls_score_reshape_rpn_cls_score_reshape_0_split -> rpn_cls_score_reshape_rpn_cls_score_reshape_0_split_1
+I0727 15:51:14.653235 27549 net.cpp:150] Setting up rpn_cls_score_reshape_rpn_cls_score_reshape_0_split
+I0727 15:51:14.653244 27549 net.cpp:157] Top shape: 1 2 432 33 (28512)
+I0727 15:51:14.653249 27549 net.cpp:157] Top shape: 1 2 432 33 (28512)
+I0727 15:51:14.653250 27549 net.cpp:165] Memory required for data: 465400884
+I0727 15:51:14.653254 27549 layer_factory.hpp:77] Creating layer rpn-data
+I0727 15:51:14.653911 27549 net.cpp:106] Creating Layer rpn-data
+I0727 15:51:14.653930 27549 net.cpp:454] rpn-data <- rpn_cls_score_rpn_cls_score_0_split_1
+I0727 15:51:14.653937 27549 net.cpp:454] rpn-data <- gt_boxes_input-data_2_split_0
+I0727 15:51:14.653941 27549 net.cpp:454] rpn-data <- im_info_input-data_1_split_0
+I0727 15:51:14.653945 27549 net.cpp:454] rpn-data <- data_input-data_0_split_1
+I0727 15:51:14.653951 27549 net.cpp:411] rpn-data -> rpn_labels
+I0727 15:51:14.653957 27549 net.cpp:411] rpn-data -> rpn_bbox_targets
+I0727 15:51:14.653970 27549 net.cpp:411] rpn-data -> rpn_bbox_inside_weights
+I0727 15:51:14.653975 27549 net.cpp:411] rpn-data -> rpn_bbox_outside_weights
+I0727 15:51:14.658920 27549 net.cpp:150] Setting up rpn-data
+I0727 15:51:14.658942 27549 net.cpp:157] Top shape: 1 1 432 33 (14256)
+I0727 15:51:14.658947 27549 net.cpp:157] Top shape: 1 72 24 33 (57024)
+I0727 15:51:14.658951 27549 net.cpp:157] Top shape: 1 72 24 33 (57024)
+I0727 15:51:14.658954 27549 net.cpp:157] Top shape: 1 72 24 33 (57024)
+I0727 15:51:14.658957 27549 net.cpp:165] Memory required for data: 466142196
+I0727 15:51:14.658962 27549 layer_factory.hpp:77] Creating layer rpn_loss_cls
+I0727 15:51:14.658973 27549 net.cpp:106] Creating Layer rpn_loss_cls
+I0727 15:51:14.658978 27549 net.cpp:454] rpn_loss_cls <- rpn_cls_score_reshape_rpn_cls_score_reshape_0_split_0
+I0727 15:51:14.658983 27549 net.cpp:454] rpn_loss_cls <- rpn_labels
+I0727 15:51:14.658994 27549 net.cpp:411] rpn_loss_cls -> rpn_cls_loss
+I0727 15:51:14.659013 27549 layer_factory.hpp:77] Creating layer rpn_loss_cls
+I0727 15:51:14.659359 27549 net.cpp:150] Setting up rpn_loss_cls
+I0727 15:51:14.659375 27549 net.cpp:157] Top shape: (1)
+I0727 15:51:14.659379 27549 net.cpp:160]     with loss weight 1
+I0727 15:51:14.659404 27549 net.cpp:165] Memory required for data: 466142200
+I0727 15:51:14.659407 27549 layer_factory.hpp:77] Creating layer rpn_loss_bbox
+I0727 15:51:14.659417 27549 net.cpp:106] Creating Layer rpn_loss_bbox
+I0727 15:51:14.659421 27549 net.cpp:454] rpn_loss_bbox <- rpn_bbox_pred_rpn_bbox_pred_0_split_0
+I0727 15:51:14.659426 27549 net.cpp:454] rpn_loss_bbox <- rpn_bbox_targets
+I0727 15:51:14.659430 27549 net.cpp:454] rpn_loss_bbox <- rpn_bbox_inside_weights
+I0727 15:51:14.659433 27549 net.cpp:454] rpn_loss_bbox <- rpn_bbox_outside_weights
+I0727 15:51:14.659440 27549 net.cpp:411] rpn_loss_bbox -> rpn_loss_bbox
+I0727 15:51:14.660470 27549 net.cpp:150] Setting up rpn_loss_bbox
+I0727 15:51:14.660487 27549 net.cpp:157] Top shape: (1)
+I0727 15:51:14.660491 27549 net.cpp:160]     with loss weight 1
+I0727 15:51:14.660497 27549 net.cpp:165] Memory required for data: 466142204
+I0727 15:51:14.660501 27549 layer_factory.hpp:77] Creating layer rpn_cls_prob
+I0727 15:51:14.660506 27549 net.cpp:106] Creating Layer rpn_cls_prob
+I0727 15:51:14.660511 27549 net.cpp:454] rpn_cls_prob <- rpn_cls_score_reshape_rpn_cls_score_reshape_0_split_1
+I0727 15:51:14.660516 27549 net.cpp:411] rpn_cls_prob -> rpn_cls_prob
+I0727 15:51:14.661494 27549 net.cpp:150] Setting up rpn_cls_prob
+I0727 15:51:14.661514 27549 net.cpp:157] Top shape: 1 2 432 33 (28512)
+I0727 15:51:14.661517 27549 net.cpp:165] Memory required for data: 466256252
+I0727 15:51:14.661520 27549 layer_factory.hpp:77] Creating layer rpn_cls_prob_reshape
+I0727 15:51:14.661530 27549 net.cpp:106] Creating Layer rpn_cls_prob_reshape
+I0727 15:51:14.661533 27549 net.cpp:454] rpn_cls_prob_reshape <- rpn_cls_prob
+I0727 15:51:14.661538 27549 net.cpp:411] rpn_cls_prob_reshape -> rpn_cls_prob_reshape
+I0727 15:51:14.661571 27549 net.cpp:150] Setting up rpn_cls_prob_reshape
+I0727 15:51:14.661581 27549 net.cpp:157] Top shape: 1 36 24 33 (28512)
+I0727 15:51:14.661583 27549 net.cpp:165] Memory required for data: 466370300
+I0727 15:51:14.661586 27549 layer_factory.hpp:77] Creating layer proposal
+I0727 15:51:14.661763 27549 net.cpp:106] Creating Layer proposal
+I0727 15:51:14.661779 27549 net.cpp:454] proposal <- rpn_cls_prob_reshape
+I0727 15:51:14.661785 27549 net.cpp:454] proposal <- rpn_bbox_pred_rpn_bbox_pred_0_split_1
+I0727 15:51:14.661789 27549 net.cpp:454] proposal <- im_info_input-data_1_split_1
+I0727 15:51:14.661794 27549 net.cpp:411] proposal -> rpn_rois
+I0727 15:51:14.662379 27549 net.cpp:150] Setting up proposal
+I0727 15:51:14.662401 27549 net.cpp:157] Top shape: 1 5 (5)
+I0727 15:51:14.662405 27549 net.cpp:165] Memory required for data: 466370320
+I0727 15:51:14.662408 27549 layer_factory.hpp:77] Creating layer roi-data
+I0727 15:51:14.662585 27549 net.cpp:106] Creating Layer roi-data
+I0727 15:51:14.662601 27549 net.cpp:454] roi-data <- rpn_rois
+I0727 15:51:14.662607 27549 net.cpp:454] roi-data <- gt_boxes_input-data_2_split_1
+I0727 15:51:14.662613 27549 net.cpp:411] roi-data -> rois
+I0727 15:51:14.662619 27549 net.cpp:411] roi-data -> labels
+I0727 15:51:14.662626 27549 net.cpp:411] roi-data -> bbox_targets
+I0727 15:51:14.662631 27549 net.cpp:411] roi-data -> bbox_inside_weights
+I0727 15:51:14.662636 27549 net.cpp:411] roi-data -> bbox_outside_weights
+I0727 15:51:14.663040 27549 net.cpp:150] Setting up roi-data
+I0727 15:51:14.663060 27549 net.cpp:157] Top shape: 1 5 (5)
+I0727 15:51:14.663064 27549 net.cpp:157] Top shape: 1 1 (1)
+I0727 15:51:14.663067 27549 net.cpp:157] Top shape: 1 84 (84)
+I0727 15:51:14.663071 27549 net.cpp:157] Top shape: 1 84 (84)
+I0727 15:51:14.663074 27549 net.cpp:157] Top shape: 1 84 (84)
+I0727 15:51:14.663077 27549 net.cpp:165] Memory required for data: 466371352
+I0727 15:51:14.663080 27549 layer_factory.hpp:77] Creating layer rois_roi-data_0_split
+I0727 15:51:14.663086 27549 net.cpp:106] Creating Layer rois_roi-data_0_split
+I0727 15:51:14.663090 27549 net.cpp:454] rois_roi-data_0_split <- rois
+I0727 15:51:14.663095 27549 net.cpp:411] rois_roi-data_0_split -> rois_roi-data_0_split_0
+I0727 15:51:14.663101 27549 net.cpp:411] rois_roi-data_0_split -> rois_roi-data_0_split_1
+I0727 15:51:14.663141 27549 net.cpp:150] Setting up rois_roi-data_0_split
+I0727 15:51:14.663151 27549 net.cpp:157] Top shape: 1 5 (5)
+I0727 15:51:14.663156 27549 net.cpp:157] Top shape: 1 5 (5)
+I0727 15:51:14.663157 27549 net.cpp:165] Memory required for data: 466371392
+I0727 15:51:14.663161 27549 layer_factory.hpp:77] Creating layer roi_pool5_readonly
+I0727 15:51:14.663170 27549 net.cpp:106] Creating Layer roi_pool5_readonly
+I0727 15:51:14.663173 27549 net.cpp:454] roi_pool5_readonly <- conv5_3_relu5_3_0_split_1
+I0727 15:51:14.663178 27549 net.cpp:454] roi_pool5_readonly <- rois_roi-data_0_split_0
+I0727 15:51:14.663185 27549 net.cpp:411] roi_pool5_readonly -> pool5_readonly
+I0727 15:51:14.663195 27549 roi_pooling_layer.cpp:30] Spatial scale: 0.0625
+I0727 15:51:14.663244 27549 net.cpp:150] Setting up roi_pool5_readonly
+I0727 15:51:14.663254 27549 net.cpp:157] Top shape: 1 512 7 7 (25088)
+I0727 15:51:14.663256 27549 net.cpp:165] Memory required for data: 466471744
+I0727 15:51:14.663259 27549 layer_factory.hpp:77] Creating layer fc6_readonly
+I0727 15:51:14.663271 27549 net.cpp:106] Creating Layer fc6_readonly
+I0727 15:51:14.663275 27549 net.cpp:454] fc6_readonly <- pool5_readonly
+I0727 15:51:14.663281 27549 net.cpp:411] fc6_readonly -> fc6_readonly
+I0727 15:51:14.945924 27549 net.cpp:150] Setting up fc6_readonly
+I0727 15:51:14.945983 27549 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:51:14.945987 27549 net.cpp:165] Memory required for data: 466488128
+I0727 15:51:14.946013 27549 layer_factory.hpp:77] Creating layer relu6_readonly
+I0727 15:51:14.946028 27549 net.cpp:106] Creating Layer relu6_readonly
+I0727 15:51:14.946034 27549 net.cpp:454] relu6_readonly <- fc6_readonly
+I0727 15:51:14.946041 27549 net.cpp:397] relu6_readonly -> fc6_readonly (in-place)
+I0727 15:51:14.946316 27549 net.cpp:150] Setting up relu6_readonly
+I0727 15:51:14.946331 27549 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:51:14.946336 27549 net.cpp:165] Memory required for data: 466504512
+I0727 15:51:14.946341 27549 layer_factory.hpp:77] Creating layer drop6_readonly
+I0727 15:51:14.946355 27549 net.cpp:106] Creating Layer drop6_readonly
+I0727 15:51:14.946358 27549 net.cpp:454] drop6_readonly <- fc6_readonly
+I0727 15:51:14.946363 27549 net.cpp:397] drop6_readonly -> fc6_readonly (in-place)
+I0727 15:51:14.946411 27549 net.cpp:150] Setting up drop6_readonly
+I0727 15:51:14.946418 27549 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:51:14.946419 27549 net.cpp:165] Memory required for data: 466520896
+I0727 15:51:14.946422 27549 layer_factory.hpp:77] Creating layer fc7_readonly
+I0727 15:51:14.946432 27549 net.cpp:106] Creating Layer fc7_readonly
+I0727 15:51:14.946435 27549 net.cpp:454] fc7_readonly <- fc6_readonly
+I0727 15:51:14.946439 27549 net.cpp:411] fc7_readonly -> fc7_readonly
+I0727 15:51:14.995182 27549 net.cpp:150] Setting up fc7_readonly
+I0727 15:51:14.995241 27549 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:51:14.995245 27549 net.cpp:165] Memory required for data: 466537280
+I0727 15:51:14.995260 27549 layer_factory.hpp:77] Creating layer relu7_readonly
+I0727 15:51:14.995273 27549 net.cpp:106] Creating Layer relu7_readonly
+I0727 15:51:14.995278 27549 net.cpp:454] relu7_readonly <- fc7_readonly
+I0727 15:51:14.995290 27549 net.cpp:397] relu7_readonly -> fc7_readonly (in-place)
+I0727 15:51:14.996426 27549 net.cpp:150] Setting up relu7_readonly
+I0727 15:51:14.996448 27549 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:51:14.996451 27549 net.cpp:165] Memory required for data: 466553664
+I0727 15:51:14.996455 27549 layer_factory.hpp:77] Creating layer drop7_readonly
+I0727 15:51:14.996465 27549 net.cpp:106] Creating Layer drop7_readonly
+I0727 15:51:14.996469 27549 net.cpp:454] drop7_readonly <- fc7_readonly
+I0727 15:51:14.996474 27549 net.cpp:397] drop7_readonly -> fc7_readonly (in-place)
+I0727 15:51:14.996510 27549 net.cpp:150] Setting up drop7_readonly
+I0727 15:51:14.996515 27549 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:51:14.996517 27549 net.cpp:165] Memory required for data: 466570048
+I0727 15:51:14.996520 27549 layer_factory.hpp:77] Creating layer fc7_readonly_drop7_readonly_0_split
+I0727 15:51:14.996528 27549 net.cpp:106] Creating Layer fc7_readonly_drop7_readonly_0_split
+I0727 15:51:14.996531 27549 net.cpp:454] fc7_readonly_drop7_readonly_0_split <- fc7_readonly
+I0727 15:51:14.996537 27549 net.cpp:411] fc7_readonly_drop7_readonly_0_split -> fc7_readonly_drop7_readonly_0_split_0
+I0727 15:51:14.996542 27549 net.cpp:411] fc7_readonly_drop7_readonly_0_split -> fc7_readonly_drop7_readonly_0_split_1
+I0727 15:51:14.996587 27549 net.cpp:150] Setting up fc7_readonly_drop7_readonly_0_split
+I0727 15:51:14.996593 27549 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:51:14.996596 27549 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:51:14.996599 27549 net.cpp:165] Memory required for data: 466602816
+I0727 15:51:14.996603 27549 layer_factory.hpp:77] Creating layer cls_score_readonly
+I0727 15:51:14.996613 27549 net.cpp:106] Creating Layer cls_score_readonly
+I0727 15:51:14.996615 27549 net.cpp:454] cls_score_readonly <- fc7_readonly_drop7_readonly_0_split_0
+I0727 15:51:14.996623 27549 net.cpp:411] cls_score_readonly -> cls_score_readonly
+I0727 15:51:14.999428 27549 net.cpp:150] Setting up cls_score_readonly
+I0727 15:51:14.999449 27549 net.cpp:157] Top shape: 1 21 (21)
+I0727 15:51:14.999452 27549 net.cpp:165] Memory required for data: 466602900
+I0727 15:51:14.999459 27549 layer_factory.hpp:77] Creating layer bbox_pred_readonly
+I0727 15:51:14.999469 27549 net.cpp:106] Creating Layer bbox_pred_readonly
+I0727 15:51:14.999472 27549 net.cpp:454] bbox_pred_readonly <- fc7_readonly_drop7_readonly_0_split_1
+I0727 15:51:14.999478 27549 net.cpp:411] bbox_pred_readonly -> bbox_pred_readonly
+I0727 15:51:15.008435 27549 net.cpp:150] Setting up bbox_pred_readonly
+I0727 15:51:15.008455 27549 net.cpp:157] Top shape: 1 84 (84)
+I0727 15:51:15.008460 27549 net.cpp:165] Memory required for data: 466603236
+I0727 15:51:15.008464 27549 layer_factory.hpp:77] Creating layer cls_prob_readonly
+I0727 15:51:15.008471 27549 net.cpp:106] Creating Layer cls_prob_readonly
+I0727 15:51:15.008476 27549 net.cpp:454] cls_prob_readonly <- cls_score_readonly
+I0727 15:51:15.008481 27549 net.cpp:411] cls_prob_readonly -> cls_prob_readonly
+I0727 15:51:15.008745 27549 net.cpp:150] Setting up cls_prob_readonly
+I0727 15:51:15.008765 27549 net.cpp:157] Top shape: 1 21 (21)
+I0727 15:51:15.008769 27549 net.cpp:165] Memory required for data: 466603320
+I0727 15:51:15.008772 27549 layer_factory.hpp:77] Creating layer hard_roi_mining
+I0727 15:51:15.008839 27549 net.cpp:106] Creating Layer hard_roi_mining
+I0727 15:51:15.008846 27549 net.cpp:454] hard_roi_mining <- cls_prob_readonly
+I0727 15:51:15.008850 27549 net.cpp:454] hard_roi_mining <- bbox_pred_readonly
+I0727 15:51:15.008854 27549 net.cpp:454] hard_roi_mining <- rois_roi-data_0_split_1
+I0727 15:51:15.008858 27549 net.cpp:454] hard_roi_mining <- labels
+I0727 15:51:15.008862 27549 net.cpp:454] hard_roi_mining <- bbox_targets
+I0727 15:51:15.008865 27549 net.cpp:454] hard_roi_mining <- bbox_inside_weights
+I0727 15:51:15.008869 27549 net.cpp:454] hard_roi_mining <- bbox_outside_weights
+I0727 15:51:15.008874 27549 net.cpp:411] hard_roi_mining -> rois_hard
+I0727 15:51:15.008880 27549 net.cpp:411] hard_roi_mining -> labels_hard
+I0727 15:51:15.008886 27549 net.cpp:411] hard_roi_mining -> bbox_targets_hard
+I0727 15:51:15.008891 27549 net.cpp:411] hard_roi_mining -> bbox_inside_weights_hard
+I0727 15:51:15.008898 27549 net.cpp:411] hard_roi_mining -> bbox_outside_weights_hard
+OHEMDataLayer: name_to_top: {'bbox_outside_weights_hard': 4, 'bbox_inside_weights_hard': 3, 'labels_hard': 1, 'rois_hard': 0, 'bbox_targets_hard': 2}
+I0727 15:51:15.009533 27549 net.cpp:150] Setting up hard_roi_mining
+I0727 15:51:15.009543 27549 net.cpp:157] Top shape: 1 5 (5)
+I0727 15:51:15.009547 27549 net.cpp:157] Top shape: 1 (1)
+I0727 15:51:15.009552 27549 net.cpp:157] Top shape: 1 84 (84)
+I0727 15:51:15.009554 27549 net.cpp:157] Top shape: 1 84 (84)
+I0727 15:51:15.009557 27549 net.cpp:157] Top shape: 1 84 (84)
+I0727 15:51:15.009559 27549 net.cpp:165] Memory required for data: 466604352
+I0727 15:51:15.009563 27549 layer_factory.hpp:77] Creating layer roi_pool5
+I0727 15:51:15.009582 27549 net.cpp:106] Creating Layer roi_pool5
+I0727 15:51:15.009585 27549 net.cpp:454] roi_pool5 <- conv5_3_relu5_3_0_split_2
+I0727 15:51:15.009590 27549 net.cpp:454] roi_pool5 <- rois_hard
+I0727 15:51:15.009598 27549 net.cpp:411] roi_pool5 -> pool5
+I0727 15:51:15.009605 27549 roi_pooling_layer.cpp:30] Spatial scale: 0.0625
+I0727 15:51:15.009660 27549 net.cpp:150] Setting up roi_pool5
+I0727 15:51:15.009665 27549 net.cpp:157] Top shape: 1 512 7 7 (25088)
+I0727 15:51:15.009668 27549 net.cpp:165] Memory required for data: 466704704
+I0727 15:51:15.009671 27549 layer_factory.hpp:77] Creating layer fc6
+I0727 15:51:15.009680 27549 net.cpp:106] Creating Layer fc6
+I0727 15:51:15.009682 27549 net.cpp:454] fc6 <- pool5
+I0727 15:51:15.009687 27549 net.cpp:411] fc6 -> fc6
+I0727 15:51:15.284242 27549 net.cpp:150] Setting up fc6
+I0727 15:51:15.284301 27549 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:51:15.284304 27549 net.cpp:165] Memory required for data: 466721088
+I0727 15:51:15.284313 27549 net.cpp:514] Sharing parameters 'fc6_w' owned by layer 'fc6_readonly', param index 0
+I0727 15:51:15.284319 27549 net.cpp:514] Sharing parameters 'fc6_b' owned by layer 'fc6_readonly', param index 1
+I0727 15:51:15.284324 27549 layer_factory.hpp:77] Creating layer relu6
+I0727 15:51:15.284337 27549 net.cpp:106] Creating Layer relu6
+I0727 15:51:15.284342 27549 net.cpp:454] relu6 <- fc6
+I0727 15:51:15.284351 27549 net.cpp:397] relu6 -> fc6 (in-place)
+I0727 15:51:15.285512 27549 net.cpp:150] Setting up relu6
+I0727 15:51:15.285532 27549 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:51:15.285537 27549 net.cpp:165] Memory required for data: 466737472
+I0727 15:51:15.285540 27549 layer_factory.hpp:77] Creating layer drop6
+I0727 15:51:15.285547 27549 net.cpp:106] Creating Layer drop6
+I0727 15:51:15.285550 27549 net.cpp:454] drop6 <- fc6
+I0727 15:51:15.285555 27549 net.cpp:397] drop6 -> fc6 (in-place)
+I0727 15:51:15.285593 27549 net.cpp:150] Setting up drop6
+I0727 15:51:15.285599 27549 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:51:15.285603 27549 net.cpp:165] Memory required for data: 466753856
+I0727 15:51:15.285605 27549 layer_factory.hpp:77] Creating layer fc7
+I0727 15:51:15.285615 27549 net.cpp:106] Creating Layer fc7
+I0727 15:51:15.285619 27549 net.cpp:454] fc7 <- fc6
+I0727 15:51:15.285622 27549 net.cpp:411] fc7 -> fc7
+I0727 15:51:15.332278 27549 net.cpp:150] Setting up fc7
+I0727 15:51:15.332330 27549 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:51:15.332336 27549 net.cpp:165] Memory required for data: 466770240
+I0727 15:51:15.332345 27549 net.cpp:514] Sharing parameters 'fc7_w' owned by layer 'fc7_readonly', param index 0
+I0727 15:51:15.332350 27549 net.cpp:514] Sharing parameters 'fc7_b' owned by layer 'fc7_readonly', param index 1
+I0727 15:51:15.332355 27549 layer_factory.hpp:77] Creating layer relu7
+I0727 15:51:15.332370 27549 net.cpp:106] Creating Layer relu7
+I0727 15:51:15.332376 27549 net.cpp:454] relu7 <- fc7
+I0727 15:51:15.332383 27549 net.cpp:397] relu7 -> fc7 (in-place)
+I0727 15:51:15.332661 27549 net.cpp:150] Setting up relu7
+I0727 15:51:15.332669 27549 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:51:15.332672 27549 net.cpp:165] Memory required for data: 466786624
+I0727 15:51:15.332675 27549 layer_factory.hpp:77] Creating layer drop7
+I0727 15:51:15.332686 27549 net.cpp:106] Creating Layer drop7
+I0727 15:51:15.332690 27549 net.cpp:454] drop7 <- fc7
+I0727 15:51:15.332695 27549 net.cpp:397] drop7 -> fc7 (in-place)
+I0727 15:51:15.332728 27549 net.cpp:150] Setting up drop7
+I0727 15:51:15.332733 27549 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:51:15.332736 27549 net.cpp:165] Memory required for data: 466803008
+I0727 15:51:15.332738 27549 layer_factory.hpp:77] Creating layer fc7_drop7_0_split
+I0727 15:51:15.332744 27549 net.cpp:106] Creating Layer fc7_drop7_0_split
+I0727 15:51:15.332746 27549 net.cpp:454] fc7_drop7_0_split <- fc7
+I0727 15:51:15.332753 27549 net.cpp:411] fc7_drop7_0_split -> fc7_drop7_0_split_0
+I0727 15:51:15.332759 27549 net.cpp:411] fc7_drop7_0_split -> fc7_drop7_0_split_1
+I0727 15:51:15.332808 27549 net.cpp:150] Setting up fc7_drop7_0_split
+I0727 15:51:15.332813 27549 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:51:15.332816 27549 net.cpp:157] Top shape: 1 4096 (4096)
+I0727 15:51:15.332818 27549 net.cpp:165] Memory required for data: 466835776
+I0727 15:51:15.332821 27549 layer_factory.hpp:77] Creating layer cls_score
+I0727 15:51:15.332828 27549 net.cpp:106] Creating Layer cls_score
+I0727 15:51:15.332834 27549 net.cpp:454] cls_score <- fc7_drop7_0_split_0
+I0727 15:51:15.332839 27549 net.cpp:411] cls_score -> cls_score
+I0727 15:51:15.335038 27549 net.cpp:150] Setting up cls_score
+I0727 15:51:15.335054 27549 net.cpp:157] Top shape: 1 21 (21)
+I0727 15:51:15.335058 27549 net.cpp:165] Memory required for data: 466835860
+I0727 15:51:15.335062 27549 net.cpp:514] Sharing parameters 'cls_score_w' owned by layer 'cls_score_readonly', param index 0
+I0727 15:51:15.335067 27549 net.cpp:514] Sharing parameters 'cls_score_b' owned by layer 'cls_score_readonly', param index 1
+I0727 15:51:15.335070 27549 layer_factory.hpp:77] Creating layer bbox_pred
+I0727 15:51:15.335078 27549 net.cpp:106] Creating Layer bbox_pred
+I0727 15:51:15.335080 27549 net.cpp:454] bbox_pred <- fc7_drop7_0_split_1
+I0727 15:51:15.335088 27549 net.cpp:411] bbox_pred -> bbox_pred
+I0727 15:51:15.344099 27549 net.cpp:150] Setting up bbox_pred
+I0727 15:51:15.344120 27549 net.cpp:157] Top shape: 1 84 (84)
+I0727 15:51:15.344123 27549 net.cpp:165] Memory required for data: 466836196
+I0727 15:51:15.344127 27549 net.cpp:514] Sharing parameters 'bbox_pred_w' owned by layer 'bbox_pred_readonly', param index 0
+I0727 15:51:15.344131 27549 net.cpp:514] Sharing parameters 'bbox_pred_b' owned by layer 'bbox_pred_readonly', param index 1
+I0727 15:51:15.344135 27549 layer_factory.hpp:77] Creating layer loss_cls
+I0727 15:51:15.344141 27549 net.cpp:106] Creating Layer loss_cls
+I0727 15:51:15.344146 27549 net.cpp:454] loss_cls <- cls_score
+I0727 15:51:15.344151 27549 net.cpp:454] loss_cls <- labels_hard
+I0727 15:51:15.344156 27549 net.cpp:411] loss_cls -> loss_cls
+I0727 15:51:15.344164 27549 layer_factory.hpp:77] Creating layer loss_cls
+I0727 15:51:15.345209 27549 net.cpp:150] Setting up loss_cls
+I0727 15:51:15.345229 27549 net.cpp:157] Top shape: (1)
+I0727 15:51:15.345233 27549 net.cpp:160]     with loss weight 1
+I0727 15:51:15.345245 27549 net.cpp:165] Memory required for data: 466836200
+I0727 15:51:15.345249 27549 layer_factory.hpp:77] Creating layer loss_bbox
+I0727 15:51:15.345259 27549 net.cpp:106] Creating Layer loss_bbox
+I0727 15:51:15.345263 27549 net.cpp:454] loss_bbox <- bbox_pred
+I0727 15:51:15.345268 27549 net.cpp:454] loss_bbox <- bbox_targets_hard
+I0727 15:51:15.345271 27549 net.cpp:454] loss_bbox <- bbox_inside_weights_hard
+I0727 15:51:15.345275 27549 net.cpp:454] loss_bbox <- bbox_outside_weights_hard
+I0727 15:51:15.345279 27549 net.cpp:411] loss_bbox -> loss_bbox
+I0727 15:51:15.345371 27549 net.cpp:150] Setting up loss_bbox
+I0727 15:51:15.345376 27549 net.cpp:157] Top shape: (1)
+I0727 15:51:15.345379 27549 net.cpp:160]     with loss weight 1
+I0727 15:51:15.345383 27549 net.cpp:165] Memory required for data: 466836204
+I0727 15:51:15.345387 27549 net.cpp:226] loss_bbox needs backward computation.
+I0727 15:51:15.345391 27549 net.cpp:226] loss_cls needs backward computation.
+I0727 15:51:15.345393 27549 net.cpp:226] bbox_pred needs backward computation.
+I0727 15:51:15.345396 27549 net.cpp:226] cls_score needs backward computation.
+I0727 15:51:15.345399 27549 net.cpp:226] fc7_drop7_0_split needs backward computation.
+I0727 15:51:15.345402 27549 net.cpp:226] drop7 needs backward computation.
+I0727 15:51:15.345404 27549 net.cpp:226] relu7 needs backward computation.
+I0727 15:51:15.345407 27549 net.cpp:226] fc7 needs backward computation.
+I0727 15:51:15.345410 27549 net.cpp:226] drop6 needs backward computation.
+I0727 15:51:15.345413 27549 net.cpp:226] relu6 needs backward computation.
+I0727 15:51:15.345417 27549 net.cpp:226] fc6 needs backward computation.
+I0727 15:51:15.345419 27549 net.cpp:226] roi_pool5 needs backward computation.
+I0727 15:51:15.345425 27549 net.cpp:226] hard_roi_mining needs backward computation.
+I0727 15:51:15.345432 27549 net.cpp:228] cls_prob_readonly does not need backward computation.
+I0727 15:51:15.345435 27549 net.cpp:228] bbox_pred_readonly does not need backward computation.
+I0727 15:51:15.345440 27549 net.cpp:228] cls_score_readonly does not need backward computation.
+I0727 15:51:15.345444 27549 net.cpp:228] fc7_readonly_drop7_readonly_0_split does not need backward computation.
+I0727 15:51:15.345448 27549 net.cpp:228] drop7_readonly does not need backward computation.
+I0727 15:51:15.345451 27549 net.cpp:228] relu7_readonly does not need backward computation.
+I0727 15:51:15.345454 27549 net.cpp:228] fc7_readonly does not need backward computation.
+I0727 15:51:15.345458 27549 net.cpp:228] drop6_readonly does not need backward computation.
+I0727 15:51:15.345461 27549 net.cpp:228] relu6_readonly does not need backward computation.
+I0727 15:51:15.345464 27549 net.cpp:228] fc6_readonly does not need backward computation.
+I0727 15:51:15.345468 27549 net.cpp:228] roi_pool5_readonly does not need backward computation.
+I0727 15:51:15.345474 27549 net.cpp:228] rois_roi-data_0_split does not need backward computation.
+I0727 15:51:15.345477 27549 net.cpp:228] roi-data does not need backward computation.
+I0727 15:51:15.345481 27549 net.cpp:228] proposal does not need backward computation.
+I0727 15:51:15.345487 27549 net.cpp:228] rpn_cls_prob_reshape does not need backward computation.
+I0727 15:51:15.345490 27549 net.cpp:228] rpn_cls_prob does not need backward computation.
+I0727 15:51:15.345494 27549 net.cpp:226] rpn_loss_bbox needs backward computation.
+I0727 15:51:15.345500 27549 net.cpp:226] rpn_loss_cls needs backward computation.
+I0727 15:51:15.345504 27549 net.cpp:226] rpn-data needs backward computation.
+I0727 15:51:15.345510 27549 net.cpp:226] rpn_cls_score_reshape_rpn_cls_score_reshape_0_split needs backward computation.
+I0727 15:51:15.345513 27549 net.cpp:226] rpn_cls_score_reshape needs backward computation.
+I0727 15:51:15.345516 27549 net.cpp:226] rpn_bbox_pred_rpn_bbox_pred_0_split needs backward computation.
+I0727 15:51:15.345520 27549 net.cpp:226] rpn_bbox_pred needs backward computation.
+I0727 15:51:15.345525 27549 net.cpp:226] rpn_cls_score_rpn_cls_score_0_split needs backward computation.
+I0727 15:51:15.345527 27549 net.cpp:226] rpn_cls_score needs backward computation.
+I0727 15:51:15.345531 27549 net.cpp:226] rpn/output_rpn_relu/3x3_0_split needs backward computation.
+I0727 15:51:15.345535 27549 net.cpp:226] rpn_relu/3x3 needs backward computation.
+I0727 15:51:15.345537 27549 net.cpp:226] rpn_conv/3x3 needs backward computation.
+I0727 15:51:15.345541 27549 net.cpp:226] conv5_3_relu5_3_0_split needs backward computation.
+I0727 15:51:15.345544 27549 net.cpp:226] relu5_3 needs backward computation.
+I0727 15:51:15.345547 27549 net.cpp:226] conv5_3 needs backward computation.
+I0727 15:51:15.345551 27549 net.cpp:226] relu5_2 needs backward computation.
+I0727 15:51:15.345554 27549 net.cpp:226] conv5_2 needs backward computation.
+I0727 15:51:15.345557 27549 net.cpp:226] relu5_1 needs backward computation.
+I0727 15:51:15.345561 27549 net.cpp:226] conv5_1 needs backward computation.
+I0727 15:51:15.345564 27549 net.cpp:226] pool4 needs backward computation.
+I0727 15:51:15.345567 27549 net.cpp:226] relu4_3 needs backward computation.
+I0727 15:51:15.345571 27549 net.cpp:226] conv4_3 needs backward computation.
+I0727 15:51:15.345574 27549 net.cpp:226] relu4_2 needs backward computation.
+I0727 15:51:15.345577 27549 net.cpp:226] conv4_2 needs backward computation.
+I0727 15:51:15.345580 27549 net.cpp:226] relu4_1 needs backward computation.
+I0727 15:51:15.345583 27549 net.cpp:226] conv4_1 needs backward computation.
+I0727 15:51:15.345587 27549 net.cpp:226] pool3 needs backward computation.
+I0727 15:51:15.345589 27549 net.cpp:226] relu3_3 needs backward computation.
+I0727 15:51:15.345592 27549 net.cpp:226] conv3_3 needs backward computation.
+I0727 15:51:15.345595 27549 net.cpp:226] relu3_2 needs backward computation.
+I0727 15:51:15.345599 27549 net.cpp:226] conv3_2 needs backward computation.
+I0727 15:51:15.345602 27549 net.cpp:226] relu3_1 needs backward computation.
+I0727 15:51:15.345605 27549 net.cpp:226] conv3_1 needs backward computation.
+I0727 15:51:15.345610 27549 net.cpp:228] pool2 does not need backward computation.
+I0727 15:51:15.345613 27549 net.cpp:228] relu2_2 does not need backward computation.
+I0727 15:51:15.345616 27549 net.cpp:228] conv2_2 does not need backward computation.
+I0727 15:51:15.345620 27549 net.cpp:228] relu2_1 does not need backward computation.
+I0727 15:51:15.345625 27549 net.cpp:228] conv2_1 does not need backward computation.
+I0727 15:51:15.345628 27549 net.cpp:228] pool1 does not need backward computation.
+I0727 15:51:15.345633 27549 net.cpp:228] relu1_2 does not need backward computation.
+I0727 15:51:15.345635 27549 net.cpp:228] conv1_2 does not need backward computation.
+I0727 15:51:15.345639 27549 net.cpp:228] relu1_1 does not need backward computation.
+I0727 15:51:15.345643 27549 net.cpp:228] conv1_1 does not need backward computation.
+I0727 15:51:15.345646 27549 net.cpp:228] gt_boxes_input-data_2_split does not need backward computation.
+I0727 15:51:15.345650 27549 net.cpp:228] im_info_input-data_1_split does not need backward computation.
+I0727 15:51:15.345654 27549 net.cpp:228] data_input-data_0_split does not need backward computation.
+I0727 15:51:15.345659 27549 net.cpp:228] input-data does not need backward computation.
+I0727 15:51:15.345661 27549 net.cpp:270] This network produces output loss_bbox
+I0727 15:51:15.345664 27549 net.cpp:270] This network produces output loss_cls
+I0727 15:51:15.345667 27549 net.cpp:270] This network produces output rpn_cls_loss
+I0727 15:51:15.345671 27549 net.cpp:270] This network produces output rpn_loss_bbox
+I0727 15:51:15.426297 27549 net.cpp:283] Network initialization done.
+I0727 15:51:15.426571 27549 solver.cpp:60] Solver scaffolding done.
+Loading pretrained model weights from output/FP_Net_end2end/voc_2007_trainval/fpn_iter_70000.caffemodel
+[libprotobuf INFO google/protobuf/io/coded_stream.cc:610] Reading dangerously large protocol message.  If the message turns out to be larger than 2147483647 bytes, parsing will be halted for security reasons.  To increase the limit (or to disable these warnings), see CodedInputStream::SetTotalBytesLimit() in google/protobuf/io/coded_stream.h.
+[libprotobuf WARNING google/protobuf/io/coded_stream.cc:81] The total number of bytes read was 548429793
+Solving...
+allrois: 128
+[  3.54381545e-02   1.97028918e+00   2.36954850e+00   4.61952130e+00
+   2.33172662e+00   3.16612495e+00   3.28088136e+00   2.80467382e+00
+   2.82941841e+00   3.06279771e+00   2.62970302e+00   1.67725463e-01
+   3.33785100e+00   2.59633530e+00   2.85196219e+00   6.75210656e-01
+   3.08109712e+00   2.08689034e+00   2.66098809e+00   1.54712356e+00
+   4.70695319e+00   5.40145618e+00   3.49183639e+00   1.98543381e+00
+   1.64516937e+00   1.14734751e+00   9.64723305e-03   4.10342219e+00
+   6.61497281e+00   1.19516809e+00   3.17714968e+00   2.57936253e+00
+   1.29469670e-04   8.34465368e-07   1.46628499e-05   2.27405713e-03
+   4.17233377e-06   8.94073673e-06   7.05273077e-02   7.99926347e-05
+   2.15017062e-04   6.07969241e-06   2.61071746e-05   4.76848545e-05
+   1.12057360e-05   1.66893142e-06   1.58759449e-02   3.22796777e-03
+   4.76837272e-07   1.32011509e+00   3.69549480e-06   2.38421417e-05
+   1.66894406e-05   1.16854915e-02   2.21731734e-05   2.38268156e-04
+   2.01465737e-05   1.16825786e-05   3.87437685e-05   3.83212086e-04
+   3.45707531e-06   2.21098075e-04   4.76837272e-07   1.07532564e-04
+   2.26497900e-06   2.36037176e-05   8.08983343e-04   3.09944630e-06
+   1.08481045e-05   6.04335277e-04   1.00136303e-05   4.21195495e-04
+   6.30637005e-05   5.11690617e-01   2.90734111e-04   2.87836003e+00
+   1.18017897e-05   1.91170373e-04   6.07985858e-05   1.12411950e-03
+   1.54972201e-06   2.24675139e-04   3.25446672e-05   6.44943066e-05
+   1.38411560e-04   9.08416041e-05   3.57627925e-07   7.40971742e-03
+   7.98705423e-06   2.34845065e-05   6.69226400e-04   3.23062377e-05
+   1.12299891e-02   1.89907756e-03   4.64917321e-06   2.50339826e-06
+   6.67574250e-06   4.70033468e-04   1.27554749e-05   9.70540464e-01
+   1.64065172e-03   1.08084958e-02   1.10632340e-04   1.40667953e-05
+   8.34499879e-05   2.72938013e+00   2.25629032e-04   3.93289170e-04
+   3.67171342e-05   3.36703699e-04   1.17889717e-01   3.57627925e-07
+   1.76624162e-04   1.51396944e-05   9.25106870e-05   1.66893142e-06
+   2.29499135e-02   1.31284911e-02   2.41694488e-02   2.58687505e-05
+   1.17305154e-03   1.79264359e-02   3.60018530e-05   5.59426844e-04
+   3.29503345e+00   9.28355905e-04   9.53674771e-07   6.25149012e-02]
+hard: 1
+hard: 1
+hard: 1
+hard: 126
+hard: 126
+allrois: 128
+[  4.82599159e-01   5.90535824e+00   2.41566589e+00   5.27837754e+00
+   3.89418813e-01   9.55399948e-01   5.71279876e-01   2.12192667e+00
+   2.07690485e-01   3.94148515e+00   1.91230213e+00   7.78523019e-03
+   1.63459814e+00   3.72758183e+00   2.61623404e+00   3.60699327e+00
+   2.39717870e+00   2.08278443e+00   1.81044053e+00   4.35913883e+00
+   1.11905671e+00   2.45009649e+00   2.39715109e+00   1.67920540e+00
+   1.92878042e+00   2.60965623e+00   1.19209304e-07   3.38560130e-05
+   1.21594212e-05   2.55796243e-04   1.49012722e-05   5.78181753e-05
+   1.66893142e-06   3.72608425e-03   3.42136518e-05   4.67311329e-05
+   2.80598440e-04   2.26497900e-06   1.06096832e-05   5.93719247e-04
+   7.80779449e-03   4.36315531e-05   5.96046618e-07   7.05915922e-03
+   4.76837272e-07   4.76837272e-07   1.41860064e-05   4.29154352e-06
+   6.82109734e-04   2.38418608e-07   1.54972201e-06   0.00000000e+00
+   1.31131083e-05   4.75656379e-05   2.62260778e-06   1.78814093e-06
+   2.52726895e-05   5.96048221e-06   5.96046618e-07   1.10865258e-05
+   3.96974829e-05   2.16963253e-05   2.62263875e-05   2.24115975e-05
+   3.21865605e-06   7.02167381e-05   3.67171342e-05   1.50930355e-04
+   4.76838295e-06   3.33786579e-06   3.57627925e-07   7.27179304e-06
+   6.67138840e-04   4.05022800e-01   1.26362647e-05   7.03337264e-06
+   1.19209999e-05   2.26497900e-06   2.37229306e-05   2.49150526e-05
+   4.39891955e-05   8.10626443e-06   1.32323185e-05   3.45707531e-06
+   5.18644810e-01   3.71304201e-03   2.26497900e-06   1.19209304e-07
+   0.00000000e+00   2.12513143e-04   8.58310614e-06   5.60285253e-06
+   7.20050011e-05   3.93391429e-06   1.43051250e-06   7.04799712e-01
+   4.76837272e-07   1.04671235e-04   5.96046618e-07   1.19209304e-07
+   6.75939518e-05   3.01977503e-03   1.78814093e-06   3.11141084e-05
+   1.66893142e-06   6.43732255e-06   3.13525343e-05   2.33652936e-05
+   4.17233377e-06   3.33786579e-06   2.50339826e-06   1.19209358e-06
+   1.11874915e-03   5.96046618e-07   2.38418608e-07   1.32323185e-05
+   1.01328405e-05   1.75670313e-04   1.66445468e-02   3.57627925e-07
+   4.76837272e-07   7.27179304e-06   2.92067016e-05   2.45574156e-05
+   1.19209358e-06   6.55653230e-06   2.74181753e-06   1.78814093e-06]
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+I0727 15:51:16.503290 27549 solver.cpp:229] Iteration 0, loss = 0.617748
+I0727 15:51:16.503340 27549 solver.cpp:245]     Train net output #0: loss_bbox = 0.430239 (* 1 = 0.430239 loss)
+I0727 15:51:16.503348 27549 solver.cpp:245]     Train net output #1: loss_cls = 0.0298144 (* 1 = 0.0298144 loss)
+I0727 15:51:16.503353 27549 solver.cpp:245]     Train net output #2: rpn_cls_loss = 0.000740948 (* 1 = 0.000740948 loss)
+I0727 15:51:16.503360 27549 solver.cpp:245]     Train net output #3: rpn_loss_bbox = 0.0150258 (* 1 = 0.0150258 loss)
+I0727 15:51:16.503372 27549 sgd_solver.cpp:106] Iteration 0, lr = 0.002
+allrois: 128
+[  1.84928926e+00   2.41608495e+00   4.06668889e+00   6.32288841e-01
+   1.80562599e+00   3.06385917e+00   2.11615321e+00   2.71842964e-03
+   1.93690518e+00   4.56687529e-01   1.49387400e+00   3.52387498e+00
+   2.74097495e+00   2.21541039e+00   1.71639767e+00   1.04765567e+00
+   4.98026635e+00   1.37797855e+00   3.55682007e+00   2.13752733e+00
+   2.05004499e+00   4.53890912e-01   3.38745965e+00   2.72476764e+00
+   1.75991709e+00   3.58700597e+00   2.75419605e+00   2.83050268e+00
+   3.74888654e+00   2.02682216e+00   2.09170018e+00   1.99287763e+00
+   4.63958317e-03   0.00000000e+00   2.96835533e-05   3.34146968e-03
+   5.78907644e-03   2.78953630e-05   3.48032481e-04   9.60035890e-04
+   3.57627925e-07   1.18532749e-02   5.17381704e-05   7.95113519e-02
+   1.29923765e-02   1.95939661e-04   6.88193541e-04   6.86888158e-01
+   1.20647077e-04   1.49012722e-05   1.12897571e-04   4.76837272e-07
+   6.07969241e-06   1.25296807e-04   1.99988647e-03   0.00000000e+00
+   4.36315531e-05   5.16189539e-05   6.97975513e-04   3.09944630e-06
+   9.15569253e-05   2.38418608e-07   1.19209304e-07   2.85149482e-03
+   1.19209304e-07   7.97541943e-05   2.17537093e-03   5.34071878e-05
+   1.66893142e-06   1.19209358e-06   2.38418608e-07   2.65722238e-02
+   2.58473665e-01   1.79448240e-02   6.86881365e-04   1.03712619e-05
+   7.15256022e-07   4.57033631e-04   7.87357520e-03   2.57268385e-03
+   1.35073249e-04   0.00000000e+00   2.38418608e-07   1.55699454e-04
+   1.19209304e-07   3.18850228e-03   4.76837272e-07   0.00000000e+00
+   2.58687505e-05   4.88759270e-06   8.26154501e-05   1.43061377e-04
+   4.64917321e-06   5.96046618e-07   2.31268696e-05   1.31130309e-06
+   3.70690366e-04   1.19209304e-07   2.10283503e-01   6.23683445e-02
+   5.08963689e-03   1.90735045e-06   2.93643842e-03   1.42079149e-03
+   1.19209304e-07   1.19209304e-07   2.02655997e-06   6.65209955e-05
+   1.19209304e-07   3.86491593e-04   1.19209304e-07   2.65931681e-04
+   9.65465093e-04   1.30781147e-04   9.88954484e-01   1.18663445e-01
+   1.64775942e-02   8.44954688e-04   7.34356217e-05   3.52564006e-04
+   3.57628505e-06   5.09749632e-04   5.12601264e-06   2.38418608e-07
+   5.36456209e-05   1.88826863e-03   1.99074880e-03   5.99587336e-02]
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+[  1.94031841e+00   1.36455018e+00   3.89212413e+00   4.29882663e+00
+   2.17990604e+00   1.14076867e+00   9.74158497e-03   1.25763004e+00
+   1.24825951e+00   1.36435460e+00   3.01446629e+00   3.49558343e+00
+   3.52854361e+00   4.03992082e-01   2.69249237e+00   1.30036904e+00
+   2.87997727e+00   2.39334987e-01   3.61210659e-05   4.05312403e-06
+   1.65702277e-05   7.15256022e-07   9.99505818e-03   1.19209304e-07
+   4.30621672e-03   2.33384855e-02   6.32118881e-02   1.66893142e-06
+   1.84230674e-02   0.00000000e+00   1.22052170e-02   2.62260778e-06
+   0.00000000e+00   1.64880039e-04   4.57774149e-05   1.68086517e-05
+   3.57627925e-07   4.52996346e-06   2.38418608e-07   0.00000000e+00
+   2.15411000e-02   3.57627925e-07   1.54972201e-06   4.58966315e-05
+   0.00000000e+00   0.00000000e+00   4.76837272e-07   4.67998162e-02
+   1.07288934e-05   9.14377088e-05   3.57627925e-07   7.27179304e-06
+   2.77761501e-05   1.35899518e-05   4.22009798e-05   5.96048221e-06
+   1.19209304e-07   3.05180438e-05   1.77857396e-03   2.81910092e-04
+   2.38418608e-07   1.31130309e-06   2.86102704e-06   4.72079919e-05
+   7.15256022e-07   0.00000000e+00   1.33515296e-05   3.43327317e-03
+   4.25586222e-05   8.34468483e-06   0.00000000e+00   3.28669045e-03
+   3.21870248e-05   2.02655997e-06   2.07424560e-03   0.00000000e+00
+   1.28746860e-05   6.21775584e-03   3.77900578e-05   2.45329412e-03
+   4.05312403e-06   7.05013808e-04   4.19525866e-04   0.00000000e+00
+   3.57627925e-07   7.68183172e-03   1.54972201e-06   8.78611027e-05
+   3.60673148e-04   0.00000000e+00   1.07288417e-06   4.50621264e-05
+   1.94313034e-05   1.31131083e-05   3.33786579e-06   2.38418608e-07
+   2.50339826e-06   4.31104712e-02   2.38418608e-07   1.07288417e-06
+   1.19209304e-07   5.96046618e-07   4.75996756e-04   3.21865605e-06
+   2.61071746e-05   2.23959723e-04   4.76838295e-06   5.00680289e-06
+   5.96048221e-06   4.53005559e-05   6.67574250e-06   1.62125943e-05
+   1.39007694e-04   5.36443258e-06   4.64917321e-06   5.12601264e-06
+   3.13525343e-05   1.07288417e-06   2.01465737e-05   0.00000000e+00
+   4.05312403e-06   3.09944630e-06   3.99359087e-05   2.30279256e-04
+   9.53674771e-07   4.25586222e-05   6.91416290e-06   0.00000000e+00]
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+[  8.74515108e-01   2.47597621e+00   3.24092690e+00   7.68855976e-01
+   2.00883531e+00   4.53318212e+00   2.25685632e+00   2.46897984e+00
+   9.69004902e-01   1.06901129e+00   2.08095211e+00   3.11533697e+00
+   1.78075280e+00   1.02192165e-02   3.29722290e+00   1.49358978e+00
+   1.97108310e+00   2.73834928e-01   1.05149045e+00   9.23189946e-01
+   3.18382504e+00   5.06104004e+00   8.75395400e-01   2.23311364e+00
+   2.16258395e+00   2.82868143e+00   2.37089548e+00   2.23423694e+00
+   1.41790058e+00   1.05827479e+00   2.60703977e+00   3.62174545e+00
+   2.98023679e-06   4.60730807e-04   5.79167216e-04   1.51396944e-05
+   4.52212751e-01   2.98023679e-06   7.15256022e-07   5.12601264e-06
+   1.91928793e-05   6.61506355e-02   2.15017062e-04   1.37049615e-01
+   1.67503080e-04   1.19209304e-07   4.17233377e-06   7.10382010e-04
+   6.43732255e-06   7.15256022e-07   9.17915713e-06   3.21870248e-05
+   1.00260040e-04   0.00000000e+00   4.41075326e-06   3.57627925e-07
+   1.39475842e-05   3.69555637e-05   2.68224503e-05   5.84127247e-06
+   3.46959219e-04   7.85620068e-05   1.21481644e-04   4.82809264e-05
+   7.72058906e-04   1.43051250e-06   4.17233377e-06   1.20304367e-02
+   2.22725626e-02   2.46018637e-04   9.17953657e-05   6.84495550e-04
+   8.50085053e-04   8.17195605e-03   5.00680289e-06   5.48364233e-06
+   1.04904730e-05   1.19209358e-06   1.19209304e-07   3.15909601e-05
+   2.14576949e-06   4.64917321e-06   4.76837272e-07   5.65095991e-03
+   3.45408946e-04   7.15256022e-07   1.78814093e-06   2.38864333e-04
+   3.57627925e-07   1.04671235e-04   3.57627925e-07   5.60285253e-06
+   5.36443258e-06   8.66729009e-04   1.36378978e-03   6.55254023e-03
+   8.34465368e-07   2.02655997e-06   0.00000000e+00   1.19209304e-07
+   3.48097201e-05   0.00000000e+00   8.67447332e-02   1.54381776e+00
+   4.76837272e-07   3.14717472e-05   1.03712619e-05   5.12601264e-06
+   1.91987410e-01   1.06101899e-04   4.94730333e-03   3.61210659e-05
+   1.16040057e-03   4.29154352e-06   1.19209304e-07   0.00000000e+00
+   0.00000000e+00   2.38418608e-07   1.21720092e-04   1.31130309e-06
+   1.43660931e-03   1.38888470e-04   6.13946686e-05   4.76837272e-07
+   1.35788607e-04   2.26497900e-06   1.76266461e-04   4.76837272e-07]
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+[  2.66274286e+00   8.48833886e+00   2.44780235e+00   3.39704798e+00
+   1.33396061e+00   9.30040596e-01   7.44623737e+00   1.55687712e+00
+   7.72618639e+00   7.75296243e+00   3.97092132e+00   4.02911441e+00
+   2.28491660e+00   2.25658044e-01   1.82463416e+00   2.98233071e+00
+   1.16048286e+00   2.61818506e+00   1.92023494e+00   2.93970253e+00
+   9.17538331e-01   2.35828492e+00   2.30562746e+00   3.11280475e+00
+   3.35355668e+00   9.48898090e-01   2.96415715e+00   4.31387776e+00
+   3.29066196e+00   2.43221608e+00   2.12721852e+00   2.47923844e+00
+   2.98023679e-06   2.38418608e-07   1.16825786e-05   3.19485989e-05
+   5.96046618e-07   2.14576949e-06   1.28746860e-05   0.00000000e+00
+   4.30400658e+00   4.82809264e-05   1.57357499e-05   1.46351659e+00
+   3.49344220e-04   1.44672051e-01   3.21865605e-06   9.64431465e-03
+   3.57627925e-07   1.39961499e-04   8.19001361e-05   0.00000000e+00
+   8.03502917e-05   3.81470454e-06   3.57627925e-07   2.68558145e+00
+   4.76837272e-07   5.96046618e-07   6.43732255e-06   1.42210466e-03
+   8.62612738e-04   4.29154352e-06   3.55249977e-05   3.57627925e-07
+   9.41757844e-06   7.11704779e-05   5.60285253e-06   1.45436388e-05
+   6.68786452e-05   5.22041023e-02   1.43051250e-06   1.27254538e-02
+   2.14576949e-06   4.17233377e-06   6.19890216e-06   9.53831070e-04
+   1.22786323e-05   8.34465368e-07   4.07704065e-05   2.76569372e-05
+   1.19209304e-07   1.16825786e-05   4.84889233e-03   5.60285253e-06
+   7.82043498e-05   4.76837272e-07   3.27760034e-04   8.72336735e-04
+   3.51252407e-03   1.17547264e-04   1.04904730e-05   1.51396944e-05
+   1.58322466e-04   1.61108389e-01   9.53674771e-07   3.40384734e-03
+   1.54972201e-06   8.34465368e-07   3.94613206e-01   6.42139256e-01
+   1.51168802e-04   7.03337264e-06   9.73819867e-02   2.98023679e-06
+   3.48296940e-01   1.02520517e-05   1.31130309e-06   6.21811580e-03
+   1.68086517e-05   1.47081248e-03   1.66894406e-05   1.07288417e-06
+   1.31130309e-06   4.76837272e-07   6.21099680e-05   0.00000000e+00
+   1.90705597e-01   1.07288417e-06   1.74025321e+00   1.08481045e-05
+   1.19209304e-07   8.44037422e-05   1.54972201e-06   6.31811236e-06
+   3.40281200e-04   1.21120615e-02   2.67032374e-05   6.62825623e-05]
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+[  2.64740303e+00   1.68668797e+00   2.31398132e+00   1.25735889e+00
+   7.30260492e-01   2.54971411e+00   2.70324845e-01   8.49654111e-03
+   2.45679692e+00   1.71795401e+00   2.23669347e+00   2.57547054e+00
+   3.36096898e+00   1.98499085e+00   1.75021902e+00   2.18804766e+00
+   1.64816624e+00   6.77816868e-02   2.58538756e-04   1.80007646e-05
+   2.74181753e-06   2.74185131e-05   2.23994604e-03   9.00077459e-04
+   4.76837272e-07   6.19890216e-06   2.49715027e-04   1.84135701e-04
+   4.24892554e-04   2.88826210e-04   2.02655997e-06   3.36671136e-02
+   1.78814093e-06   6.07969241e-06   2.67032374e-05   1.39475842e-05
+   3.57627925e-07   4.52996346e-06   4.05312403e-06   4.05312403e-06
+   1.23803923e-03   2.98023679e-06   1.83583998e-05   1.44384131e-02
+   3.57628505e-06   1.31130309e-06   8.16943217e-03   5.69921315e-01
+   1.82391868e-05   4.76837272e-07   1.42703706e-04   4.64917321e-06
+   5.00680289e-06   1.19209304e-07   4.76837272e-07   0.00000000e+00
+   1.81154930e-04   1.00856145e-04   1.27554749e-05   8.34465368e-07
+   1.50038397e+00   2.14576949e-06   8.34465368e-07   6.55653230e-06
+   1.07288417e-06   3.09944630e-06   1.66893142e-06   4.41075326e-06
+   1.64218378e+00   1.19209304e-07   1.51396944e-05   2.86102704e-06
+   4.76837272e-07   6.31811236e-06   3.57627925e-07   3.33791577e-05
+   1.37936790e-03   7.15256022e-07   0.00000000e+00   2.41997786e-05
+   5.96046618e-07   1.06101899e-04   3.21865605e-06   9.41757844e-06
+   1.54972201e-06   9.29836824e-06   2.03849959e-05   8.34465368e-07
+   6.79495270e-06   1.38411560e-04   1.25715566e+00   3.13525343e-05
+   3.09948955e-05   2.53172970e-04   1.19209358e-06   4.17233377e-06
+   2.05471460e-03   3.94590534e-05   2.38418608e-07   3.00333282e-04
+   6.18357025e-03   1.02286802e-04   5.60285253e-06   5.38840504e-05
+   3.57627925e-07   2.50339826e-06   1.19209358e-06   5.35264044e-05
+   2.62260778e-06   2.98023679e-06   7.79646859e-02   8.25328403e-04
+   1.99516653e-04   1.93435786e-04   7.62942364e-06   3.69549480e-06
+   3.57627925e-07   1.31377266e-04   3.57627925e-07   2.26497900e-06
+   3.58933896e-01   1.96697256e-05   5.79373918e-05   2.13943960e-04
+   4.05312403e-06   2.87215225e-02   3.21865605e-06   1.70620751e+00]
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+[  5.27605923e+00   4.18049801e-01   1.92078756e+00   2.74640125e+00
+   2.00712829e+00   2.43814787e+00   3.75996028e+00   2.28518907e+00
+   2.11996063e+00   3.19888033e+00   2.15225563e+00   6.71154143e+00
+   2.74455075e+00   7.48544351e-01   5.52792180e+00   2.68719026e+00
+   7.31123025e-02   1.14770535e+00   2.32995613e+00   2.57299282e+00
+   8.96635537e-01   4.84478785e-01   4.44514711e+00   1.36952759e+00
+   4.73965584e-01   3.22451851e+00   2.39512761e+00   8.82402644e-01
+   3.41910943e+00   2.26127976e+00   5.97256354e-01   2.42093388e+00
+   5.44875278e-04   2.64648133e-05   9.41757844e-06   1.38891791e-03
+   5.00680289e-06   4.29154352e-06   1.06647832e-03   6.91416290e-06
+   1.19209304e-07   2.71774508e-04   2.86102704e-06   2.05042088e-05
+   5.96046618e-07   2.86106388e-05   1.19209304e-07   2.57495376e-05
+   9.89442015e-06   4.76837272e-07   3.81470454e-06   3.57627925e-07
+   8.80995431e-05   1.31131083e-05   4.05312403e-06   1.32323185e-05
+   6.07969241e-06   7.27179304e-06   2.38418608e-07   4.23201927e-05
+   3.45707531e-06   1.04362564e-03   2.38418608e-07   2.59850407e-04
+   1.78814093e-06   3.41449329e-03   5.24522238e-06   1.19209304e-07
+   1.19209304e-07   3.69549480e-06   1.43051250e-06   2.68705431e-02
+   2.38418875e-06   1.46628499e-05   2.38418608e-07   3.53617668e-02
+   1.50204833e-05   7.15258284e-06   1.53032748e-03   2.52726895e-05
+   2.26497900e-06   1.96094718e-03   3.63504243e+00   9.77520995e-06
+   6.42207800e-04   8.66967661e-04   1.94313034e-05   1.03712619e-05
+   3.57627925e-07   7.03337264e-06   0.00000000e+00   1.00974692e-02
+   1.82391868e-05   2.91055394e-03   3.99624044e-03   2.62260778e-06
+   1.07288934e-05   7.74863383e-06   1.60933832e-05   1.28746860e-05
+   3.01098684e-03   1.19209358e-06   1.96697256e-05   2.70608743e-05
+   1.64880039e-04   3.75516320e-05   4.76837272e-07   1.19209304e-07
+   5.96046618e-07   2.78452062e-04   5.96046618e-07   4.52996346e-06
+   0.00000000e+00   6.05647336e-04   1.43051250e-06   2.33652936e-05
+   2.26497900e-06   1.90335748e-04   6.91437817e-05   3.54781514e-03
+   6.30279304e-04   1.31130309e-06   6.28252674e-05   9.90678236e-05
+   2.77378887e-04   0.00000000e+00   2.38418875e-06   2.63717413e+00]
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+[  2.95314182e+00   2.15058741e-02   4.07744642e+00   4.59665155e+00
+   7.00686795e-01   1.71033378e+00   2.00418385e+00   1.52508397e+00
+   1.77827876e+00   1.99374112e+00   2.79092793e+00   2.88645709e+00
+   1.54008942e+00   2.47022544e+00   1.64310196e+00   1.76816817e+00
+   1.92098547e+00   2.73200037e+00   3.86896076e+00   3.68930923e+00
+   9.66172981e-03   1.85697662e+00   2.54234814e+00   4.53090107e+00
+   2.33978718e+00   2.39611494e+00   1.62379618e+00   3.10219372e+00
+   1.97792952e+00   7.27856559e-01   2.46458991e+00   2.36737143e+00
+   2.15595751e-03   5.60285253e-06   1.02520517e-05   1.07288417e-06
+   4.76837272e-07   1.12057360e-05   3.76708449e-05   1.19209358e-06
+   6.31811236e-06   1.19209304e-07   1.92004998e-04   3.09944630e-06
+   1.19209304e-07   1.74047073e-05   2.38418608e-07   0.00000000e+00
+   2.98623624e-03   1.07288417e-06   5.96046618e-07   7.15256022e-07
+   1.31130309e-06   0.00000000e+00   1.66893142e-06   5.96046618e-07
+   4.41075326e-06   5.61491506e-05   3.81470454e-06   5.72206227e-06
+   1.19209304e-07   2.50342637e-05   3.93391429e-06   1.24104568e-04
+   2.98023679e-06   2.54056573e+00   5.84127247e-06   0.00000000e+00
+   1.65714649e-04   4.99499401e-05   2.38418608e-07   1.07288417e-06
+   4.40223981e-03   6.79495270e-06   1.17785712e-04   1.19209304e-07
+   1.07288417e-06   5.09554371e-02   1.19209304e-07   3.09944630e-06
+   1.54972201e-06   2.74181753e-06   2.38418608e-07   6.28151279e-03
+   8.34465368e-07   1.96416586e-04   4.76837272e-07   3.57627925e-07
+   5.96046618e-07   1.58549610e-05   9.06031637e-05   4.52996346e-06
+   5.24522238e-06   2.94799507e-01   5.96046618e-07   1.75239184e-05
+   4.76837272e-07   2.74181753e-06   9.53674771e-07   9.53674771e-07
+   2.38418608e-07   2.86102704e-06   8.34465368e-07   1.18262607e-04
+   5.96046618e-07   5.24522238e-06   7.41697149e-04   5.60285253e-06
+   1.29938971e-05   4.76837272e-07   1.31130309e-06   1.19209304e-07
+   2.65840245e-05   1.45043284e-02   1.06096832e-05   5.96046618e-07
+   3.58826401e-05   3.63443792e-01   2.38418608e-07   1.19209304e-07
+   1.21594212e-05   9.53674771e-07   4.76838295e-06   2.03849959e-05
+   3.45707531e-06   3.79092744e-05   1.66893142e-06   1.19209358e-06]
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+[  7.01213315e+00   1.41038019e+00   4.34037476e-01   6.04106959e-01
+   1.85557589e+00   1.65032616e+00   1.71790050e+00   1.93608246e+00
+   3.11264203e+00   2.33294234e-01   1.78643209e+00   2.25733609e+00
+   4.86683308e-01   5.08782336e+00   4.23792583e+00   4.62171118e+00
+   1.39488028e+00   3.63179912e+00   2.73330509e+00   2.21835651e+00
+   3.20478633e+00   2.11480706e+00   8.06817045e-01   3.08473540e+00
+   2.43782370e+00   3.51307544e+00   1.39784822e+00   1.34634661e+00
+   3.57604121e+00   1.85630705e+00   9.57912943e-01   1.01613007e+00
+   1.10865258e-05   4.91154351e-05   1.31130309e-06   6.31811236e-06
+   3.57627925e-07   8.34465368e-07   1.07055675e-04   3.57627925e-07
+   1.66893142e-06   5.19947265e-04   2.98023679e-06   5.18573870e-05
+   4.58441302e-02   1.23601023e-03   1.14871673e-02   2.48741265e-03
+   1.80320305e-04   5.68849675e-04   5.96046618e-07   1.31131083e-05
+   1.43051250e-06   1.09649193e-03   1.20036878e-01   1.41860064e-05
+   7.15258284e-06   1.43051250e-06   2.50339826e-06   6.31811236e-06
+   1.83177774e-03   6.79495270e-06   4.76837272e-07   8.37557483e-04
+   1.19209304e-07   2.64620030e-04   4.17233377e-06   1.55551953e-03
+   2.02712114e-03   2.98023679e-06   1.44385457e+00   3.05180438e-05
+   8.58310614e-06   2.59602666e-01   2.65234476e-03   2.02770686e+00
+   1.82391868e-05   3.62402825e-05   4.31022746e-03   1.19209358e-06
+   8.58310614e-06   1.00136303e-05   4.78040674e-05   7.15256022e-07
+   0.00000000e+00   1.54972201e-06   2.50339826e-06   0.00000000e+00
+   9.70410692e-05   4.76837272e-07   7.15256022e-07   3.13525343e-05
+   8.34465368e-07   2.21217299e-04   3.21865605e-06   5.76989623e-05
+   1.59872434e-04   6.61633458e-05   1.21730208e+00   2.52583460e-03
+   8.54767131e-05   7.64160723e-05   1.03712619e-05   9.09608279e-05
+   0.00000000e+00   9.31067916e-05   2.30006516e-01   2.26497900e-06
+   7.12708221e-04   2.02655997e-06   9.43815149e-03   1.89544571e-05
+   3.09944630e-06   7.51021344e-06   1.16825786e-05   4.64917321e-06
+   3.21865605e-06   4.73306328e-03   5.96048221e-06   3.57627925e-07
+   5.69326803e-04   9.65599884e-06   1.24090386e-03   1.09320892e-04
+   9.53674771e-07   2.12194791e-05   4.63734905e-05   1.19209304e-07]
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+[  1.99224678e+00   8.25475072e-01   2.29899778e+00   3.46814459e-01
+   4.00502791e+00   1.33235821e+00   5.94888218e+00   3.59196941e+00
+   3.65173207e+00   3.29904965e+00   1.83364096e+00   1.38886842e+00
+   4.74152209e+00   6.21102368e+00   1.33374017e+00   5.15435955e+00
+   4.17361151e+00   1.46736896e-02   1.31130309e-06   6.96663279e-04
+   1.97847388e-04   3.28429858e-03   1.19209304e-07   1.33751035e-02
+   2.38418608e-07   1.51688904e-01   2.25446257e-03   1.58084018e-04
+   8.24135321e-04   9.53674771e-07   1.02520517e-05   7.15256022e-07
+   1.19209304e-07   1.65702277e-05   2.99498584e-04   3.48986476e-04
+   3.52325500e-04   6.79495270e-06   5.10185817e-03   4.89866547e-03
+   3.60315375e-04   9.91166949e-01   4.05312403e-06   5.73913893e-03
+   1.55384804e-03   2.14576949e-06   1.75239184e-05   6.30648732e-01
+   1.82391868e-05   7.15258284e-06   5.96046618e-07   5.20958165e-05
+   2.48585897e-03   2.92233052e-03   7.08521111e-03   5.48364233e-06
+   3.15909601e-05   1.19209358e-06   1.71662850e-05   1.80899296e-02
+   1.94207544e-03   7.15256022e-07   2.24072158e-01   2.74278573e-04
+   3.38560130e-05   3.71939896e-05   5.80017045e-02   9.50490008e-04
+   4.05312403e-06   1.31130309e-06   5.00680289e-06   5.30495417e-05
+   1.13136019e-04   2.44382027e-05   4.25488863e-04   3.57628505e-06
+   2.00708979e-04   5.24522238e-06   7.03359547e-05   2.04450125e-03
+   1.42735811e-02   1.24520075e-03   1.19209304e-07   4.86693159e-02
+   1.27602862e-02   2.36121879e-04   1.00442534e-03   5.12601264e-06
+   4.76837272e-07   4.76837272e-07   1.32569519e-04   4.86385725e-05
+   6.12754520e-05   2.86102704e-06   1.78814093e-06   1.70470739e-05
+   3.83964274e-03   1.04904730e-05   2.74181753e-06   1.26362647e-05
+   8.46389503e-06   8.56169907e-04   5.24534626e-05   3.40944389e-05
+   4.12472655e-05   8.08271652e-05   4.68503495e-05   5.78181753e-05
+   1.23746897e-04   1.68099228e-04   3.62402825e-05   2.84914258e-05
+   7.03337264e-06   2.62260778e-06   1.16339430e-01   9.24165547e-03
+   2.62260778e-06   8.35409912e-04   8.14232626e-05   3.21870248e-05
+   4.19406628e-04   7.34777946e-04   5.47185628e-05   6.05601526e-05
+   2.30616227e-01   2.50339826e-06   2.99123786e-02   2.97164940e-03]
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+[  2.75710942e-01   2.59740429e+00   2.37852521e+00   2.23324446e+00
+   4.83715709e+00   3.31944819e-01   3.87935954e+00   4.10434037e+00
+   6.48491859e+00   2.28417256e+00   2.39953196e+00   1.39195929e+00
+   3.07277107e+00   4.77308055e-01   2.08607744e+00   2.89848922e+00
+   2.90583613e-03   1.32066141e+00   1.51247523e+00   4.76937872e+00
+   3.00137538e+00   8.72097281e-01   1.41638707e+00   3.13999980e+00
+   1.64378261e+00   3.17320247e+00   7.55712489e-01   4.27088487e+00
+   2.04064057e+00   2.94752998e+00   2.41797670e+00   3.70638783e+00
+   7.92773208e-05   1.43596213e-02   4.15830920e-03   1.09673147e-05
+   6.43732255e-06   2.56180521e-02   1.19209304e-07   5.24522238e-06
+   7.98705423e-06   4.16195467e-02   3.95435782e-04   4.45091352e-03
+   3.49289330e-05   3.58734846e+00   3.27909626e-02   1.31938432e-03
+   2.86083610e-04   1.25630107e-03   1.35280594e-01   9.56104195e-05
+   2.38418608e-07   5.54762455e-03   1.37091620e-05   9.77798581e-01
+   9.53674771e-07   1.19209304e-07   3.18697217e-04   1.05744228e-04
+   8.82152654e-06   1.19209358e-06   2.91659171e-03   0.00000000e+00
+   4.54197725e-05   1.10621820e-03   5.02583571e-03   1.61064716e-04
+   1.29616784e-03   1.95769127e-02   1.08009452e-04   2.35996745e-03
+   1.98085851e-04   2.38418608e-07   6.88517392e-02   7.00122793e-04
+   3.57627925e-07   9.96140484e-03   4.33033419e+00   1.94313034e-05
+   3.42136518e-05   3.07564696e-05   8.34465368e-07   4.64917321e-06
+   1.50884911e-01   2.38418608e-07   1.56176364e-04   2.76458589e-03
+   9.53674771e-07   2.38418875e-06   2.07147590e-04   2.79130321e-03
+   3.35391960e-04   2.02846173e-02   9.77520995e-06   1.28793169e-03
+   1.74298708e-03   1.77594670e-03   3.57627925e-07   8.45493600e-02
+   1.35899518e-05   8.87250993e-04   8.46389503e-06   3.02373134e-02
+   5.26941195e-02   4.07924643e-03   6.29874527e-01   1.04577374e-03
+   1.45436388e-05   2.59533525e+00   1.06695574e-03   3.25446672e-05
+   1.98922408e+00   0.00000000e+00   1.08317065e+00   6.43732255e-06
+   3.57627925e-07   9.54694394e-03   1.02286180e-03   2.12633467e+00
+   6.79495270e-06   3.10967825e-02   2.39613546e-05   1.57357499e-05
+   2.18155383e-05   2.38418608e-07   2.66551059e-02   8.73842291e-05]
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+[  4.60940242e+00   3.47236703e+00   1.57591697e+00   2.21326919e+00
+   1.95620545e+00   6.76231661e-01   2.80301325e+00   5.83165497e-01
+   9.16710635e-02   2.22914185e+00   4.24657054e+00   2.46452978e-01
+   2.72499038e+00   3.01916186e+00   4.11077496e+00   5.17105301e+00
+   3.75122361e+00   3.57199228e+00   1.43662880e+00   1.92907579e+00
+   2.64698768e+00   9.81392326e-01   8.34135387e-01   2.98517621e+00
+   1.20726899e+00   3.48618432e+00   2.29221647e-02   1.63546304e+00
+   2.21508613e+00   2.34791792e+00   2.33787112e+00   4.25831802e+00
+   5.60285253e-06   5.24522238e-06   1.07288417e-06   6.37790072e-05
+   6.22291846e-05   0.00000000e+00   1.52589055e-05   9.77520995e-06
+   6.91416290e-06   5.10228783e-05   9.28356424e-02   3.59361351e-04
+   3.57628505e-06   6.22291846e-05   4.45290565e-01   6.65993989e-03
+   2.02655997e-06   3.46839952e-04   2.40805657e-05   9.41757844e-06
+   3.62104154e-04   5.60285253e-06   3.89821980e-05   1.90735045e-06
+   1.31241649e-01   1.19209304e-07   4.88759270e-06   1.97504158e-03
+   7.70121696e-05   5.06261829e-03   4.34469604e+00   5.96046618e-07
+   0.00000000e+00   1.66893142e-06   8.34465368e-07   1.00260040e-04
+   3.39752260e-05   1.81989541e-04   4.05312403e-06   1.43051250e-06
+   6.16331017e-05   1.65702277e-05   1.42942154e-04   5.12601264e-06
+   9.41797771e-05   1.53781166e-05   3.09944630e-06   4.76837272e-07
+   2.11002662e-05   4.17233377e-06   4.88759270e-06   1.10865258e-05
+   3.81470454e-06   3.69549480e-06   2.83722129e-05   8.19601642e-04
+   1.05782300e-01   1.35328504e-03   9.83525024e-05   1.90736682e-05
+   2.74181753e-06   2.40805657e-05   2.84468033e-03   0.00000000e+00
+   1.56414826e-04   3.61210659e-05   6.28370733e-04   6.07969241e-06
+   1.20170182e-04   1.93120923e-05   7.70746614e-04   9.35836724e-05
+   1.43051250e-06   3.29023060e-05   6.73555187e-05   3.57634271e-05
+   4.17233377e-06   4.52996346e-06   0.00000000e+00   1.37219307e-04
+   0.00000000e+00   2.22923863e-05   1.06340340e-04   3.26638801e-05
+   3.72799882e-03   8.34468483e-06   1.52599532e-04   1.81751078e-04
+   9.08416041e-05   4.15590330e-04   1.46628499e-05   4.58345545e-04
+   9.26299108e-05   2.38418608e-07   8.27039499e-03   0.00000000e+00]
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+hard: 126
+allrois: 128
+[  2.31296715e+00   1.30039198e+00   5.26355346e-03   5.02078331e+00
+   4.53124558e+00   6.26994690e-01   2.19428168e+00   2.72689970e+00
+   5.36251267e-01   2.89348911e+00   1.66635266e+00   3.02239682e+00
+   5.02704205e-01   3.57153662e+00   1.14091719e+00   2.64944114e+00
+   8.83267636e-01   2.55768840e+00   2.46664349e+00   3.02936841e+00
+   4.78288481e+00   5.88297844e-01   1.09673147e-05   0.00000000e+00
+   3.42546962e-04   1.18017897e-05   7.15258284e-06   0.00000000e+00
+   7.26010912e-05   2.17159700e+00   7.15256022e-07   8.58310614e-06
+   2.62260778e-06   3.11141084e-05   4.11252379e-01   5.96046618e-07
+   4.88759270e-06   3.28237045e-04   3.57627925e-07   9.42972722e-04
+   2.38418608e-07   4.80528863e-04   9.57410724e-04   1.78814093e-06
+   2.26497900e-06   8.34465368e-07   2.38418608e-07   2.01841369e-02
+   3.57627925e-07   2.38418875e-06   5.14997409e-05   2.86102704e-06
+   3.69549480e-06   7.15256022e-07   3.57627925e-07   2.38418875e-06
+   9.65599884e-06   5.96046618e-07   1.08481045e-05   2.76569372e-05
+   1.66072336e-04   3.05180438e-05   3.57627925e-07   7.98705423e-06
+   1.71662850e-05   2.38418875e-06   6.77131684e-05   1.31130309e-06
+   5.72206227e-06   7.39100324e-06   2.65454699e-04   8.34465368e-07
+   2.14576949e-06   6.66402120e-05   1.40667953e-05   3.45707531e-06
+   1.19209304e-07   2.50342637e-05   2.38418875e-06   1.66893142e-06
+   1.29938971e-05   1.54972201e-06   1.22711819e-03   1.19209304e-07
+   3.09736915e-02   2.74181753e-06   6.31811236e-06   3.80284873e-05
+   1.19209304e-07   3.57627925e-07   5.24522238e-06   2.90874905e-05
+   5.36443258e-06   1.54972201e-06   3.70747766e-05   4.76837272e-07
+   1.43052175e-05   4.05312403e-06   4.76837272e-07   5.96046618e-07
+   1.19209358e-06   2.37229306e-05   1.78814093e-06   1.54972201e-06
+   1.19209304e-07   4.76838295e-06   2.15822738e-03   5.96046618e-07
+   9.53674771e-07   2.14576949e-06   1.03240571e-04   1.13374459e-04
+   6.57689944e-03   1.19209358e-06   4.36341565e-04   5.26918957e-05
+   2.02655997e-06   1.16497733e-01   3.54057847e-05   2.38418608e-07
+   6.67574250e-06   2.26497900e-06   4.90866881e-03   2.26497900e-06
+   9.77520995e-06   1.19209999e-05   4.14346578e-03   7.15256022e-07]
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+[  3.23455234e+00   2.36037485e+00   2.45053731e+00   8.13144045e-01
+   7.04327956e-01   1.23788949e+00   2.43850963e+00   1.14737871e+00
+   6.39411970e-01   2.54797944e+00   2.87170465e+00   2.95626657e+00
+   1.34569524e+00   2.35502904e+00   1.04629423e+00   3.55200209e+00
+   2.36476514e+00   4.33845516e+00   2.87968796e-02   7.12896945e-05
+   4.55048308e-03   5.32756280e-03   8.34465368e-07   1.57357499e-05
+   2.41164863e-03   1.40080723e-04   7.15256022e-07   1.33614230e+00
+   1.28435087e-03   3.57627925e-07   2.50241067e-03   6.92629983e-05
+   3.29191040e-04   1.19209304e-07   2.01185918e-04   4.56582020e-05
+   9.29836824e-06   1.58549610e-05   1.56165388e-05   1.80201081e-04
+   5.00680289e-06   8.05887248e-05   6.91416290e-06   3.62223422e-04
+   5.43609131e-05   4.45166952e-04   3.57627925e-07   5.73413126e-05
+   1.24700688e-04   8.58310614e-06   7.92773208e-05   1.43051250e-06
+   2.98023679e-06   1.09673147e-05   9.16761492e-05   2.75377242e-05
+   1.41860064e-05   8.76035425e-04   6.93822149e-05   1.28396641e-04
+   3.10349948e-04   2.02655997e-06   6.07969241e-06   1.65145786e-03
+   2.14576949e-06   1.19209358e-06   9.53678864e-06   2.80427374e-03
+   3.75102769e-04   5.19947265e-04   4.77905007e-04   2.26497900e-06
+   1.56165388e-05   9.84717190e-05   9.54427640e-04   1.62125943e-05
+   1.68456914e-04   4.76838295e-06   1.16481644e-03   2.92502041e-03
+   8.34465368e-07   1.27554749e-05   1.55580230e-04   9.89442015e-06
+   9.71550704e-04   1.59741721e-05   1.83583998e-05   9.50143149e-05
+   7.65352961e-05   3.21865605e-06   4.52799781e-04   1.80916468e-04
+   2.38418608e-07   4.84565785e-03   4.96629975e-04   3.67171342e-05
+   2.38418608e-07   6.79495270e-06   8.51755380e-04   5.21952752e-03
+   3.37367965e-05   9.04393569e-03   1.08813820e-03   2.60208122e-04
+   4.05312403e-06   3.57627925e-07   2.56392435e-04   5.12601264e-06
+   8.34465368e-07   1.19209304e-07   4.88759270e-06   2.95384642e-04
+   8.23770097e-05   5.41224836e-05   3.19555821e-03   1.19209304e-07
+   5.96046618e-07   1.63318055e-05   5.04267991e-05   3.49289330e-05
+   1.21123972e-04   7.15256022e-07   3.03552923e-04   1.19209304e-07
+   2.45425012e-03   1.54972201e-06   1.78814093e-06   1.93793472e-04]
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+[  1.75897988e+00   3.07107010e+00   1.85173765e+00   4.51542100e-03
+   3.62951957e-01   1.87299204e+00   1.23416808e+00   2.40780939e+00
+   3.30243200e+00   2.40681189e+00   2.33928682e+00   2.14656438e+00
+   3.40351174e+00   1.40799118e+00   3.18853220e+00   1.18351229e+00
+   4.00266344e+00   3.46339687e+00   2.86102704e-06   1.19209304e-07
+   1.15633684e-05   1.07288417e-06   1.07288417e-06   2.38418608e-07
+   7.58429050e-01   4.49969172e-01   1.66893142e-06   1.11275680e-01
+   2.38745095e-04   8.34465368e-07   4.91740007e-04   6.68786452e-05
+   6.81860046e-03   5.36443258e-06   1.39475842e-05   0.00000000e+00
+   4.71802354e-01   1.19209358e-06   1.54972201e-06   1.19209304e-07
+   8.34465368e-07   4.42276250e-05   2.86102704e-06   1.44015197e-04
+   1.82389549e-03   1.25170536e-05   4.35123366e-05   1.07288417e-06
+   8.34465368e-07   8.82152654e-06   1.01604760e-01   1.16568193e-01
+   1.66894406e-05   4.83629818e-04   2.38418608e-07   1.54972201e-06
+   7.15256022e-07   3.05732084e-03   1.33515296e-05   4.29154352e-06
+   2.98023679e-06   2.50339826e-06   8.66689079e-05   1.24826513e-01
+   1.54972201e-06   9.42989936e-05   1.19209358e-06   1.07672758e-01
+   1.43051250e-06   5.96046618e-07   5.05460157e-05   7.86375196e-04
+   6.43732255e-06   1.43051250e-06   1.70722269e-04   1.37091620e-05
+   0.00000000e+00   2.38418608e-07   6.07969241e-06   1.99081496e-05
+   5.04032910e-01   2.95643404e-05   1.19209304e-07   3.93391429e-06
+   1.93120923e-05   2.38418875e-06   1.07288417e-06   9.41757844e-06
+   1.35788607e-04   1.05505787e-04   1.07288934e-05   0.00000000e+00
+   1.43051250e-06   8.34465368e-07   7.77785375e-04   4.64927034e-05
+   0.00000000e+00   2.38418608e-07   2.26497900e-06   3.57627925e-07
+   4.97107045e-04   1.10225352e-02   1.19209358e-06   4.62880451e-03
+   4.76837272e-07   2.74181753e-06   4.24246583e-03   1.19209304e-07
+   3.93391429e-06   1.07288417e-06   2.38418608e-07   9.04839471e-05
+   0.00000000e+00   5.24522238e-06   1.33046415e-04   2.76207551e-03
+   5.96046618e-07   1.01213809e-04   1.66893142e-06   1.58549610e-05
+   4.85657336e-04   1.07288417e-06   6.21289806e-03   1.87994957e-01
+   5.18573870e-05   1.46628499e-05   1.36146278e-04   2.40805657e-05]
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+[  3.18948316e+00   5.57731562e+00   3.38838776e+00   4.27335976e+00
+   2.16186269e+00   3.62424953e+00   2.46887000e+00   2.75561406e-01
+   2.63636849e+00   2.51739583e+00   2.38826040e+00   2.03121556e+00
+   2.19347494e-05   7.90409893e-02   1.04075123e-04   6.31169081e-02
+   7.39648640e-02   5.48364233e-06   2.62831425e-04   2.74181753e-06
+   1.55341768e-04   6.86165586e-04   6.49181306e-01   1.23326504e-03
+   9.11992684e-05   1.84330847e-02   5.72649017e-03   1.77623424e-05
+   2.89183954e-04   4.76837272e-07   8.07436928e-03   7.40317118e-05
+   1.24599099e-01   9.77951944e-01   8.40898138e-04   3.54972947e-03
+   2.26497900e-06   9.25982371e-03   7.18623281e-01   3.69120985e-01
+   1.51547119e-02   4.51813430e-05   6.12923526e-04   1.32566523e-02
+   4.38216440e-02   2.02655997e-06   4.17233377e-06   1.19209999e-05
+   4.52996346e-06   3.38438079e-02   6.14110589e-01   1.40195535e-02
+   1.15633684e-05   2.42043771e-02   3.13092605e-04   6.78769604e-04
+   3.83861297e-05   3.19400360e-03   1.05145676e-02   7.32034096e-04
+   1.00895984e-03   7.89970905e-03   3.54057847e-05   3.73972487e-03
+   5.48364233e-06   1.54972201e-06   1.54972201e-06   1.10865258e-05
+   7.70121696e-05   1.00856145e-04   6.19890216e-06   4.53157554e-04
+   1.04230151e-01   1.04637037e-03   2.61194585e-03   1.69278628e-05
+   2.63189140e-04   1.97420549e-03   2.47480487e-03   4.27227560e-03
+   8.54141603e-04   1.87831873e-04   3.33786579e-06   4.54897761e-01
+   1.57439828e-01   5.82577400e-02   9.68669578e-02   7.25630596e-02
+   6.60131872e-03   1.61659182e-03   5.17621462e-04   1.34725682e-03
+   5.36443258e-06   1.54973277e-05   4.09861915e-02   2.99257343e-03
+   3.88441682e-02   7.98705423e-06   3.68938483e-02   1.01328405e-05
+   2.68503558e-03   5.63875838e-05   1.71884581e-01   5.85172698e-03
+   1.90564652e-03   2.93259145e-05   1.08486340e-04   1.27199688e-03
+   3.03639541e-03   3.94590534e-05   2.04963773e-03   6.74355833e-04
+   4.94476318e-01   1.19209304e-07   2.44110808e-04   2.26497900e-06
+   4.58760150e-02   1.29001841e-01   4.43616533e-04   3.50833707e-03
+   2.77736603e-04   9.62065242e-05   1.06390202e-02   3.71286646e-04
+   5.53312013e-03   6.18649123e-04   1.33515296e-05   1.60188615e-01]
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+[  3.85085469e+00   9.09444165e-01   2.47028701e+00   2.39273793e+00
+   1.99126057e+00   1.35273096e+00   1.18359915e+00   1.48453192e+00
+   4.17508286e+00   2.41396513e+00   2.04749013e+00   4.44723887e+00
+   8.75579989e-01   4.53683556e+00   3.35990974e+00   7.22598353e-01
+   4.92781478e+00   2.49087231e+00   2.96730030e+00   2.89762316e+00
+   1.28851022e+00   2.00929177e-01   4.79300392e+00   1.38648895e+00
+   3.60825131e+00   2.88979547e+00   1.61024413e-02   2.71445144e+00
+   2.62916800e+00   1.42881302e-02   3.73074629e+00   2.16595193e+00
+   2.88241524e-02   8.92917451e-05   1.78814093e-06   1.31131083e-05
+   8.58310614e-06   1.49050653e-01   3.28415346e+00   3.69549480e-06
+   7.74123706e-03   2.46766267e-05   1.65252531e+00   4.05312403e-06
+   1.29938971e-05   7.33163979e-05   1.43051250e-06   1.75498857e-03
+   3.57627925e-07   1.66257583e-02   1.78815535e-05   1.66893142e-06
+   9.53674771e-07   1.78814093e-06   2.50339826e-06   9.53674771e-07
+   2.00351278e-04   2.02655997e-06   1.66893142e-06   4.60158444e-05
+   4.12466675e-02   2.38418608e-07   8.49998323e-05   1.76964596e-01
+   4.04127641e-05   3.57627925e-07   3.57627925e-07   4.01545037e-03
+   2.42704228e-01   1.22786323e-05   1.11228452e-04   7.15256022e-07
+   2.38418608e-07   3.24643165e-01   3.38717014e-01   2.62260778e-06
+   5.07172430e-03   5.96046618e-07   2.38418608e-07   3.33786579e-06
+   1.97058432e-02   0.00000000e+00   4.76837272e-07   1.19209304e-07
+   9.53674771e-07   6.10794546e-03   9.53678864e-06   4.76837272e-07
+   6.09553140e-03   2.86102704e-06   3.09319375e-03   1.65702277e-05
+   6.40921900e-03   1.07288417e-06   1.87627524e-02   9.60170664e-03
+   1.07288417e-06   1.19209304e-07   2.36335590e-01   8.34465368e-07
+   7.15256022e-07   5.96046618e-07   4.76837272e-07   5.96046618e-07
+   3.57627925e-07   3.57627925e-07   3.57627925e-07   7.21468106e-02
+   1.54973277e-05   1.82571590e+00   1.82170823e-01   7.15256022e-07
+   5.48364233e-06   1.19209304e-07   5.19078635e-02   3.77900578e-05
+   4.76837272e-07   1.19209304e-07   3.17283627e-03   2.12274666e-04
+   2.97888299e-03   1.51259801e-03   1.19209358e-06   2.98023679e-06
+   7.68002647e-04   1.60933832e-05   1.19209304e-07   2.98023679e-06]
+hard: 128
+hard: 128
+hard: 128
+hard: 126
+hard: 126
+allrois: 128
+[  1.38186539e+00   3.44983310e+00   2.08223240e+00   2.78716874e+00
+   5.99438423e+00   3.07419653e+00   4.37954463e+00   4.26946690e+00
+   3.26456790e+00   4.19623307e+00   3.49409458e+00   4.06236019e+00
+   2.43521341e+00   1.54947646e+00   2.09576380e+00   1.03831895e+00
+   5.05653244e+00   2.49212776e+00   4.35726640e+00   1.92530983e+00
+   3.61522594e-01   8.04888434e-01   2.50686464e+00   6.34426358e+00
+   3.21764468e+00   3.60993333e+00   6.22030075e+00   3.24891482e+00
+   4.29161206e+00   8.43865308e+00   3.27565264e+00   3.67414645e+00
+   7.96461850e-02   7.07876810e-04   1.06340340e-04   3.45153689e-01
+   1.25937486e+00   3.44663739e-01   1.70470739e-05   1.02870911e-03
+   3.06706619e-03   3.33786579e-06   1.70107244e-03   2.09810551e-05
+   4.86404542e-03   1.91408835e-04   5.51549904e-03   2.21575014e-04
+   1.30094239e-03   6.79914355e-02   8.83379835e-05   2.68354714e-01
+   7.46262431e-01   1.01528433e-03   3.13331082e-04   1.13518439e-01
+   7.94905354e-04   7.26233721e-02   1.76314414e-02   1.06170494e-03
+   8.59877281e-03   2.51534766e-05   1.80925679e+00   4.00288310e-03
+   8.40301625e-04   1.54010642e+00   3.21397535e-03   1.44969003e-04
+   3.89080192e-03   3.55313881e-03   1.04790459e-04   2.40805657e-05
+   4.73521929e-03   2.02449318e-03   9.00365785e-02   1.61575607e-03
+   2.16963253e-05   2.94451274e-05   7.48411985e-03   1.78412622e-04
+   1.73429823e+00   2.86655803e-03   2.34784577e-02   8.10680509e-01
+   8.82152654e-06   3.50481459e-05   4.05932479e-02   1.65356949e-04
+   7.47607276e-03   7.70321488e-03   2.07117990e-01   1.83530082e-03
+   1.52817846e-03   9.90391430e-03   5.60285253e-06   8.90353171e-04
+   9.72544309e-03   3.71286646e-04   8.66689079e-05   1.20289405e-04
+   1.03479018e-04   1.26205015e+00   1.69410749e-04   5.26006967e-02
+   2.27308422e-01   2.04187329e-03   9.27708950e-03   2.31569703e-03
+   2.33652936e-05   3.27830930e-05   2.77761501e-05   8.35767831e-04
+   3.26925307e-04   4.14039969e-04   3.95674288e-04   4.02233418e-04
+   3.05641368e-02   5.81665430e-03   1.07429706e-01   1.22198591e-03
+   2.66674766e-03   1.88073337e+00   5.80810420e-02   1.76266461e-04
+   2.04843581e-01   1.89945996e-02   2.84362044e-02   2.53829528e-02]
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+[  2.88976515e+00   2.03706362e+00   2.09057490e+00   2.43626188e+00
+   2.61251838e+00   8.26193261e-01   2.59617870e+00   1.72732934e+00
+   1.93453413e+00   2.53733987e+00   1.20349836e+00   2.48977438e-03
+   1.61850415e+00   4.90528280e-01   5.23366851e+00   2.54430171e+00
+   4.79533155e-01   3.54057847e-05   1.43052175e-05   1.87160331e-05
+   5.56722880e-05   2.20740360e-04   1.54972201e-06   1.26965955e-04
+   7.15256022e-07   2.02655997e-06   5.87375835e-02   3.24254543e-05
+   1.77623424e-05   3.93398404e-05   3.69549480e-06   2.12194791e-05
+   2.38418608e-07   2.38418608e-07   5.48364233e-06   5.96046618e-07
+   1.68695376e-04   1.19209358e-06   2.38418608e-07   0.00000000e+00
+   2.14576949e-06   1.19209304e-07   1.41749886e-04   3.57627925e-07
+   4.76837272e-07   4.76838295e-06   1.90735045e-06   8.12736806e-03
+   3.88518936e-04   7.15256022e-07   3.81470454e-06   7.15256022e-07
+   1.19209304e-07   1.66893142e-06   0.00000000e+00   3.90784786e-04
+   2.38418608e-07   1.21594212e-05   2.14576949e-06   2.38421417e-05
+   5.96046618e-07   9.41797771e-05   3.33800097e-03   5.24522238e-06
+   1.29580181e-02   1.74239554e-04   8.11848222e-05   8.34468483e-06
+   3.69555637e-05   1.43052175e-05   1.43051250e-06   5.96046618e-07
+   1.88730508e-02   2.48323783e-01   4.61350610e-05   2.98484985e-04
+   4.26778352e-05   2.38418608e-07   7.15256022e-07   1.54048645e+00
+   2.50339826e-06   1.57368646e-04   4.76837272e-07   1.24462240e-04
+   0.00000000e+00   4.31517720e-01   5.10342792e-02   5.24718140e-04
+   6.55653230e-06   2.98023679e-06   5.72206227e-06   3.45707531e-06
+   4.05312403e-06   1.43051250e-06   5.96046618e-07   1.09673147e-05
+   1.84776109e-05   4.17233377e-06   5.96048221e-06   2.02655997e-06
+   1.66894406e-05   1.43051250e-06   1.60933832e-05   2.63456004e-05
+   1.07288417e-06   6.43732255e-06   1.31130309e-06   1.87593410e-04
+   9.94998380e-04   7.15258284e-06   3.69549480e-06   5.96046618e-07
+   6.64703920e-03   1.19209304e-07   2.38418608e-07   5.96046618e-07
+   8.34465368e-07   3.45707531e-06   2.38418608e-07   2.38418608e-07
+   3.57627925e-07   3.57627925e-07   2.99219791e-05   2.00273607e-05
+   3.57627925e-07   5.72206227e-06   4.76838295e-06   8.94073673e-06]
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+[  7.19489256e+00   2.59324157e+00   6.62989366e-01   1.08273668e+01
+   6.87605286e-02   2.52591453e+00   1.28661542e+01   2.88731217e+00
+   1.07289396e+00   6.01225799e-01   3.95770853e+00   2.02690959e+00
+   2.52431841e+00   2.30597514e+00   3.51166790e+00   4.42841270e+00
+   2.24948587e+00   1.13654765e+01   1.55744014e+00   1.01166259e+00
+   3.54551726e+00   1.01153055e+01   2.59366871e+00   2.52726895e-05
+   4.06889291e-03   7.84427903e-05   1.20289405e-04   5.96046618e-07
+   1.63687757e-04   4.05312403e-06   2.38418875e-06   2.33647209e-02
+   3.02796179e-05   4.52996346e-06   1.08481045e-05   3.45176905e-02
+   2.43189916e-05   8.52590543e-04   0.00000000e+00   1.80007646e-05
+   3.57627925e-07   8.62374087e-04   3.45707531e-06   1.48555660e-03
+   1.19209304e-07   2.89682775e-05   2.62592948e-04   7.15256022e-07
+   1.86758785e-04   1.99081496e-05   8.09463818e-05   2.38418608e-07
+   0.00000000e+00   5.71474060e-03   1.19209304e-07   6.98094780e-04
+   1.30304237e-04   1.94313034e-05   5.96048221e-06   1.42107572e-04
+   6.56045042e-04   1.81925669e-02   2.30307460e-01   7.15256022e-07
+   2.20539623e-05   4.76837272e-07   3.08147492e-03   2.38418608e-07
+   3.80284873e-05   2.31471626e-04   1.54973277e-05   2.14576949e-06
+   5.34320297e-03   3.34983706e-05   7.80175254e-02   1.31019595e-04
+   6.92629983e-05   1.33515296e-05   2.84652691e-04   3.82973551e-04
+   8.05887248e-05   6.79495270e-06   2.75377242e-05   3.08680494e-04
+   1.16825786e-05   4.49429135e-05   9.62959311e-04   5.16069122e-03
+   2.39613546e-05   1.90735045e-06   1.35907831e-04   1.19209304e-07
+   4.55389854e-05   6.53288225e-05   1.40667953e-05   3.11184645e-04
+   1.68086517e-05   2.00273607e-05   2.12728581e-03   9.53719791e-05
+   1.95505145e-05   0.00000000e+00   1.06101899e-04   1.54972201e-06
+   1.53889275e+00   4.34440933e-03   2.38418608e-07   3.45707531e-06
+   1.19755244e+00   5.96046618e-07   5.89067349e-04   3.61210659e-05
+   3.09944630e-06   1.19209304e-07   8.80807987e-04   1.78815535e-05
+   3.64787084e-05   4.66119200e-05   5.01520000e-04   8.58310614e-06
+   2.38418608e-07   3.62402825e-05   4.76837272e-07   1.19209304e-07
+   1.23575710e-01   1.08229055e-03   1.78814093e-06   1.09673147e-05]
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+[  1.52050963e+00   4.23131122e+00   3.74641258e+00   3.98836871e+00
+   2.10093975e+00   3.16691693e-01   9.26464123e-01   2.15006764e+00
+   2.80993349e+00   1.45851095e+00   6.19064891e-01   3.42612076e+00
+   4.88704606e-03   3.36094133e+00   5.22337616e+00   1.68415007e+00
+   3.95225562e+00   3.52642506e+00   5.03821390e+00   1.65702277e-05
+   0.00000000e+00   5.96046618e-07   3.33786579e-06   4.05312403e-06
+   8.34465368e-07   1.63503969e-03   5.96046618e-07   0.00000000e+00
+   8.34465368e-07   2.62461510e-03   1.19209304e-07   9.53678864e-06
+   6.67574250e-06   7.03337264e-06   2.62260778e-06   1.77623424e-05
+   0.00000000e+00   0.00000000e+00   2.38418608e-07   9.77520995e-06
+   9.77520995e-06   0.00000000e+00   2.02655997e-06   6.31811236e-06
+   1.74120330e-04   9.89442015e-06   2.62260778e-06   1.10902758e-02
+   2.13386902e-05   0.00000000e+00   8.34465368e-07   8.97810445e-04
+   1.06096832e-05   2.38418608e-07   1.19209304e-07   5.96046618e-07
+   1.43051250e-06   1.16825786e-05   2.74181753e-06   2.38418608e-07
+   0.00000000e+00   2.50339826e-06   3.57627925e-07   2.38418608e-07
+   1.31130309e-06   1.21594212e-05   1.07288417e-06   1.53781166e-05
+   2.38418608e-07   2.38418608e-07   3.57627925e-07   2.86102704e-06
+   7.03337264e-06   0.00000000e+00   4.12472655e-05   2.09810551e-05
+   3.57627925e-07   1.19209304e-07   0.00000000e+00   1.19209304e-07
+   4.29154352e-06   1.19209358e-06   8.34465368e-07   7.15256022e-07
+   1.74047073e-05   7.92515576e-02   0.00000000e+00   4.88759270e-06
+   5.12601264e-06   4.29154352e-06   2.26497900e-06   5.96046618e-07
+   1.31131083e-05   3.69549480e-06   6.07969241e-06   2.74181753e-06
+   5.96046618e-07   4.76838295e-06   4.17233377e-06   2.98023679e-06
+   9.29875678e-05   3.63594954e-05   6.43732255e-06   3.21865605e-06
+   5.72206227e-06   8.34465368e-07   1.54972201e-06   1.66893142e-06
+   3.81470454e-06   5.69836629e-05   2.38418608e-07   1.54972201e-06
+   7.53431086e-05   2.38418608e-07   3.57627925e-07   1.43051250e-06
+   8.34465368e-07   0.00000000e+00   1.19209304e-07   0.00000000e+00
+   3.09944630e-06   2.74181753e-06   1.16911298e-03   4.17241208e-05
+   2.38418875e-06   2.38418608e-07   1.19209304e-07   9.53674771e-07]
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+[  1.64155623e+00   1.86023777e+00   4.75542551e-02   2.85608250e+00
+   3.95407386e+00   1.79486243e+00   1.88174077e+00   1.96513237e+00
+   1.80166313e+00   1.85976502e+00   3.40433987e+00   1.70562767e+00
+   0.00000000e+00   9.53674771e-07   4.88759270e-06   5.96046618e-07
+   8.32115475e-05   3.57627925e-07   4.76837272e-07   1.80007646e-05
+   3.24063352e-04   0.00000000e+00   4.76837272e-07   2.38418608e-07
+   1.07288417e-06   9.89442015e-06   1.62586272e-02   8.22547463e-06
+   1.19209304e-07   1.19209304e-07   3.09944630e-06   5.48364233e-06
+   1.14805138e-04   8.58310614e-06   1.19209358e-06   0.00000000e+00
+   1.90735045e-06   0.00000000e+00   2.38418608e-07   9.53674771e-07
+   5.96046618e-07   2.38418608e-07   0.00000000e+00   0.00000000e+00
+   1.19209304e-07   1.19209304e-07   1.19209304e-07   1.19209358e-06
+   1.31130309e-06   1.54972201e-06   2.47958396e-05   7.15256022e-07
+   3.69549480e-06   0.00000000e+00   8.34468483e-06   1.07288417e-06
+   1.07288417e-06   1.19209304e-07   1.19209304e-07   2.38418608e-07
+   1.82296541e-02   0.00000000e+00   7.15256022e-07   1.07288417e-06
+   3.05180438e-05   8.00695270e-03   3.69549480e-06   2.14576949e-06
+   2.38418608e-07   0.00000000e+00   4.15226398e-03   1.43051250e-06
+   3.45707531e-06   3.61210659e-05   2.38418608e-07   9.14992124e-04
+   2.38418608e-07   0.00000000e+00   4.76837272e-07   1.19209304e-07
+   5.96046618e-07   2.38418608e-07   1.19209358e-06   0.00000000e+00
+   3.57627925e-07   1.19209304e-07   2.38418608e-07   2.50339826e-06
+   1.19209304e-07   1.19209304e-07   8.34465368e-07   2.02655997e-06
+   2.38418608e-07   3.57627925e-07   7.15256022e-07   1.78814093e-06
+   0.00000000e+00   2.38418608e-07   3.57627925e-07   2.38418608e-07
+   1.19209304e-07   5.12601264e-06   3.57627925e-07   8.34465368e-07
+   1.19209304e-07   8.34465368e-07   5.86526912e-05   0.00000000e+00
+   7.15256022e-07   3.69549480e-06   3.54500234e-01   0.00000000e+00
+   1.19209304e-07   1.19209304e-07   3.88041924e-04   0.00000000e+00
+   0.00000000e+00   3.57627925e-07   5.96046618e-07   3.57627925e-07
+   6.31811236e-06   8.34465368e-07   1.66893142e-06   1.22423685e+00
+   1.19209304e-07   1.54972201e-06   2.38418608e-07   2.38418608e-07]
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+[  6.72998289e-01   3.36725298e+00   5.04446504e+00   1.00903600e+00
+   2.49628068e+00   1.85866512e+00   1.22307445e+00   5.36043803e-01
+   3.97146696e+00   3.50035898e-02   3.07063704e+00   2.86425713e+00
+   3.65115931e+00   2.93703069e+00   1.56978833e+00   1.41860064e-05
+   5.96046618e-07   2.59879635e-05   1.66893142e-06   1.54972201e-06
+   9.53674771e-07   5.96046618e-07   3.57627925e-07   2.58931499e-02
+   9.53674771e-07   3.93391429e-06   9.89442015e-06   3.17714131e-03
+   1.39475842e-05   1.43051250e-06   1.43051250e-06   5.96046618e-07
+   8.70231634e-06   5.26482519e-03   2.02655997e-06   8.34465368e-07
+   1.78814093e-06   0.00000000e+00   3.38560130e-05   2.38418608e-07
+   1.19209304e-07   5.96046618e-07   6.19890216e-06   7.15256022e-07
+   3.90188507e-04   1.78814093e-06   3.93391429e-06   8.34465368e-07
+   8.34465368e-07   1.16825786e-05   4.76838295e-06   5.05608832e-03
+   2.87298517e-05   3.57627925e-07   2.86102704e-06   4.44689911e-04
+   1.02866655e-02   3.57628505e-06   2.71800873e-05   3.45707531e-06
+   3.75516320e-05   7.15258284e-06   1.19209304e-07   8.34465368e-07
+   1.16831929e-04   8.91725213e-05   7.17665680e-05   7.15256022e-07
+   4.05312403e-06   1.66893142e-06   1.07288417e-06   4.76838295e-06
+   1.03712619e-05   3.43328647e-05   2.50339826e-06   3.57627925e-07
+   7.15256022e-07   1.31130309e-06   3.33786579e-06   4.76837272e-07
+   1.62125943e-05   1.25707686e-03   7.27179304e-06   0.00000000e+00
+   2.80427374e-03   2.38418608e-07   1.31130309e-06   3.21870248e-05
+   1.03121354e-04   5.96046618e-07   1.09082452e-04   8.34465368e-07
+   2.50339826e-06   1.66893142e-06   2.86102704e-06   4.76837272e-07
+   4.76837272e-07   9.89442015e-06   2.58657994e-04   2.38418608e-07
+   1.16116593e-04   1.86351210e-01   1.35899518e-05   1.48022607e-01
+   1.24939135e-04   6.55653230e-06   0.00000000e+00   3.57627925e-07
+   2.19347494e-05   1.54686347e-03   4.88759270e-06   3.40944389e-05
+   2.16963253e-05   1.07288417e-06   8.07079487e-05   2.70224351e-04
+   5.26918957e-05   1.08009452e-04   1.78814093e-06   1.43051250e-06
+   1.43051250e-06   6.43732255e-06   4.17233377e-06   6.05253458e-01
+   5.72206227e-06   3.63594954e-05   8.34465368e-07   1.19209358e-06]
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+[  1.71677904e+00   1.23663832e+00   8.28443109e-01   1.23646200e+00
+   2.66444060e+00   1.84407537e+00   2.25882335e+00   2.57939582e+00
+   3.66233048e+00   1.88116760e+00   3.94408284e+00   2.66510453e+00
+   1.35465910e+00   9.03243722e-03   1.04287236e+00   3.46713477e+00
+   2.26525428e+00   1.78624079e+00   3.30410868e+00   1.93584682e+00
+   1.18596289e-01   2.78158320e+00   1.33652291e+00   5.00680289e-06
+   2.67032374e-05   1.50095759e-04   4.57868475e-04   3.57627925e-07
+   2.75377242e-05   2.07426310e-05   8.34468483e-06   6.19890216e-06
+   7.72506028e-05   0.00000000e+00   1.31130309e-06   9.26299108e-05
+   4.17233377e-06   4.66119200e-05   1.07288417e-06   4.08615693e-02
+   1.10865258e-05   8.46389503e-06   7.88004472e-05   0.00000000e+00
+   5.89186617e-04   7.26785045e-04   9.05994693e-06   1.54972201e-06
+   0.00000000e+00   6.79495270e-06   5.96046618e-07   1.05505787e-04
+   0.00000000e+00   3.69555637e-05   7.15256022e-07   5.47600305e-03
+   0.00000000e+00   1.66893142e-06   1.23386178e-03   5.12613078e-05
+   0.00000000e+00   6.67574250e-06   3.25446672e-05   1.54972201e-06
+   8.03987868e-03   4.76837272e-07   1.54972201e-06   2.14576949e-06
+   1.17785712e-04   6.54480391e-05   2.27293428e-02   1.19209304e-07
+   2.02655997e-06   6.79495270e-06   4.45166952e-04   7.74863383e-06
+   7.15256022e-07   4.08896231e-05   9.88293832e-05   5.96046618e-07
+   5.96046618e-07   1.82391868e-05   1.84776109e-05   2.28594546e-03
+   5.01883696e-05   2.16963253e-05   2.38418608e-07   1.77623424e-05
+   0.00000000e+00   5.75268734e-03   2.44382027e-05   4.44928417e-04
+   2.38418608e-07   1.61229342e-03   1.21720092e-04   7.03359547e-05
+   4.72895830e-04   5.72206227e-06   1.66893142e-06   1.43980098e+00
+   8.03502917e-05   7.51241052e-04   6.09178023e-05   2.79396642e-02
+   9.47758745e-05   3.57627925e-07   2.63456004e-05   3.19293438e-04
+   7.39100324e-06   5.24522238e-06   2.66408635e-04   6.12490550e-02
+   5.96046618e-07   0.00000000e+00   6.67604432e-02   3.54340188e-02
+   5.44801296e-05   2.26497900e-06   8.58310614e-06   4.47044840e-05
+   7.15256022e-07   1.19209358e-06   2.32460825e-05   9.17915713e-06
+   1.54973277e-05   2.16090179e-04   3.39923456e-04   2.43189916e-05]
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+[  4.23762144e+00   3.49787410e+00   2.88734428e+00   1.28949395e+00
+   6.66587003e+00   2.79031363e+00   2.85285702e+00   2.56396794e+00
+   3.82136613e-01   2.54527541e+00   5.54681172e+00   6.84777832e-02
+   1.64268653e-01   1.12281040e+00   9.57613596e-01   3.72556853e+00
+   1.72581845e-02   2.54539861e+00   2.95962027e+00   2.34713489e+00
+   1.50598775e+00   3.61775969e+00   2.74057079e+00   2.17962519e+00
+   2.31065279e+00   2.46966639e+00   3.46287436e+00   3.76689468e+00
+   2.21334243e+00   4.30005976e-01   1.75902018e+00   3.03554808e+00
+   2.38418608e-07   2.53808452e-03   1.37091620e-05   5.52866666e-04
+   2.94788420e-04   8.45167134e-03   1.33317923e-02   1.31301824e-02
+   1.08959861e-02   1.35899518e-05   1.03479018e-04   5.96048221e-06
+   1.00136495e+00   9.30993725e-03   4.26566809e-01   1.28277417e-04
+   4.41075326e-06   1.89938694e-02   1.70561008e-03   1.70470739e-05
+   4.13562928e-04   6.48529967e-04   1.23709194e-01   3.66835273e-03
+   4.34314134e-04   2.65545235e-03   1.21594212e-05   7.72774685e-04
+   9.76681709e-04   4.18453336e-01   2.33817607e-01   1.31130309e-06
+   5.36443258e-06   3.81470454e-06   2.13984754e-02   3.72956187e-04
+   5.14526851e-02   2.25051981e-03   9.58488599e-05   4.26467368e-03
+   3.33791577e-05   4.94363892e-04   3.45025933e-03   1.09670356e-01
+   2.08947645e-03   6.19890216e-06   2.37731040e-01   4.56910096e-02
+   1.16744207e-03   1.12182235e-04   3.21870248e-05   2.69956402e-02
+   6.97259733e-04   5.01883696e-05   1.66893142e-06   7.10512613e-05
+   4.37534181e-04   7.56669149e-04   9.53674771e-07   7.81438887e-01
+   1.37662236e-03   1.01333033e-04   9.54912030e-05   2.23721261e-04
+   8.41038451e-02   3.86661261e-01   2.83959950e-03   1.45684360e-04
+   5.27632982e-03   1.67193625e-03   1.68574136e-02   5.34973433e-03
+   9.50143149e-05   6.83183316e-04   2.79596541e-03   1.78651084e-04
+   2.30756195e-04   6.04872666e-02   6.05170208e-04   3.87443960e-01
+   8.67086928e-04   4.05312403e-06   8.82152654e-06   3.62819672e-04
+   1.60777476e-02   1.44836414e+00   6.80708181e-05   5.47708198e-03
+   7.99763948e-03   1.15186721e-03   6.39792800e-01   1.11684285e-01
+   4.76837272e-07   2.15532184e-02   4.00921592e-04   3.76706664e-03]
+hard: 127
+hard: 127
+hard: 127
+hard: 128
+hard: 128
+allrois: 128
+[  4.24370705e-01   1.36205839e+00   1.79054340e+00   1.43196237e+00
+   1.81521014e+00   3.44601260e+00   9.49447508e-01   1.95671808e+00
+   2.68810652e+00   6.92297131e-01   3.28174591e+00   2.96237958e+00
+   2.78208910e+00   1.77542797e+00   2.54058701e+00   4.28035996e-01
+   5.21652367e-03   3.01576745e+00   3.36370826e+00   4.51786190e+00
+   1.66894406e-05   4.76837272e-07   0.00000000e+00   1.25470217e-02
+   3.93391429e-06   0.00000000e+00   7.15256022e-07   4.76837272e-07
+   9.53674771e-07   6.12754520e-05   1.58578658e-03   4.76837272e-07
+   1.78814093e-06   1.19209358e-06   4.94721695e-04   1.66893142e-06
+   3.57627925e-07   3.57627925e-07   1.16909193e-02   1.19209304e-07
+   4.76837272e-07   1.19209304e-07   1.19209358e-06   2.74181753e-06
+   3.33786579e-06   3.57627925e-07   8.34465368e-07   2.38334760e-02
+   5.96046618e-07   4.76837272e-07   3.93710643e-01   3.78661491e-02
+   0.00000000e+00   1.07288417e-06   1.19209304e-07   7.91581042e-05
+   8.63984809e-04   1.55450359e-01   6.14116376e-04   1.19209304e-07
+   4.76837272e-07   1.19209304e-07   1.19209304e-07   2.38418608e-07
+   1.19209304e-07   9.23846602e-01   9.41757844e-06   7.74863383e-06
+   2.74181753e-06   1.21594212e-05   1.19209304e-07   2.50025955e-03
+   3.33786579e-06   1.19209304e-07   3.01604050e-05   2.74181753e-06
+   1.19209304e-07   0.00000000e+00   1.19209304e-07   4.62758297e-04
+   1.19209304e-07   0.00000000e+00   1.31130309e-06   8.34465368e-07
+   1.19209304e-07   5.84127247e-06   0.00000000e+00   1.19209304e-07
+   1.37590605e-03   0.00000000e+00   9.53674771e-07   2.38418608e-07
+   0.00000000e+00   7.67582515e-03   5.01883696e-05   2.26497900e-06
+   9.27997928e-04   3.23215360e-03   2.42130496e-02   2.02655997e-06
+   0.00000000e+00   1.19209304e-07   1.43051250e-06   1.43051250e-06
+   4.41075326e-06   1.19209304e-07   1.19209304e-07   3.20605177e-04
+   2.38418608e-07   4.98307236e-05   4.38442439e-01   0.00000000e+00
+   1.19209304e-07   9.54427640e-04   7.15256022e-07   4.17233377e-06
+   2.22602696e-03   1.19209304e-07   1.19209304e-07   1.66893142e-06
+   1.07288417e-06   0.00000000e+00   1.19209304e-07   0.00000000e+00
+   3.57627925e-07   0.00000000e+00   2.38418608e-07   3.81470454e-06]
+hard: 128
+hard: 128
+hard: 128
+hard: 127
+hard: 127
+allrois: 128
+[  2.50496072e+00   1.36652536e+00   3.93387231e+00   2.85784846e+00
+   1.06070381e+00   2.96650979e+00   2.56540052e+00   2.39350921e+00
+   3.30874251e+00   3.52454225e+00   2.47736375e+00   3.41688743e-01
+   1.30776508e+00   2.50170459e+00   1.61524928e-02   8.60636508e-01
+   2.42307931e+00   1.58179052e+00   2.04080177e+00   3.12220402e+00
+   2.61624935e+00   2.94201125e+00   3.51124227e+00   1.92649924e+00
+   1.25444502e+00   2.74293389e+00   1.79135614e+00   1.23847035e+00
+   3.53223610e+00   4.72723885e+00   3.52934721e+00   3.47705443e-01
+   3.57627925e-07   6.15138852e-05   1.18466628e+00   5.48364233e-06
+   1.22919846e-02   8.70231634e-06   1.19209304e-07   3.89821980e-05
+   6.41366569e-05   4.76837272e-07   1.97301239e-01   9.72633958e-01
+   6.77834809e-01   4.43726312e-03   1.19209304e-07   4.87577890e-05
+   3.57627925e-07   2.87753006e-04   8.34465368e-07   1.43051250e-06
+   4.37548816e-01   2.34845065e-05   4.41075326e-06   3.57627925e-07
+   4.64917321e-06   1.78814093e-06   2.07484625e-02   3.47197725e-04
+   6.95231778e-04   3.43328647e-05   7.36686692e-04   6.32857308e-02
+   7.21058866e-04   6.11015013e-04   3.57628505e-06   5.31687583e-05
+   5.84127247e-06   2.64648133e-05   2.50754971e-03   8.44238850e-04
+   4.19631042e-02   7.49451574e-04   2.86102704e-06   1.19209358e-06
+   1.66893142e-06   3.57627925e-07   4.17233377e-06   3.11065407e-04
+   2.24115975e-05   1.05267340e-04   2.38418608e-07   5.96046618e-07
+   1.05711892e-02   2.38418608e-07   2.68224503e-05   1.19209304e-07
+   3.45707531e-06   2.81433138e-04   1.54972201e-06   2.02657848e-05
+   1.67145394e-04   2.41368340e-04   4.88759270e-06   1.15043578e-04
+   4.20817632e-05   2.38418608e-07   0.00000000e+00   3.95064056e-03
+   2.38418608e-07   1.07288417e-06   8.54022277e-04   1.31131083e-05
+   1.43051250e-06   3.57628505e-06   4.25586222e-05   3.45528213e-04
+   1.66893142e-06   1.45445912e-04   0.00000000e+00   7.01526403e-02
+   1.66893142e-06   1.02520517e-05   1.43051250e-06   2.14576949e-06
+   4.76837272e-07   4.88759270e-06   5.72206227e-06   3.57627925e-07
+   4.76837272e-07   2.23244308e-04   4.52996346e-06   5.80566084e-05
+   6.60458696e-04   4.44689911e-04   3.57627925e-07   4.76837272e-07]
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+[  3.14530272e+00   2.77576739e+00   1.42580102e+00   4.52489127e+00
+   1.53118821e-01   2.32590320e+00   1.46459458e+00   1.82412937e+00
+   1.53115700e+00   4.09702238e+00   7.75610832e-01   3.42423849e+00
+   4.08593709e+00   2.93015517e+00   3.45160380e+00   2.01909473e-01
+   1.09833871e+00   2.18043322e+00   4.35567830e-01   1.61193685e+00
+   2.02476646e+00   2.31592823e+00   1.98093356e+00   4.50830360e+00
+   2.92635731e+00   2.01556228e+00   2.92755336e+00   4.11022938e+00
+   3.60242303e-02   2.74402366e+00   8.63217088e-01   1.81575350e+00
+   9.84915183e-04   5.08897752e-03   9.42989936e-05   1.22751810e-01
+   5.01883696e-05   2.95928288e-02   3.69549480e-06   3.69140093e-04
+   1.88465881e+00   4.97226312e-04   2.74366676e-03   3.57627925e-07
+   1.68866360e+00   3.08123580e-03   4.06407431e-04   1.86610863e-01
+   1.19693286e-04   1.19268463e-03   8.53664358e-04   1.49013340e+00
+   4.84785289e-01   5.58430791e-01   1.71755149e-03   4.89271693e-02
+   2.80373424e-01   1.31203306e+00   3.07891816e-01   2.26497900e-06
+   1.48030359e-03   1.03330370e-02   6.06470788e-03   1.00783908e+00
+   2.13386902e-05   1.05543230e-02   9.59680838e-05   4.40056389e-03
+   2.40274612e-03   4.13146496e-01   2.63456004e-05   1.29163195e-03
+   3.81470454e-06   7.38953298e-04   8.42281897e-03   2.00828217e-04
+   1.13461487e-01   7.86784403e-06   6.68280106e-03   1.10001780e-01
+   5.10910712e-03   3.01547069e-03   1.78814093e-06   1.10669550e-03
+   5.27446389e-01   2.81485333e-03   6.12707257e-01   7.34096486e-03
+   5.46875130e-03   2.55899946e-03   5.00680289e-06   2.56634895e-02
+   8.31841290e-01   1.04923442e-03   3.65485661e-02   3.33812064e-03
+   7.08128282e-05   1.75908775e-04   1.54555007e-03   1.26268680e-03
+   1.61181974e+00   4.68873024e-01   2.30653714e-02   2.43357662e-03
+   3.09944630e-06   1.59825802e-01   4.17632516e-03   2.82836485e+00
+   1.97366440e+00   8.85068402e-02   4.63599060e-03   8.94218758e-02
+   3.09743062e-02   1.83629021e-02   4.09215927e-01   5.22571208e-04
+   1.19209304e-07   2.19197734e-03   2.28801697e-01   1.35900050e-01
+   1.86456203e+00   4.85776603e-04   2.62592948e-04   8.44954688e-04
+   7.47724235e-01   4.24270565e-03   9.02300514e-03   1.61756605e-01]
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+allrois: 128
+[  1.07304859e+00   1.62260467e+00   2.29658444e+00   2.06423507e-01
+   2.06511573e+00   1.71533060e+00   2.06721028e+00   2.44805662e+00
+   3.23934552e+00   1.23694226e+00   2.50830971e-01   2.48773411e+00
+   1.46099270e+00   1.54042376e+00   2.67975301e+00   7.65398454e-01
+   1.17218289e+00   2.32387423e+00   1.81751078e-04   3.45707531e-06
+   1.90735045e-06   1.90736682e-05   7.39100324e-06   2.26497900e-06
+   3.65323998e-04   1.66893142e-06   7.27179304e-06   7.61776391e-05
+   1.18080922e-03   2.38418608e-07   1.40667953e-05   1.29231223e-04
+   1.47738438e-02   2.86102704e-06   7.51021344e-06   4.10088360e-05
+   8.03502917e-05   0.00000000e+00   3.57627925e-07   5.03075862e-05
+   1.38283731e-05   6.91416290e-06   3.46905035e-05   3.97701660e-04
+   1.12057360e-05   6.07969241e-06   3.45707531e-06   3.27830930e-05
+   1.12057360e-05   5.96046618e-07   2.02655997e-06   1.19209999e-05
+   3.83861297e-05   0.00000000e+00   8.10626443e-06   2.38418875e-06
+   5.24522238e-06   5.36443258e-06   2.14576949e-06   5.21988701e-03
+   1.04904730e-05   4.64917321e-06   1.19209304e-07   0.00000000e+00
+   2.38418608e-07   2.02655997e-06   6.67574250e-06   4.62542739e-05
+   3.08756826e-05   5.25726791e-05   3.03988309e-05   3.30215189e-05
+   1.40667953e-05   6.31811236e-06   2.38418875e-06   2.38418608e-07
+   3.57627925e-07   1.85968220e-05   2.26497900e-06   2.14576949e-06
+   6.67574250e-06   3.21865605e-06   4.33931236e-05   4.88759270e-06
+   1.54972201e-06   1.37091620e-05   3.69549480e-06   1.44244277e-05
+   5.00680289e-06   2.94451274e-05   1.19209304e-07   2.76569372e-05
+   9.53674771e-07   2.03849959e-05   3.69549480e-06   3.33786579e-06
+   1.19209304e-07   1.69278628e-05   1.19209304e-07   1.66893142e-06
+   4.95922941e-05   1.64510166e-05   7.91094359e-03   0.00000000e+00
+   6.07969241e-06   6.67574250e-06   1.28277417e-04   1.31130309e-06
+   1.22786323e-05   1.21594212e-05   6.21099680e-05   1.91928793e-05
+   1.19209358e-06   2.45574156e-05   2.38418608e-07   1.19209999e-05
+   5.05460157e-05   4.76837272e-07   5.60285253e-06   2.26497900e-06
+   4.73272084e-05   5.41224836e-05   0.00000000e+00   3.69549480e-06
+   3.51673589e-05   5.12613078e-05   1.68086517e-05   7.09320448e-05]
+hard: 126
+hard: 126
+hard: 126
+hard: 127
+hard: 127
+allrois: 128
+[  1.14233101e+00   1.36749917e+00   3.19967891e+00   4.73938985e-01
+   3.47581602e+00   3.96091343e+00   3.56057874e+00   1.61363190e-02
+   5.18344825e+00   2.13415021e+00   6.69493151e-01   1.50227146e+00
+   0.00000000e+00   1.19209304e-07   0.00000000e+00   1.78814093e-06
+   0.00000000e+00   1.46628499e-05   1.19209304e-07   0.00000000e+00
+   4.05312403e-06   0.00000000e+00   6.98590811e-05   1.32779975e-03
+   2.38418608e-07   2.02655997e-06   0.00000000e+00   5.00680289e-06
+   6.31811236e-06   1.19209304e-07   9.53674771e-07   1.07288417e-06
+   3.46905035e-05   2.62260778e-06   8.34465368e-07   0.00000000e+00
+   4.92346480e-05   0.00000000e+00   1.43052175e-05   1.78814093e-06
+   0.00000000e+00   1.58560928e-04   0.00000000e+00   0.00000000e+00
+   1.66893142e-06   0.00000000e+00   0.00000000e+00   0.00000000e+00
+   2.97200819e-03   0.00000000e+00   1.66893142e-06   1.12459692e-03
+   0.00000000e+00   0.00000000e+00   0.00000000e+00   1.31130309e-06
+   1.19209304e-07   4.87577890e-05   8.15424792e-05   1.19209304e-07
+   0.00000000e+00   4.76837272e-07   0.00000000e+00   1.78814093e-06
+   1.19209304e-07   0.00000000e+00   4.05312403e-06   0.00000000e+00
+   2.52338301e-04   0.00000000e+00   1.43051250e-06   8.46389503e-06
+   0.00000000e+00   8.10626443e-06   7.15256022e-07   2.81337889e-05
+   5.00680289e-06   4.98755742e-03   4.88759270e-06   2.02655997e-06
+   0.00000000e+00   5.34071878e-05   5.12601264e-06   8.22547463e-06
+   2.38418875e-06   1.00136303e-05   2.00273607e-05   0.00000000e+00
+   0.00000000e+00   1.58136885e-03   2.38418608e-07   8.65416601e-04
+   0.00000000e+00   2.62263875e-05   0.00000000e+00   1.90735045e-06
+   2.65102996e-03   1.23978434e-05   3.45707531e-06   8.34465368e-07
+   5.00680289e-06   1.19209304e-07   3.43328647e-05   1.19209304e-07
+   0.00000000e+00   9.65599884e-06   0.00000000e+00   3.57628505e-06
+   0.00000000e+00   0.00000000e+00   1.04904730e-05   1.19209304e-07
+   3.26638801e-05   5.29303252e-05   1.43051250e-06   7.15256022e-07
+   3.57627925e-07   0.00000000e+00   0.00000000e+00   0.00000000e+00
+   2.62260778e-06   3.57627925e-07   0.00000000e+00   7.70226642e-02
+   2.62260778e-06   1.84776109e-05   1.31130309e-06   9.48950983e-05]
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+hard: 127
+allrois: 128
+[  3.61013804e+00   6.25763596e+00   2.41591169e+00   5.87583161e+00
+   3.00128821e+00   1.21313819e+00   4.54125078e+00   2.87611936e+00
+   1.39657196e+00   4.67098303e+00   4.74752007e+00   4.65659401e-02
+   9.44075848e-01   3.68357390e+00   1.99916377e+00   2.71407996e+00
+   6.44209642e-01   4.50136028e+00   2.95732426e+00   6.28619674e+00
+   6.47771331e-01   2.41472538e+00   3.08326674e+00   4.30659325e+00
+   2.66886043e+00   5.36162522e+00   1.22335814e+00   5.34886865e+00
+   3.16346983e+00   4.19071986e+00   1.18350569e+00   1.04965001e+00
+   2.32460825e-05   1.16190379e-02   5.45980692e-01   2.26497900e-06
+   1.14136480e-03   3.69549480e-06   1.74716479e-04   3.05580092e-04
+   2.53292208e-04   4.17233377e-06   3.11542390e-04   2.33415770e-03
+   1.07288417e-06   2.30016994e+00   8.09460587e-04   9.22722465e-05
+   2.29622098e-03   3.96667840e-03   7.15256022e-07   4.76837272e-07
+   4.57774149e-05   6.43732255e-06   3.83861297e-05   6.31811236e-06
+   0.00000000e+00   4.76837272e-07   1.47353538e-04   3.97343887e-04
+   1.19209304e-07   0.00000000e+00   2.38418608e-07   8.15020222e-03
+   1.65476187e-04   4.41075326e-06   1.25463004e-03   2.38418608e-07
+   7.51021344e-06   4.69695624e-05   4.64917321e-06   2.98023679e-06
+   3.09944630e-06   2.03212883e-04   1.91928793e-05   0.00000000e+00
+   4.17233377e-06   1.58322466e-04   4.66119200e-05   3.20678118e-05
+   1.90735045e-06   7.15258284e-06   1.36027054e-04   1.48807382e-02
+   1.19209304e-07   4.76837272e-07   2.17759472e-04   1.65833873e-04
+   1.81274154e-04   2.25517945e-03   1.03836683e-04   2.32460825e-05
+   7.15256022e-07   8.70231634e-06   1.31258043e-04   3.49289330e-05
+   7.40317118e-05   2.16712756e-03   1.16825786e-05   1.08447328e-01
+   9.57296434e-05   2.84533453e-04   2.38418608e-07   8.78611027e-05
+   1.09543772e-02   4.61350610e-05   1.80081843e-04   1.95505145e-05
+   5.22150331e-05   2.07426310e-05   2.10409433e-01   7.03337264e-06
+   3.69549480e-06   9.53674771e-07   1.32969987e+00   9.65599884e-06
+   9.33452320e-05   4.26751077e-01   1.19209358e-06   1.54256530e-03
+   0.00000000e+00   6.11819513e-02   2.22462341e-02   1.19209358e-06
+   1.19209304e-07   4.82809264e-05   1.19411689e-03   4.82997179e-01]
+hard: 127
+hard: 127
+hard: 127
+hard: 126
+hard: 126
+Traceback (most recent call last):
+  File "./tools/train_net.py", line 113, in <module>
+    max_iters=args.max_iters)
+  File "/home/ubuntu/Work/brbchen/unskychen/faster_rcnn_min_ohem/tools/../lib/fast_rcnn/train.py", line 160, in train_net
+    model_paths = sw.train_model(max_iters)
+  File "/home/ubuntu/Work/brbchen/unskychen/faster_rcnn_min_ohem/tools/../lib/fast_rcnn/train.py", line 101, in train_model
+    self.solver.step(1)
+  File "/home/ubuntu/Work/brbchen/unskychen/faster_rcnn_min_ohem/tools/../lib/rpn/anchor_target_layer.py", line 169, in forward
+    bg_inds, size=(len(bg_inds) - num_bg), replace=False)
+KeyboardInterrupt
