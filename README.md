@@ -15,7 +15,7 @@
 3. cmake ..
 4. make all
 5. cd lib
-6. python setup.py
+6. make
 
 the model.prototxt is in
 
