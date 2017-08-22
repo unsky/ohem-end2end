@@ -11,7 +11,7 @@
 # usage 
 
 1. cd caffe
-2. mdkir build
+2. mkdir build
 3. cmake ..
 4. make all
 5. cd lib
